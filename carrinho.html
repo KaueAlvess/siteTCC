@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho - Moda Sustentável</title>
+    <link rel="stylesheet" href="css/carrinho.css">
+    <script src="carrinho.js" defer></script>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Logo da Moda Sustentável">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="produtos.html">Produtos</a></li>
+                <li><a href="doacao.html">Doar</a></li>
+                <li><a href="carrinho.html">Carrinho</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="carrinho-container">
+        <div class="carrinho-header">
+            <h2>Seu Carrinho</h2>
+            <p>Revise seus itens antes de finalizar a compra.</p>
+        </div>
+
+        <!-- Produtos no carrinho -->
+        <div class="carrinho-produtos">
+            <!-- Produto 1 no Carrinho -->
+            <div class="produto-carrinho">
+                <img src="produto1.jpg" alt="Produto 1">
+                <div class="produto-info">
+                    <h3>Produto 1</h3>
+                    <p class="preco">R$ 59,90</p>
+                    <p class="quantidade">
+                        Quantidade: <input type="number" value="1" min="1">
+                    </p>
+                    <button class="remove-btn">Remover</button>
+                </div>
+            </div>
+            <!-- Produto 2 no Carrinho -->
+            <div class="produto-carrinho">
+                <img src="produto2.jpg" alt="Produto 2">
+                <div class="produto-info">
+                    <h3>Produto 2</h3>
+                    <p class="preco">R$ 89,90</p>
+                    <p class="quantidade">
+                        Quantidade: <input type="number" value="1" min="1">
+                    </p>
+                    <button class="remove-btn">Remover</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total do Carrinho e Aplicação de Cupom -->
+        <div class="carrinho-total">
+            <h3>Total do Carrinho</h3>
+            <p id="cupom-aplicado">Nenhum cupom aplicado</p>
+            <p id="desconto"></p>
+            <p>Total: <span id="total" data-total="149.80">R$ 149,80</span></p>
+
+            <!-- Campo para inserir o cupom -->
+            <div class="cupom-container">
+                <input type="text" id="cupom" placeholder="Digite seu cupom de desconto">
+                <button id="aplicarCupom">Aplicar Cupom</button>
+                <button id="removerCupom">Remover Cupom</button>
+            </div>
+
+            <!-- Finalizar Compra -->
+            <button class="finalizar-compra">Finalizar Compra</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Moda Sustentável | <a href="#">Política de Privacidade</a></p>
+    </footer>
+
+</body>
+</html>

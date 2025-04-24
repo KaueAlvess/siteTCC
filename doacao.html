@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doação - Moda Sustentável</title>
+    <link rel="stylesheet" href="css/doacao.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Logo da Moda Sustentável">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="produtos.html">Produtos</a></li>
+                <li><a href="doacao.html">Doar</a></li>
+                <li><a href="carrinho.html">Carrinho</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="doacao-container">
+        <div class="doacao-form">
+            <h2>Doe Suas Roupas</h2>
+            <p>Ajude a moda sustentável! Preencha os dados abaixo para fazer sua doação e receber um cupom de desconto.</p>
+
+            <form action="doacao-processo.html" method="POST">
+                <input type="text" name="nome" placeholder="Seu Nome" required>
+                <input type="email" name="email" placeholder="Seu Email" required>
+                <textarea name="descricao" placeholder="Descrição das Roupas" required></textarea>
+                <input type="number" name="quantidade" placeholder="Quantidade de Roupas" required>
+                <select name="categoria" required>
+                    <option value="">Selecione a Categoria</option>
+                    <option value="camisetas">Camisetas</option>
+                    <option value="calças">Calças</option>
+                    <option value="jaquetas">Jaquetas</option>
+                    <option value="acessorios">Acessórios</option>
+                </select>
+                <button type="submit">Doar Agora</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="como-funciona">
+        <h3>Como Funciona a Doação</h3>
+        <p>Veja como o processo de doação funciona para que sua contribuição seja efetiva:</p>
+        <ul>
+            <li>Escolha as roupas que deseja doar.</li>
+            <li>Preencha os detalhes no formulário acima.</li>
+            <li>Você receberá um cupom de desconto para usar em sua próxima compra!</li>
+            <li>A moda sustentável depende de sua ajuda para reduzir o impacto ambiental.</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Moda Sustent

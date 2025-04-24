@@ -1,0 +1,163 @@
+/* doacao.css */
+
+/* Reset básico para garantir que todos os navegadores comecem com a mesma base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo básico do corpo da página */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Cabeçalho */
+header {
+    background-color: #34495e;
+    padding: 20px 0;
+    text-align: center;
+    color: white;
+}
+
+header .logo img {
+    width: 150px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    margin-top: 20px;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2em;
+}
+
+/* Seção de Doação */
+.doacao-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    margin: 20px;
+}
+
+.doacao-form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+.doacao-form h2 {
+    font-size: 2em;
+    color: #34495e;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.doacao-form p {
+    font-size: 1.1em;
+    color: #7f8c8d;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.doacao-form input[type="text"],
+.doacao-form input[type="email"],
+.doacao-form textarea,
+.doacao-form select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.1em;
+}
+
+.doacao-form textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.doacao-form button {
+    padding: 12px 25px;
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.doacao-form button:hover {
+    background-color: #27ae60;
+}
+
+/* Seção de Como Funciona a Doação */
+.como-funciona {
+    background-color: #f9f9f9;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.como-funciona h3 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #34495e;
+}
+
+.como-funciona p {
+    font-size: 1.2em;
+    color: #7f8c8d;
+    margin-bottom: 20px;
+}
+
+.como-funciona ul {
+    list-style: none;
+    padding: 0;
+}
+
+.como-funciona ul li {
+    font-size: 1.1em;
+    color: #7f8c8d;
+    margin-bottom: 15px;
+}
+
+.como-funciona ul li::before {
+    content: "✔️";
+    margin-right: 10px;
+    color: #27ae60;
+}
+
+/* Rodapé */
+footer {
+    background-color: #34495e;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+footer a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2em;
+}
+
+footer a:hover {
+    color: #e74c3c;
+}

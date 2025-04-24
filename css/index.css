@@ -1,0 +1,172 @@
+/* index.css */
+
+/* Reset básico para garantir que todos os navegadores comecem com a mesma base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo básico do corpo da página */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Cabeçalho */
+header {
+    background-color: #34495e;
+    padding: 20px 0;
+    text-align: center;
+    color: white;
+}
+
+header .logo img {
+    width: 150px;
+    margin-bottom: 10px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    margin-top: 20px;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #e74c3c;
+}
+
+/* Seção de Introdução */
+.introducao {
+    background-color: #2ecc71;
+    color: white;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.introducao h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.introducao p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.introducao button {
+    padding: 10px 20px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.introducao button:hover {
+    background-color: #c0392b;
+}
+
+/* Seção de Moda Sustentável */
+.moda-sustentavel {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #ecf0f1;
+}
+
+.moda-sustentavel h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.moda-sustentavel p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.moda-sustentavel img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+/* Seção de Doações */
+.doacoes {
+    background-color: #e74c3c;
+    color: white;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.doacoes h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.doacoes p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.doacoes button {
+    padding: 10px 20px;
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.doacoes button:hover {
+    background-color: #27ae60;
+}
+
+/* Seção de Benefícios */
+.beneficios {
+    padding: 50px 20px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.beneficios h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.beneficio-item {
+    margin-bottom: 30px;
+}
+
+.beneficio-item h3 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.beneficio-item p {
+    font-size: 1.2em;
+}
+
+/* Rodapé */
+footer {
+    background-color: #34495e;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
