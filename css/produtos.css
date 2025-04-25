@@ -13,7 +13,7 @@ body {
 
 /* Cabeçalho */
 header {
-    background-color: #34495e;
+    background-color: #2b2b2b;
     padding: 20px 0;
     text-align: center;
     color: white;
@@ -90,13 +90,13 @@ nav ul li a {
 .produto-info .preco {
     font-size: 1.4em;
     font-weight: bold;
-    color: #e74c3c;
+    color: #000000;
     margin-bottom: 15px;
 }
 
 .produto-info button {
     padding: 12px 25px;
-    background-color: #2ecc71;
+    background-color: #000000;
     color: white;
     border: none;
     border-radius: 5px;
@@ -107,7 +107,7 @@ nav ul li a {
 }
 
 .produto-info button:hover {
-    background-color: #27ae60;
+    background-color: #000000;
 }
 
 /* Filtros */
@@ -137,7 +137,7 @@ nav ul li a {
 
 /* Rodapé */
 footer {
-    background-color: #34495e;
+    background-color: #2b2b2b;
     color: white;
     padding: 20px;
     text-align: center;

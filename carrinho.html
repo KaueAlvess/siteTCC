@@ -13,7 +13,7 @@
         </div>
         <nav>
             <ul>
-                <li><a href="index.html">HOME</a></li>
+                <li><a href="index.html">Inicio</a></li>
                 <li><a href="produtos.html">Produtos</a></li>
                 <li><a href="doacao.html">Doar</a></li>
                 <li><a href="carrinho.html">Carrinho</a></li>
@@ -27,37 +27,11 @@
             <p>Revise seus itens antes de finalizar a compra.</p>
         </div>
 
-        <div class="carrinho-produtos" id="lista-carrinho">
-            <!-- Produto 1 no Carrinho -->
-            <div class="produto-carrinho" data-id="1">
-                <img src="produto1.jpg" alt="Produto 1">
-                <div class="produto-info">
-                    <h3>Camiseta Sustentável</h3>
-                    <p class="preco">R$ 59,90</p>
-                    <p class="quantidade">
-                        Quantidade: <input type="number" value="1" min="1">
-                    </p>
-                    <button class="remove-btn">Remover</button>
-                </div>
-            </div>
-            
-            <!-- Produto 2 no Carrinho -->
-            <div class="produto-carrinho" data-id="2">
-                <img src="produto2.jpg" alt="Produto 2">
-                <div class="produto-info">
-                    <h3>Calça Jeans Ecológica</h3>
-                    <p class="preco">R$ 89,90</p>
-                    <p class="quantidade">
-                        Quantidade: <input type="number" value="1" min="1">
-                    </p>
-                    <button class="remove-btn">Remover</button>
-                </div>
-            </div>
-        </div>
+       
 
         <div class="carrinho-total">
             <h3>Total do Carrinho</h3>
-            <p>Total: <span id="total">R$ 149,80</span></p>
+            <p>Total: <span id="total">R$ 00,00</span></p>
             <button class="finalizar-compra" id="finalizarCompra">Finalizar Compra</button>
         </div>
     </div>
@@ -68,10 +42,7 @@
 
     <script>
         // Dados do carrinho
-        const carrinhoItens = [
-            { id: 1, nome: "Camiseta Sustentável", preco: 59.90, quantidade: 1, imagem: "produto1.jpg" },
-            { id: 2, nome: "Calça Jeans Ecológica", preco: 89.90, quantidade: 1, imagem: "produto2.jpg" }
-        ];
+       
 
         // Atualiza quantidade e recalcula total
         document.querySelectorAll('.quantidade input').forEach(input => {

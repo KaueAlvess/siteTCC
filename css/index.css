@@ -16,7 +16,7 @@ body {
 
 /* Cabeçalho */
 header {
-    background-color: #34495e;
+    background-color: #2b2b2b;
     padding: 20px 0;
     text-align: center;
     color: white;
@@ -47,12 +47,12 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #e74c3c;
+    color: #000000;
 }
 
 /* Seção de Introdução */
 .introducao {
-    background-color: #2ecc71;
+    background-color: #005222;
     color: white;
     padding: 50px 20px;
     text-align: center;
@@ -70,7 +70,7 @@ nav ul li a:hover {
 
 .introducao button {
     padding: 10px 20px;
-    background-color: #e74c3c;
+    background-color: #000000;
     color: white;
     border: none;
     border-radius: 5px;
@@ -80,7 +80,7 @@ nav ul li a:hover {
 }
 
 .introducao button:hover {
-    background-color: #c0392b;
+    background-color: #000000;
 }
 
 /* Seção de Moda Sustentável */
@@ -107,7 +107,7 @@ nav ul li a:hover {
 
 /* Seção de Doações */
 .doacoes {
-    background-color: #e74c3c;
+    background-color: #005222;
     color: white;
     padding: 50px 20px;
     text-align: center;
@@ -125,7 +125,7 @@ nav ul li a:hover {
 
 .doacoes button {
     padding: 10px 20px;
-    background-color: #2ecc71;
+    background-color: #000000;
     color: white;
     border: none;
     border-radius: 5px;
@@ -135,7 +135,7 @@ nav ul li a:hover {
 }
 
 .doacoes button:hover {
-    background-color: #27ae60;
+    background-color: #000000;
 }
 
 /* Seção de Benefícios */
@@ -165,7 +165,7 @@ nav ul li a:hover {
 
 /* Rodapé */
 footer {
-    background-color: #34495e;
+    background-color: #2b2b2b;
     color: white;
     padding: 20px;
     text-align: center;
