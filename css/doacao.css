@@ -161,3 +161,33 @@ footer a {
 footer a:hover {
     color: #e74c3c;
 }
+/* Adicione isso ao final dos arquivos CSS */
+@media (max-width: 768px) {
+    /* Ajustes para telas menores que 768px (tablets e celulares) */
+
+    /* Exemplo para produtos.html */
+    .produtos-container {
+        grid-template-columns: 1fr; /* 1 coluna em vez de várias */
+    }
+
+    /* Exemplo para doacao.html */
+    .doacao-form {
+        padding: 15px; /* Reduz o padding em telas pequenas */
+    }
+
+    /* Exemplo para carrinho.html */
+    .produto-carrinho {
+        flex-direction: column; /* Empilha imagem e info verticalmente */
+    }
+
+    /* Ajuste geral para filtros (produtos.html) */
+    .filtro-container {
+        flex-direction: column; /* Empilha busca e seletor */
+    }
+
+    .filtro-search input,
+    .filtro-category select {
+        width: 100% !important; /* Ocupa toda a largura */
+        margin-bottom: 10px;
+    }
+}

@@ -1,20 +1,15 @@
-/* carrinho.css */
-
-/* Reset básico para garantir que todos os navegadores comecem com a mesma base */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Estilo básico do corpo da página */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f4;
     color: #333;
 }
 
-/* Cabeçalho */
 header {
     background-color: #34495e;
     padding: 20px 0;
@@ -44,7 +39,6 @@ nav ul li a {
     font-size: 1.2em;
 }
 
-/* Seção do Carrinho */
 .carrinho-container {
     padding: 40px 20px;
     max-width: 1200px;
@@ -68,7 +62,6 @@ nav ul li a {
 
 .carrinho-produtos {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 30px;
     margin-bottom: 40px;
 }
@@ -136,7 +129,6 @@ nav ul li a {
     background-color: #c0392b;
 }
 
-/* Totais do Carrinho */
 .carrinho-total {
     background-color: white;
     padding: 20px;
@@ -149,47 +141,6 @@ nav ul li a {
     font-size: 2em;
     color: #34495e;
     margin-bottom: 20px;
-}
-
-.carrinho-total p {
-    font-size: 1.3em;
-    color: #7f8c8d;
-    margin-bottom: 20px;
-}
-
-.carrinho-total .total-value {
-    font-size: 2em;
-    color: #e74c3c;
-    margin-bottom: 20px;
-}
-
-.carrinho-total .cupom-container {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
-
-.carrinho-total .cupom-container input {
-    padding: 12px;
-    font-size: 1.2em;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    width: 75%;
-}
-
-.carrinho-total .cupom-container button {
-    padding: 12px 20px;
-    font-size: 1.2em;
-    background-color: #2ecc71;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.carrinho-total .cupom-container button:hover {
-    background-color: #27ae60;
 }
 
 .carrinho-total .finalizar-compra {
@@ -209,7 +160,6 @@ nav ul li a {
     background-color: #2c3e50;
 }
 
-/* Rodapé */
 footer {
     background-color: #34495e;
     color: white;
@@ -220,9 +170,4 @@ footer {
 footer a {
     text-decoration: none;
     color: white;
-    font-size: 1.2em;
-}
-
-footer a:hover {
-    color: #e74c3c;
-}
+    font-size: }

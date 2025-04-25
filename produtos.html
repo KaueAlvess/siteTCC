@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="css/produtos.css">
 </head>
 <body>
-
     <header>
         <div class="logo">
             <img src="logo.png" alt="Logo da Moda Sustentável">
@@ -46,7 +45,7 @@
                 <h3>Camiseta Sustentável</h3>
                 <p>Feita com material orgânico, ideal para o dia a dia.</p>
                 <div class="preco">R$ 79,90</div>
-                <button>Adicionar ao Carrinho</button>
+                <button class="btn-adicionar" data-id="1">Adicionar ao Carrinho</button>
             </div>
         </div>
 
@@ -57,7 +56,7 @@
                 <h3>Calça Jeans Confortável</h3>
                 <p>Jeans sustentável, confortável e durável.</p>
                 <div class="preco">R$ 129,90</div>
-                <button>Adicionar ao Carrinho</button>
+                <button class="btn-adicionar" data-id="2">Adicionar ao Carrinho</button>
             </div>
         </div>
 
@@ -68,7 +67,7 @@
                 <h3>Jaqueta de Couro Vegano</h3>
                 <p>Jaqueta de couro sintético, ideal para o inverno.</p>
                 <div class="preco">R$ 199,90</div>
-                <button>Adicionar ao Carrinho</button>
+                <button class="btn-adicionar" data-id="3">Adicionar ao Carrinho</button>
             </div>
         </div>
     </div>
@@ -77,5 +76,15 @@
         <p>&copy; 2025 Moda Sustentável | <a href="#">Política de Privacidade</a></p>
     </footer>
 
+    <script>
+        document.querySelectorAll('.btn-adicionar').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const produtoId = this.getAttribute('data-id');
+                const produtoNome = this.closest('.produto-info').querySelector('h3').textContent;
+                alert(`${produtoNome} adicionado ao carrinho!`);
+                // Aqui você pode adicionar a lógica para atualizar o carrinho
+            });
+        });
+    </script>
 </body>
 </html>

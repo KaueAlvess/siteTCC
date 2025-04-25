@@ -1,13 +1,10 @@
-/* produtos.css */
-
-/* Reset básico para garantir que todos os navegadores comecem com a mesma base */
+/* Reset básico */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Estilo básico do corpo da página */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f4;
@@ -105,15 +102,15 @@ nav ul li a {
     border-radius: 5px;
     font-size: 1.1em;
     cursor: pointer;
-    transition: background-color 0.3s ease;
     width: 100%;
+    transition: background-color 0.3s ease;
 }
 
 .produto-info button:hover {
     background-color: #27ae60;
 }
 
-/* Botões de Filtro e Pesquisa */
+/* Filtros */
 .filtro-container {
     display: flex;
     justify-content: space-between;
@@ -138,14 +135,6 @@ nav ul li a {
     width: 300px;
 }
 
-/* Títulos e Subtítulos */
-h2 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    text-align: center;
-    color: #34495e;
-}
-
 /* Rodapé */
 footer {
     background-color: #34495e;
@@ -162,4 +151,21 @@ footer a {
 
 footer a:hover {
     color: #e74c3c;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .produtos-container {
+        grid-template-columns: 1fr;
+    }
+
+    .filtro-container {
+        flex-direction: column;
+    }
+
+    .filtro-search input,
+    .filtro-category select {
+        width: 100% !important;
+        margin-bottom: 10px;
+    }
 }
