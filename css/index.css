@@ -22,6 +22,21 @@ header {
     color: white;
 }
 
+h1 {
+    font-family: 'Poppins', sans-serif;  /* Fonte personalizada (Poppins) */
+    font-size: 4rem;  /* Tamanho da fonte ajustado */
+    font-weight: 600;  /* Peso da fonte mais forte */
+    color: #0da119;  /* Cor do texto */
+    text-transform: uppercase;  /* Deixar todas as letras em maiúsculas */
+    letter-spacing: 3px;  /* Aumento no espaçamento entre as letras */
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);  /* Sombra mais intensa */
+    margin: 0;  /* Remover margens */
+    padding: 0;  /* Remover espaçamento interno */
+    display: inline-block;  /* Garantir que o logo fique alinhado corretamente */
+    position: relative;  /* Permite adicionar um efeito mais avançado como animações */
+    transition: transform 0.3s ease-in-out;  /* Adicionando uma transição suave para animações */
+}
+
 header .logo img {
     width: 150px;
     margin-bottom: 10px;
