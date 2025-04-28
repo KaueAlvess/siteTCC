@@ -16,10 +16,25 @@ body {
 
 /* Cabeçalho */
 header {
-    background-color: #34495e;
+    background-color: #2b2b2b;
     padding: 20px 0;
     text-align: center;
     color: white;
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;  /* Fonte personalizada (Poppins) */
+    font-size: 4rem;  /* Tamanho da fonte ajustado */
+    font-weight: 600;  /* Peso da fonte mais forte */
+    color: #0da119;  /* Cor do texto */
+    text-transform: uppercase;  /* Deixar todas as letras em maiúsculas */
+    letter-spacing: 3px;  /* Aumento no espaçamento entre as letras */
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);  /* Sombra mais intensa */
+    margin: 0;  /* Remover margens */
+    padding: 0;  /* Remover espaçamento interno */
+    display: inline-block;  /* Garantir que o logo fique alinhado corretamente */
+    position: relative;  /* Permite adicionar um efeito mais avançado como animações */
+    transition: transform 0.3s ease-in-out;  /* Adicionando uma transição suave para animações */
 }
 
 header .logo img {
@@ -47,12 +62,12 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #e74c3c;
+    color: #000000;
 }
 
 /* Seção de Introdução */
 .introducao {
-    background-color: #2ecc71;
+    background-color: #005222;
     color: white;
     padding: 50px 20px;
     text-align: center;
@@ -70,7 +85,7 @@ nav ul li a:hover {
 
 .introducao button {
     padding: 10px 20px;
-    background-color: #e74c3c;
+    background-color: #000000;
     color: white;
     border: none;
     border-radius: 5px;
@@ -80,7 +95,7 @@ nav ul li a:hover {
 }
 
 .introducao button:hover {
-    background-color: #c0392b;
+    background-color: #000000;
 }
 
 /* Seção de Moda Sustentável */
@@ -107,7 +122,7 @@ nav ul li a:hover {
 
 /* Seção de Doações */
 .doacoes {
-    background-color: #e74c3c;
+    background-color: #005222;
     color: white;
     padding: 50px 20px;
     text-align: center;
@@ -125,7 +140,7 @@ nav ul li a:hover {
 
 .doacoes button {
     padding: 10px 20px;
-    background-color: #2ecc71;
+    background-color: #000000;
     color: white;
     border: none;
     border-radius: 5px;
@@ -135,7 +150,7 @@ nav ul li a:hover {
 }
 
 .doacoes button:hover {
-    background-color: #27ae60;
+    background-color: #000000;
 }
 
 /* Seção de Benefícios */
@@ -165,8 +180,44 @@ nav ul li a:hover {
 
 /* Rodapé */
 footer {
-    background-color: #34495e;
+    background-color: #2b2b2b;
     color: white;
     padding: 20px;
     text-align: center;
+}
+/* Adicione isso ao final dos arquivos CSS */
+@media (max-width: 768px) {
+    /* Ajustes para telas menores que 768px (tablets e celulares) */
+
+    /* Exemplo para produtos.html */
+    .produtos-container {
+        grid-template-columns: 1fr; /* 1 coluna em vez de várias */
+    }
+
+    /* Exemplo para doacao.html */
+    .doacao-form {
+        padding: 15px; /* Reduz o padding em telas pequenas */
+    }
+
+    /* Exemplo para carrinho.html */
+    .produto-carrinho {
+        flex-direction: column; /* Empilha imagem e info verticalmente */
+    }
+
+    /* Ajuste geral para filtros (produtos.html) */
+    .filtro-container {
+        flex-direction: column; /* Empilha busca e seletor */
+    }
+
+    .filtro-search input,
+    .filtro-category select {
+        width: 100% !important; /* Ocupa toda a largura */
+        margin-bottom: 10px;
+    }
+}
+/* Estilo específico para a página de agradecimento */
+.introducao button {
+    margin: 0 auto;
+    display: block;
+    width: fit-content;
 }

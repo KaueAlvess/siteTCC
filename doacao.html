@@ -7,14 +7,13 @@
     <link rel="stylesheet" href="css/doacao.css">
 </head>
 <body>
-
     <header>
         <div class="logo">
-            <img src="logo.png" alt="Logo da Moda Sustentável">
+            <h1>EcoFashion</h1>
         </div>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html">Inicio</a></li>
                 <li><a href="produtos.html">Produtos</a></li>
                 <li><a href="doacao.html">Doar</a></li>
                 <li><a href="carrinho.html">Carrinho</a></li>
@@ -27,7 +26,7 @@
             <h2>Doe Suas Roupas</h2>
             <p>Ajude a moda sustentável! Preencha os dados abaixo para fazer sua doação e receber um cupom de desconto.</p>
 
-            <form action="doacao-processo.html" method="POST">
+            <form id="formDoacao">
                 <input type="text" name="nome" placeholder="Seu Nome" required>
                 <input type="email" name="email" placeholder="Seu Email" required>
                 <textarea name="descricao" placeholder="Descrição das Roupas" required></textarea>
@@ -56,4 +55,28 @@
     </section>
 
     <footer>
-        <p>&copy; 2025 Moda Sustent
+        <p>&copy; 2025 Moda Sustentável</p>
+    </footer>
+
+    <!-- Modal de Confirmação -->
+    <div id="modal-confirmacao" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); justify-content:center; align-items:center;">
+        <div style="background:white; padding:20px; border-radius:10px; text-align:center;">
+            <h3>Obrigado por doar! ❤️</h3>
+            <p>Você receberá um cupom de desconto por e-mail.</p>
+            <button onclick="fecharModal()">Fechar</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('formDoacao').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('modal-confirmacao').style.display = 'flex';
+            this.reset();
+        });
+
+        function fecharModal() {
+            document.getElementById('modal-confirmacao').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

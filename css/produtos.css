@@ -1,13 +1,10 @@
-/* produtos.css */
-
-/* Reset básico para garantir que todos os navegadores comecem com a mesma base */
+/* Reset básico */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Estilo básico do corpo da página */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f4;
@@ -16,7 +13,7 @@ body {
 
 /* Cabeçalho */
 header {
-    background-color: #34495e;
+    background-color: #2b2b2b;
     padding: 20px 0;
     text-align: center;
     color: white;
@@ -24,6 +21,20 @@ header {
 
 header .logo img {
     width: 150px;
+}
+h1 {
+    font-family: 'Poppins', sans-serif;  /* Fonte personalizada (Poppins) */
+    font-size: 4rem;  /* Tamanho da fonte ajustado */
+    font-weight: 600;  /* Peso da fonte mais forte */
+    color: #0da119;  /* Cor do texto */
+    text-transform: uppercase;  /* Deixar todas as letras em maiúsculas */
+    letter-spacing: 3px;  /* Aumento no espaçamento entre as letras */
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);  /* Sombra mais intensa */
+    margin: 0;  /* Remover margens */
+    padding: 0;  /* Remover espaçamento interno */
+    display: inline-block;  /* Garantir que o logo fique alinhado corretamente */
+    position: relative;  /* Permite adicionar um efeito mais avançado como animações */
+    transition: transform 0.3s ease-in-out;  /* Adicionando uma transição suave para animações */
 }
 
 nav ul {
@@ -93,27 +104,27 @@ nav ul li a {
 .produto-info .preco {
     font-size: 1.4em;
     font-weight: bold;
-    color: #e74c3c;
+    color: #000000;
     margin-bottom: 15px;
 }
 
 .produto-info button {
     padding: 12px 25px;
-    background-color: #2ecc71;
+    background-color: #000000;
     color: white;
     border: none;
     border-radius: 5px;
     font-size: 1.1em;
     cursor: pointer;
-    transition: background-color 0.3s ease;
     width: 100%;
+    transition: background-color 0.3s ease;
 }
 
 .produto-info button:hover {
-    background-color: #27ae60;
+    background-color: #000000;
 }
 
-/* Botões de Filtro e Pesquisa */
+/* Filtros */
 .filtro-container {
     display: flex;
     justify-content: space-between;
@@ -138,17 +149,9 @@ nav ul li a {
     width: 300px;
 }
 
-/* Títulos e Subtítulos */
-h2 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    text-align: center;
-    color: #34495e;
-}
-
 /* Rodapé */
 footer {
-    background-color: #34495e;
+    background-color: #2b2b2b;
     color: white;
     padding: 20px;
     text-align: center;
@@ -162,4 +165,21 @@ footer a {
 
 footer a:hover {
     color: #e74c3c;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .produtos-container {
+        grid-template-columns: 1fr;
+    }
+
+    .filtro-container {
+        flex-direction: column;
+    }
+
+    .filtro-search input,
+    .filtro-category select {
+        width: 100% !important;
+        margin-bottom: 10px;
+    }
 }
