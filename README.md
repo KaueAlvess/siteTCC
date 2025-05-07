@@ -10,4 +10,4 @@ EcoFashion, loja com esquema de doações, pronta para tranformar o mundo 🌍
 2. **@KaueAlvess** 
 
 📅 **Última Atualização**:   
-🔗 **Link**: [GitHub - Moda Sustentável](https://github.com/seu-usuario/moda-sustentavel)
+🔗 **Link**: [GitHub - Moda Sustentável]([https://github.com/seu-usuario/moda-sustentavel](https://kauealvess.github.io/siteTCC/))
