@@ -4,7 +4,7 @@
 
 EcoFashion, loja com esquema de doações, pronta para tranformar o mundo 🌍
 
-## Desenvolvidores🤝
+## Desenvolvedores🤝
 
 1. **@NikollasSouza** 
 2. **@KaueAlvess** 
