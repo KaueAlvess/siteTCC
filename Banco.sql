@@ -11,29 +11,26 @@ CREATE TABLE usuarios (
 );
 
 CREATE TABLE moedas (
-    id_usuario INT PRIMARY KEY,  -- Relacionamento com a tabela de usuários
-    saldo DECIMAL(10,2) DEFAULT 0,  -- Saldo de moedas do usuário
+    id_usuario INT PRIMARY KEY,
+    saldo DECIMAL(10,2) DEFAULT 0,
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE CASCADE
 );
 
 CREATE TABLE transacoes_moedas (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    id_usuario INT,  -- Relacionamento com o usuário
-    tipo VARCHAR(20),  -- 'ganho' ou 'gasto'
-    quantidade DECIMAL(10,2),  -- Quantidade de moedas
-    descricao VARCHAR(255),  -- Descrição do motivo da transação
+    id_usuario INT,
+    tipo VARCHAR(20),
+    quantidade DECIMAL(10,2),
+    descricao VARCHAR(255),
     data_transacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE CASCADE
 );
 
--- Inserindo um usuário fictício
 INSERT INTO usuarios (nome, email, senha) VALUES
 ('João Silva', 'joao@exemplo.com', 'senha123');
 
--- Inserindo saldo inicial de moedas para o usuário
 INSERT INTO moedas (id_usuario, saldo) VALUES
-(1, 100);  -- Usuário com id=1 tem 100 moedas
+(1, 100);
 
--- Registro de uma transação de ganho de moedas
 INSERT INTO transacoes_moedas (id_usuario, tipo, quantidade, descricao) VALUES
 (1, 'ganho', 50, 'Doação realizada');
