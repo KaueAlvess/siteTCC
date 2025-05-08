@@ -1,82 +1,99 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doação - Moda Sustentável</title>
-    <link rel="stylesheet" href="css/doacao.css">
+    <title>Doação</title>
+    <link rel="stylesheet" href="css/doacao.css">  <!-- CSS da parte de doação -->
+    <link rel="stylesheet" href="css/cupom.css">  <!-- CSS do cupom -->
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <h1>EcoFashion</h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="produtos.html">Produtos</a></li>
-                <li><a href="doacao.html">Doar</a></li>
-                <li><a href="carrinho.html">Carrinho</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <section class="doacao-container">
-        <div class="doacao-form">
-            <h2>Doe Suas Roupas</h2>
-            <p>Ajude a moda sustentável! Preencha os dados abaixo para fazer sua doação e receber um cupom de desconto.</p>
-
-            <form id="formDoacao">
-                <input type="text" name="nome" placeholder="Seu Nome" required>
-                <input type="email" name="email" placeholder="Seu Email" required>
-                <textarea name="descricao" placeholder="Descrição das Roupas" required></textarea>
-                <input type="number" name="quantidade" placeholder="Quantidade de Roupas" required>
-                <select name="categoria" required>
-                    <option value="">Selecione a Categoria</option>
-                    <option value="camisetas">Camisetas</option>
-                    <option value="calças">Calças</option>
-                    <option value="jaquetas">Jaquetas</option>
-                    <option value="acessorios">Acessórios</option>
-                </select>
-                <button type="submit">Doar Agora</button>
-            </form>
-        </div>
-    </section>
-
-    <section class="como-funciona">
-        <h3>Como Funciona a Doação</h3>
-        <p>Veja como o processo de doação funciona para que sua contribuição seja efetiva:</p>
-        <ul>
-            <li>Escolha as roupas que deseja doar.</li>
-            <li>Preencha os detalhes no formulário acima.</li>
-            <li>Você receberá um cupom de desconto para usar em sua próxima compra!</li>
-            <li>A moda sustentável depende de sua ajuda para reduzir o impacto ambiental.</li>
-        </ul>
-    </section>
-
-    <footer>
-        <p>&copy; 2025 Moda Sustentável</p>
-    </footer>
-
-    <!-- Modal de Confirmação -->
-    <div id="modal-confirmacao" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); justify-content:center; align-items:center;">
-        <div style="background:white; padding:20px; border-radius:10px; text-align:center;">
-            <h3>Obrigado por doar! ❤️</h3>
-            <p>Você receberá um cupom de desconto por e-mail.</p>
-            <button onclick="fecharModal()">Fechar</button>
-        </div>
+<!-- Cabeçalho da página -->
+<header>
+    <div class="logo">
+        <h1>EcoFashion</h1>
     </div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="produtos.html">Produtos</a></li>
+            <li><a href="doacao.html">Doar</a></li>
+            <li><a href="carrinho.html">Carrinho</a></li>
+        </ul>
+    </nav>
+</header>
 
-    <script>
-        document.getElementById('formDoacao').addEventListener('submit', function(e) {
-            e.preventDefault();
-            document.getElementById('modal-confirmacao').style.display = 'flex';
-            this.reset();
-        });
+<!-- Seção de Doação -->
+<div class="doacao-container">
+    <form action="doar.php" method="POST">
+        <h2>Dados da Doação</h2>
+        <p>Preencha os dados abaixo para realizar sua doação:</p>
+        <select required>
+            <option value="" disabled selected hidden>Selecione o tempo de uso</option>
+            <option value="valor1">1 a 6 meses</option>
+            <option value="valor2">6 meses a 1 ano</option>
+            <option value="valor3">1 ano a 2 anos</option>
+            <option value="outro">3 a 5 anos</option>
+            <option value="outro">5 a 7 anos</option>
+            <option value="outro">8 anos ou mais</option>
+        </select>
+        <select required>
+            <option value="" disabled selected hidden>Selecione o estado da peça</option>
+            <option value="valor1">Ruim</option>
+            <option value="valor2">Ok</option>
+            <option value="valor3">Bom</option>
+            <option value="outro">Muito bom</option>
+        </select>
+        <select required>
+            <option value="" disabled selected hidden>Selecione o tamanho da peça</option>
+            <option value="valor1">36</option>
+            <option value="valor2">38</option>
+            <option value="valor3">40</option>
+            <option value="outro">42</option>
+            <option value="outro">44</option>
+            <option value="outro">46</option>
+            <option value="outro">48</option>
+            <option value="outro">50</option>
+        </select>
+        <textarea placeholder="Descrição do produto" rows="4"></textarea>
+        <select required>
+            <option value="" disabled selected hidden>Para onde deseja doar esta peça?</option>
+            <option value="valor1">Ong's</option>
+            <option value="outro">Orfanatos</option>
+            <option value="outro">instituição EcoFashion</option>
+        </select>
+        <button type="submit">Realizar Doação</button>
+    </form>    
+</div>
 
-        function fecharModal() {
-            document.getElementById('modal-confirmacao').style.display = 'none';
-        }
-    </script>
+<!-- Seção de Aplicação do Cupom -->
+<div class="container">
+    <h2>Aplicar Cupom</h2>
+    <p>Total: <span id="total">R$ 199,80</span></p>
+    <input type="text" id="cupom" placeholder="Digite seu cupom">
+    <button id="aplicarCupom">Aplicar Cupom</button>
+    <button id="removerCupom">Remover Cupom</button>
+    <p id="desconto"></p>
+    <p id="cupom-aplicado">Nenhum cupom aplicado</p>
+</div>
+
+<!-- Seção de Como Funciona a Doação -->
+<div class="como-funciona">
+    <h3>Como Funciona</h3>
+    <p>Saiba como sua doação ajuda as pessoas!</p>
+    <ul>
+        <li>Escolha um valor para doar.</li>
+        <li>Insira um cupom de desconto, se tiver.</li>
+        <li>Finalize sua doação e ajude!</li>
+    </ul>
+</div>
+
+<!-- Rodapé -->
+<footer>
+    <p>© 2025 Sua Organização. Todos os direitos reservados.</p>
+</footer>
+
+<script src="js/cupom.js"></script> <!-- JS do cupom -->
 </body>
 </html>
