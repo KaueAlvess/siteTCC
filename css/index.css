@@ -67,7 +67,7 @@ nav ul li a:hover {
 
 /* Seção de Introdução */
 .introducao {
-    background-color: #005222;
+    background-color: #a0ffc7;
     color: white;
     padding: 50px 20px;
     text-align: center;
@@ -83,26 +83,62 @@ nav ul li a:hover {
     margin-bottom: 30px;
 }
 
-.introducao button {
-    padding: 10px 20px;
-    background-color: #000000;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.2em;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
 
-.introducao button:hover {
-    background-color: #000000;
-}
 
 /* Seção de Moda Sustentável */
+.moda-sustentavel button {
+    padding: 15px 30px;
+    background-color: #4CAF50; /* Verde escuro (tema sustentável) */
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    font-size: 24px;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efeito de hover */
+.moda-sustentavel button:hover {
+    background-color: #1b5e20; /* Verde ainda mais escuro */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Efeito de clique */
+.moda-sustentavel button:active {
+    transform: translateY(0);
+}
+
+/* Animação de brilho ao passar o mouse */
+.moda-sustentavel button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s ease;
+}
+
+.moda-sustentavel button:hover::after {
+    transform: translate(-50%, -50%) scale(6);
+}
+
 .moda-sustentavel {
     padding: 50px 20px;
     text-align: center;
-    background-color: #ecf0f1;
+    background-color: #abffce;
 }
 
 .moda-sustentavel h2 {
@@ -139,24 +175,55 @@ nav ul li a:hover {
 }
 
 .doacoes button {
-    padding: 10px 20px;
-    background-color: #000000;
-    color: white;
+    padding: 15px 30px; /* Um pouco mais de espaço interno */
+    background-color: #4CAF50; /* Verde principal (Material Design) */
+    color: #ffffff; /* Texto branco */
     border: none;
-    border-radius: 5px;
-    font-size: 1.2em;
+    border-radius: 12px; /* Bordas mais arredondadas */
+    font-size: 24px; /* Um pouco menor, mas mais elegante */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fonte limpa */
+    font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.4s ease; /* Transição mais suave em todas as propriedades */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    text-transform: uppercase; /* Deixa o texto em caixa alta */
 }
 
+/* Efeito ao passar o mouse */
 .doacoes button:hover {
-    background-color: #000000;
+    background-color: #388E3C; /* Verde mais escuro no hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px); /* Levanta o botão levemente */
+}
+
+/* Efeito ao clicar */
+.doacoes button:active {
+    transform: translateY(0); /* Volta à posição original */
+}
+
+/* Opcional: Adiciona um pequeno brilho ao fundo quando o mouse está sobre ele */
+.doacoes button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s ease;
+}
+
+.doacoes button:hover::after {
+    transform: translate(-50%, -50%) scale(6);
 }
 
 /* Seção de Benefícios */
 .beneficios {
     padding: 50px 20px;
-    background-color: #fff;
+    background-color: #a0ffc7;
     text-align: center;
 }
 

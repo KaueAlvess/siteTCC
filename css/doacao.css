@@ -8,7 +8,7 @@
 /* Body */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
+    background-color: #a0ffc7;
     color: #333;
 }
 
@@ -35,6 +35,42 @@ h1 {
     position: relative;  /* Permite adicionar um efeito mais avançado como animações */
     transition: transform 0.3s ease-in-out;  /* Adicionando uma transição suave para animações */
 }
+
+.container {
+  text-align: center;
+  padding: 20px;
+}
+
+h3 {
+  background-color: #ffffff;
+  color: #2e7d32;
+  font-family: 'Arial', sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 05px 10px;
+  border-left: 8px solid #000000;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: inline-block; /* Faz o h3 ajustar ao conteúdo */
+  margin: 10px 0;
+}
+
+h2 {
+  background-color: #ffffff; /* Fundo branco */
+  color: #2e7d32; /* Verde escuro */
+  font-family: 'Arial', sans-serif;
+  font-size: 32px; /* Tamanho maior para h2 */
+  font-weight: bold;
+  padding: 15px 20px;
+  margin: 20px auto; /* Centraliza horizontalmente quando usado com width ou display */
+  border-left: 6px solid #4caf50; /* Barra lateral verde */
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center; /* Alinha o texto ao centro */
+  width: max-content; /* Ajusta a largura ao conteúdo */
+  display: block; /* Permite centralizar com margin: auto */
+}
+
 nav ul {
   list-style: none;
   margin-top: 15px;
@@ -59,7 +95,7 @@ nav ul li a:hover {
 /* Formulário de Doação */
 .doacao-section {
   padding: 40px 20px;
-  background-color: #ffffff;
+  background-color: #a0ffc7;
   color: #000000;
 }
 
