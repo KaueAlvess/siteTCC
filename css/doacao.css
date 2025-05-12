@@ -1,177 +1,118 @@
-/* doacao.css */
-
-/* Reset básico para garantir que todos os navegadores comecem com a mesma base */
+/* Reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Estilo básico do corpo da página */
+/* Body */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #005222;
-    color: #ffffff;
+  font-family: 'Arial', sans-serif;
+  background-color: #005222;
+  color: #ffffff;
+  line-height: 1.6;
 }
 
-/* Cabeçalho */
+/* Header */
 header {
-    background-color: #2b2b2b;
-    padding: 20px 0;
-    text-align: center;
-    color: white;
+  background-color: #2b2b2b;
+  padding: 20px 0;
+  text-align: center;
 }
 
-header .logo img {
-    width: 150px;
+.logo h1 {
+  color: #0da119;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
 }
 
-h1 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 4rem;
-    font-weight: 600;
-    color: #0da119;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
-    margin: 0;
-    padding: 0;
-    display: inline-block;
-    position: relative;
-    transition: transform 0.3s ease-in-out;
+nav ul {
+  list-style: none;
+  margin-top: 15px;
 }
 
-/* Seção de Doação */
-.doacao-container {
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-    margin: 20px;
+nav ul li {
+  display: inline-block;
+  margin: 0 15px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.1em;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #0da119;
+}
+
+/* Formulário de Doação */
+.doacao-section {
+  padding: 40px 20px;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.doacao-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.doacao-section p {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 30px;
 }
 
 .doacao-form {
-    background-color: white;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 500px;
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 
-.doacao-form h2 {
-    font-size: 2em;
-    color: #34495e;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.doacao-form p {
-    font-size: 1.1em;
-    color: #7f8c8d;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.doacao-form input[type="tempo"],
-.doacao-form input[type="estado"],
-.doacao-form input[type="tamanho"],
-.doacao-form textarea,
-.doacao-form select {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    font-size: 1.1em;
+.doacao-form select,
+.doacao-form textarea {
+  margin-bottom: 15px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
 }
 
 .doacao-form textarea {
-    resize: vertical;
-    min-height: 150px;
+  resize: vertical;
+  min-height: 100px;
 }
 
 .doacao-form button {
-    padding: 12px 25px;
-    background-color: #000000;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.2em;
-    cursor: pointer;
-    width: 100%;
-    transition: background-color 0.3s ease;
+  padding: 12px;
+  background-color: #0da119;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .doacao-form button:hover {
-    background-color: #2b2b2b;
+  background-color: #0a8d16;
 }
 
-/* Seção de Como Funciona a Doação */
+/* Como Funciona */
 .como-funciona {
-    background-color: #005222;
-    color: #ffffff;
-    padding: 40px 20px;
-    text-align: center;
+  background-color: #005222;
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
 }
 
 .como-funciona h3 {
-    font-size: 2em;
-    margin-bottom: 20px;
-    color: #000000;
-}
-
-.como-funciona p {
-    font-size: 1.2em;
-    color: #ffffff;
-    margin-bottom: 20px;
-}
-
-.como-funciona ul {
-    list-style: none;
-    padding: 0;
-}
-
-.como-funciona ul li {
-    font-size: 1.1em;
-    color: #ffffff;
-    margin-bottom: 15px;
-}
-
-.como-funciona ul li::before {
-    content: "✔️";
-    margin-right: 10px;
-    color: #27ae60;
-}
-
-/* Rodapé */
-footer {
-    background-color: #2b2b2b;
-    color: white;
-    padding: 20px;
-    text-align: center;
-}
-
-footer a {
-    text-decoration: none;
-    color: white;
-    font-size: 1.2em;
-}
-
-footer a:hover {
-    color: #e74c3c;
-}
-
-/* Responsividade para telas pequenas */
-@media (max-width: 768px) {
-    .doacao-form {
-        padding: 15px;
-    }
-
-    .doacao-container {
-        flex-direction: column;
-    }
-
-    button {
-        font-size: 1.1em;
-    }
+  font-size: 2rem;
+  margin-bottom:
 }
