@@ -1,0 +1,90 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 3rem;
+    font-weight: 600;
+    color: #0da119;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin: 30px 0 10px;
+}
+
+p {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h2 {
+    font-size: 2em;
+    color: #0da119;
+    margin-top: 40px;
+    margin-bottom: 15px;
+    text-align: center;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
+}
+
+ul {
+    list-style-type: disc;
+    margin-left: 40px;
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+h3 {
+    color: #2b2b2b;
+    margin-top: 20px;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+strong {
+    color: #0da119;
+}
+
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    background-color: #2b2b2b;
+    color: white;
+    margin-top: 50px;
+    font-size: 0.95em;
+}
+
+/* Responsividade básica */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.6em;
+    }
+
+    p, ul, li {
+        font-size: 1rem;
+    }
+}
