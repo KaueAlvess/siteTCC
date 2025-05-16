@@ -9,82 +9,256 @@ body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f4;
     color: #333;
-    line-height: 1.6;
-    padding: 20px;
 }
 
-h1 {
+/* Cabeçalho */
+header {
+    background-color: #2b2b2b;
+    padding: 20px 0;
+    text-align: center;
+    color: white;
+}
+
+header .logo h1 {
     font-family: 'Poppins', sans-serif;
-    font-size: 3rem;
+    font-size: 4rem;
     font-weight: 600;
     color: #0da119;
     text-transform: uppercase;
     letter-spacing: 3px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    transition: transform 0.3s ease-in-out;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
     text-align: center;
-    margin: 30px 0 10px;
+    margin-top: 20px;
 }
 
-p {
-    margin-bottom: 15px;
-    font-size: 1.1em;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+nav ul li {
+    display: inline-block;
+    margin: 0 15px;
 }
 
-h2 {
-    font-size: 2em;
-    color: #0da119;
-    margin-top: 40px;
-    margin-bottom: 15px;
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #000000;
+}
+
+/* Seção de Introdução */
+.introducao {
+    background-color: #a0ffc7;
+    color: white;
+    padding: 50px 20px;
     text-align: center;
-    border-bottom: 2px solid #e0e0e0;
-    padding-bottom: 10px;
 }
 
-ul {
-    list-style-type: disc;
-    margin-left: 40px;
+.introducao h1 {
+    font-size: 3em;
     margin-bottom: 20px;
-    font-size: 1.1em;
 }
 
-li {
+.introducao p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+/* Seção de Moda Sustentável */
+.moda-sustentavel {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #abffce;
+}
+
+.moda-sustentavel h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.moda-sustentavel p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.moda-sustentavel img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+/* Seção de Benefícios da Moda Sustentável */
+.beneficios {
+    padding: 50px 20px;
+    background-color: #a0ffc7;
+    text-align: center;
+}
+
+.beneficios h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.beneficio-item {
+    margin-bottom: 30px;
+}
+
+.beneficio-item h3 {
+    font-size: 2em;
     margin-bottom: 10px;
 }
 
-h3 {
-    color: #2b2b2b;
+.beneficio-item p {
+    font-size: 1.2em;
+}
+
+/* Estilo dos containers com efeito de brilho */
+.efeito-hover {
     margin-top: 20px;
-    font-size: 1.5em;
+    padding: 15px 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    display: inline-block;
     text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s ease-in-out;
+    position: relative;
+    overflow: hidden;
 }
 
-strong {
+.efeito-hover h4 {
+    font-size: 1.3em;
     color: #0da119;
+    margin: 0;
+    font-weight: bold;
+    letter-spacing: 1px;
 }
 
-footer {
+.efeito-hover:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(13, 161, 25, 0.4), 0 0 20px rgba(13, 161, 25, 0.3);
+}
+
+.efeito-hover::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -50%;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(255,255,255,0.6) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translateY(-50%);
+    transition: left 0.6s ease;
+    opacity: 0;
+}
+
+.efeito-hover:hover::before {
+    left: 120%;
+    opacity: 1;
+}
+
+/* === Nova Seção: Baixe o App === */
+
+.download-app {
+    background-color: #0da119;
+    color: white;
+    padding: 60px 20px;
     text-align: center;
-    padding: 30px 20px;
+}
+
+.download-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.download-text h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.download-text p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    max-width: 500px;
+}
+
+.btn-download {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: white;
+    color: #0da119;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-download:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.download-image img {
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Rodapé */
+footer {
     background-color: #2b2b2b;
     color: white;
-    margin-top: 50px;
-    font-size: 0.95em;
+    padding: 20px;
+    text-align: center;
 }
 
 /* Responsividade básica */
 @media (max-width: 768px) {
+    header .logo h1 {
+        font-size: 2.5rem;
+    }
+
     h1 {
         font-size: 2rem;
     }
 
     h2 {
-        font-size: 1.6em;
+        font-size: 1.8em;
     }
 
-    p, ul, li {
+    p,
+    ul,
+    li {
         font-size: 1rem;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .download-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .download-text {
+        order: 2; /* Coloca texto abaixo da imagem em mobile */
     }
 }
