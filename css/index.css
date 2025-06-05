@@ -14,12 +14,94 @@ body {
     color: #333;
 }
 
-/* Cabeçalho */
+/* Header */
 header {
-    background-color: #2b2b2b;
-    padding: 20px 0;
-    text-align: center;
-    color: white;
+  background-color: #2b2b2b;
+  padding: 20px 0;
+  color: white;
+  position: relative;
+  z-index: 1000;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Logo centralizado */
+header .logo {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+header .logo h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 4rem;
+  font-weight: 600;
+  color: #0da119;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+header .logo h1:hover {
+  transform: scale(1.05) rotate(1deg);
+  letter-spacing: 4px;
+}
+
+/* Navegação */
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  padding: 0;
+  position: relative;
+}
+
+nav ul li {
+  position: relative;
+  overflow: hidden;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+}
+
+/* Efeito de brilho ao passar o mouse */
+nav ul li a::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(
+    transparent 25%,
+    rgba(255, 255, 255, 0.8),
+    transparent 75%
+  );
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.5s ease, left 0.5s ease;
+  z-index: 0;
+}
+
+nav ul li a:hover::before {
+  left: 110%;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  opacity: 1;
+}
+
+nav ul li a:hover {
+  color: #0da119;
 }
 
 h1 {

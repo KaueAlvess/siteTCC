@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="css/doacao.css" />
 </head>
 <body>
+
   <!-- Cabeçalho -->
   <header>
     <div class="logo">
@@ -24,9 +25,36 @@
 
   <main>
     <section class="doacao-section">
-      <h2>Dados da Doação</h2>
+     <!-- Modal -->
+<div class="modal" id="modal-doacao">
+  <div class="modal-conteudo">
+    <span class="fechar-modal" id="fechar-modal">&times;</span>
+    <h2>Dados da Doação</h2>
+    <p>Preencha os dados abaixo para realizar sua doação:</p>
+    <!-- Aqui pode vir seu formulário -->
+  </div>
+  <script>
+  // Abre o modal ao carregar a página
+  window.onload = function() {
+    document.getElementById('modal-doacao').style.display = 'block';
+  }
+
+  // Fecha o modal ao clicar no X
+  document.getElementById('fechar-modal').onclick = function() {
+    document.getElementById('modal-doacao').style.display = 'none';
+  }
+
+  // Fecha ao clicar fora do conteúdo
+  window.onclick = function(event) {
+    const modal = document.getElementById('modal-doacao');
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
+</div>
       <p>Preencha os dados abaixo para realizar sua doação:</p>
-      <form action="doar.php" method="POST" class="doacao-form">
+      <form id="doacao-form" class="doacao-form">
         <select name="tempo_uso" required>
           <option value="" disabled selected hidden>Tempo de uso</option>
           <option value="1-6m">1 a 6 meses</option>
@@ -82,5 +110,50 @@
   <footer>
     <p>© 2025 EcoFashion. Todos os direitos reservados.</p>
   </footer>
+
+  <!-- Modal de Confirmação -->
+  <div id="confirm-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Doação Concluída!</h2>
+      <p><strong>Tempo de uso:</strong> <span id="show-tempo_uso"></span></p>
+      <p><strong>Estado da peça:</strong> <span id="show-estado"></span></p>
+      <p><strong>Tamanho:</strong> <span id="show-tamanho"></span></p>
+      <p><strong>Descrição:</strong> <span id="show-descricao"></span></p>
+      <p><strong>Destino:</strong> <span id="show-destino"></span></p>
+    </div>
+  </div>
+
+  <!-- Script para funcionamento do modal -->
+  <script>
+    document.getElementById('doacao-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Impede o envio real do formulário
+
+      const formData = new FormData(this);
+
+      // Preenche os campos do modal
+      document.getElementById('show-tempo_uso').textContent = formData.get('tempo_uso') || 'Não informado';
+      document.getElementById('show-estado').textContent = formData.get('estado') || 'Não informado';
+      document.getElementById('show-tamanho').textContent = formData.get('tamanho') || 'Não informado';
+      document.getElementById('show-descricao').textContent = formData.get('descricao') || 'Nenhuma descrição fornecida';
+      document.getElementById('show-destino').textContent = formData.get('destino') || 'Não informado';
+
+      // Mostra o modal
+      document.getElementById('confirm-modal').style.display = 'block';
+    });
+
+    // Fecha o modal ao clicar no X
+    document.querySelector('.modal .close').addEventListener('click', function() {
+      document.getElementById('confirm-modal').style.display = 'none';
+    });
+
+    // Fecha o modal ao clicar fora do conteúdo
+    window.addEventListener('click', function(e) {
+      const modal = document.getElementById('confirm-modal');
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+  </script>
 </body>
 </html>

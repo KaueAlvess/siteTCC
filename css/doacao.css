@@ -7,33 +7,114 @@
 
 /* Body */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #a0ffc7;
-    color: #333;
+  font-family: 'Arial', sans-serif;
+  background-color: #a0ffc7;
+  color: #333;
 }
 
 /* Header */
 header {
-    background-color: #2b2b2b;
-    padding: 20px 0;
-    text-align: center;
-    color: white;
+  background-color: #2b2b2b;
+  padding: 20px 0;
+  color: white;
+  position: relative;
+  z-index: 1000;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
+/* Logo centralizado */
+header .logo {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+header .logo h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 4rem;
+  font-weight: 600;
+  color: #0da119;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+header .logo h1:hover {
+  transform: scale(1.05) rotate(1deg);
+  letter-spacing: 4px;
+}
+
+/* Navegação */
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  padding: 0;
+  position: relative;
+}
+
+nav ul li {
+  position: relative;
+  overflow: hidden;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+}
+
+/* Efeito de brilho ao passar o mouse */
+nav ul li a::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(
+    transparent 25%,
+    rgba(255, 255, 255, 0.8),
+    transparent 75%
+  );
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.5s ease, left 0.5s ease;
+  z-index: 0;
+}
+
+nav ul li a:hover::before {
+  left: 110%;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  opacity: 1;
+}
+
+nav ul li a:hover {
+  color: #0da119;
+}
 
 h1 {
-    font-family: 'Poppins', sans-serif;  /* Fonte personalizada (Poppins) */
-    font-size: 4rem;  /* Tamanho da fonte ajustado */
-    font-weight: 600;  /* Peso da fonte mais forte */
-    color: #0da119;  /* Cor do texto */
-    text-transform: uppercase;  /* Deixar todas as letras em maiúsculas */
-    letter-spacing: 3px;  /* Aumento no espaçamento entre as letras */
-    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);  /* Sombra mais intensa */
-    margin: 0;  /* Remover margens */
-    padding: 0;  /* Remover espaçamento interno */
-    display: inline-block;  /* Garantir que o logo fique alinhado corretamente */
-    position: relative;  /* Permite adicionar um efeito mais avançado como animações */
-    transition: transform 0.3s ease-in-out;  /* Adicionando uma transição suave para animações */
+  font-family: 'Poppins', sans-serif;
+  font-size: 4rem;
+  font-weight: 600;
+  color: #0da119;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  position: relative;
+  transition: transform 0.3s ease-in-out;
 }
 
 .container {
@@ -47,28 +128,108 @@ h3 {
   font-family: 'Arial', sans-serif;
   font-size: 12px;
   font-weight: bold;
-  padding: 05px 10px;
+  padding: 5px 10px;
   border-left: 8px solid #000000;
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  display: inline-block; /* Faz o h3 ajustar ao conteúdo */
+  display: inline-block;
   margin: 10px 0;
 }
 
-h2 {
-  background-color: #ffffff; /* Fundo branco */
-  color: #2e7d32; /* Verde escuro */
-  font-family: 'Arial', sans-serif;
-  font-size: 32px; /* Tamanho maior para h2 */
+/* Estilo do Modal */
+.modal {
+  display: none; /* Escondido por padrão */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6); /* Fundo escuro semi-transparente */
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Conteúdo do Modal */
+.modal-conteudo {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 30px 40px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Fechar botão */
+.fechar-modal {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
   font-weight: bold;
-  padding: 15px 20px;
-  margin: 20px auto; /* Centraliza horizontalmente quando usado com width ou display */
-  border-left: 6px solid #4caf50; /* Barra lateral verde */
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  text-align: center; /* Alinha o texto ao centro */
-  width: max-content; /* Ajusta a largura ao conteúdo */
-  display: block; /* Permite centralizar com margin: auto */
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  transition: color 0.3s ease;
+}
+
+.fechar-modal:hover,
+.fechar-modal:focus {
+  color: #0da119;
+}
+
+/* Animação de entrada */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Estilo do H2 com brilho */
+.modal-conteudo h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #0da119;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+}
+
+.modal-conteudo h2::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(
+    transparent 25%, 
+    rgba(255, 255, 255, 0.8), 
+    transparent 75%
+  );
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.5s ease, left 0.5s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.modal-conteudo h2:hover::before {
+  left: 110%;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  opacity: 1;
+}
+
+.modal-conteudo h2:hover {
+  color: #0a8d16;
 }
 
 nav ul {
@@ -157,5 +318,63 @@ nav ul li a:hover {
 
 .como-funciona h3 {
   font-size: 2rem;
-  margin-bottom:
+  margin-bottom: 10px;
+}
+
+/* Modal */
+.modal {
+  display: none; /* Escondido por padrão */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6); /* Fundo escuro semi-transparente */
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 30px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  color: #0da119;
+}
+
+.modal-content p {
+  margin: 10px 0;
+  color: #333;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
 }
