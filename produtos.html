@@ -1,156 +1,196 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produtos - Moda Sustentável</title>
-    <link rel="stylesheet" href="css/produtos.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Visite Sites - EcoFashion</title>
+  <link rel="stylesheet" href="css/produtos.css">
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <h1>EcoFashion</h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="produtos.html">Produtos</a></li>
-                <li><a href="doacao.html">Doar</a></li>
-                <li><a href="sobrenos.html">Sobre nós</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <section class="filtro-container">
-        <div class="filtro-search">
-            <input type="text" placeholder="Pesquisar produtos...">
-        </div>
-        <div class="filtro-category">
-            <select>
-                <option value="">Filtrar por categoria</option>
-                <option value="moda">Masculina</option>
-                <option value="acessorios">Feminino</option>
-                <option value="roupas">Geral</option>
-            </select>
-        </div>
-    </section>
+  <!-- Header -->
+<header>
+  <div class="logo">
+    <h1>EcoFashion</h1>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="produtos.html">Produtos</a></li>
+      <li><a href="doacao.html">Doar</a></li>
+      <li><a href="sobrenos.html">Sobre nós</a></li>
+      <!-- Botão Trevo -->
+      <li><a href="moeda.html" class="btn-trevo" title="Moedas Sustentáveis">🍀</a></li>
+    </ul>
+  </nav>
+</header>
 
-    <div class="produtos-container">
+<!-- Texto Animado -->
+<section class="texto-animado">
+  <h2>Nossos parceiros de doações, doe e ajude em troca de trevos acumulados🍀</h2>
+</section>
+<!-- Fim do Texto Animado -->
+
+<!-- Cards para outros sites -->
+<section class="cards-container">
+  <!-- Seus cards aqui -->
+</section>
+
+  <!-- Cards para outros sites -->
+  <section class="cards-container">
+    
+    <!-- Card 1 -->
+    <a href="https://www.exercitodoacoes.org.br/?utm_source=GA&utm_campaign=GA_RetiramosDoacoes_P&gad_source=1&gad_campaignid=17242158130&gclid=CjwKCAjwo4rCBhAbEiwAxhJlCTn2C3UHcU6dIoqTI3arIsMquDZlxPnLM7Orftcte5gqB815bszhehoClTMQAvD_BwE"  target="_blank" class="card-site">
+      <img src="data:image/png;base64,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"  alt="Exército" class="card-img">
+      <div class="card-title">Exército da Salvação</div>
+      <div class="card-link">Visitar</div>
+    </a>
+
+    <!-- Card 2 -->
+    <a href="https://unibes.org.br/?utm_source=GoogleAds&utm_medium=CPC&utm_campaign=Pmax&gad_source=1&gad_campaignid=22226896249&gclid=CjwKCAjwo4rCBhAbEiwAxhJlCW7VWItWGJ7thrHYNsk90W-geA3QHBgbD46q17cUqofNWAwhIxPaXRoC--cQAvD_BwE"  target="_blank" class="card-site">
+      <img src="data:image/png;base64,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"  alt="Unibes" class="card-img">
+      <div class="card-title">Unibes</div>
+      <div class="card-link">Visitar</div>
+    </a>
+
+    <!-- Card 3 -->
+    <a href="https://www.somosdarua.org/pontos-de-coleta"  target="_blank" class="card-site">
+      <img src="https://static.wixstatic.com/media/829090_15b28e70c9cc4e6aa411ec1551e613a8~mv2.png/v1/fit/w_2500,h_1330,al_c/829090_15b28e70c9cc4e6aa411ec1551e613a8~mv2.png"  alt="DaRua" class="card-img">
+      <div class="card-title">DaRua</div>
+      <div class="card-link">Visitar</div>
+    </a>
+
+    <!-- Card 4 -->
+    <a href="https://doebazar.gerandofalcoes.com/?utm_source=google&utm_medium=cpc&utm_campaign=google-ads.pareto.in.pmax.br.itens&utm_term=remarketing&gad_source=1&gad_campaignid=21898256801&gclid=CjwKCAjwo4rCBhAbEiwAxhJlCfkfLtuHwOsD-mJCQ2syheVkpUt-qrSgdCo8O8OePSfOFox5QKccIhoC550QAvD_BwE"  target="_blank" class="card-site">
+      <img src="data:image/png;base64,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"  alt="Bazar" class="card-img">
+      <div class="card-title">Bazar Gerando Falcões</div>
+      <div class="card-link">Visitar</div>
+    </a>
+
+  </section>
+
+  <!-- Carrossel de Produtos -->
+  <section class="carrossel-container">
+    <h2>Nossos Produtos</h2>
+    <div class="carrossel-wrapper">
+      <div class="carrossel">
+
         <!-- Produto 1 -->
         <div class="produto-item">
-            <img src="https://www.gtscustoms.com.br/cdn/shop/files/camiseta-premium-west-coast-choppers-paul-walker-gts12-loja-gts-customs-3.png?v=1742696713&width=600" alt="Produto 1">
-            <div class="produto-info">
-                <h3>Camiseta West Coast Choopers</h3>
-                <p>Conforto e estilo no mesmo lugar</p>
-            </div>
+          <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSifv2Ge_x22O73douF4mHmVifsEJMz32uUUQ47YnWyEPGuuCV20EK9EVEPQ5rdIY6s-DuVX_ZA5kbGpwP7sF_j5wTOOQqVYMwgqZPRacauZTJRnMZw2yINsA" alt="Produto 1">
+          <div class="produto-info">
+            <h3>Camiseta West Coast Choopers</h3>
+            <p>Conforto e estilo no mesmo lugar</p>
+          </div>
         </div>
 
         <!-- Produto 2 -->
         <div class="produto-item">
-            <img src="https://lojabeefancy.com.br/cdn/shop/files/jaqueta-streetwear-611736_1200x.png?v=1724351656" alt="Produto 2">
-            <div class="produto-info">
-                <h3> Moletom Cropped de Jeans</h3>
-                <p> Moletom feminino</p>
-            </div>
+          <img src="https://lojabeefancy.com.br/cdn/shop/files/jaqueta-streetwear-611736_1200x.png?v=1724351656" alt="Produto 2">
+          <div class="produto-info">
+            <h3>Moletom Cropped de Jeans</h3>
+            <p>Moletom feminino</p>
+          </div>
         </div>
 
         <!-- Produto 3 -->
         <div class="produto-item">
-            <img src="https://img4.dhresource.com/webp/m/0x0/f3/albu/jc/l/19/e8ce0efc-a8b1-471f-9612-4bf617c2cf4b.jpg" alt="Produto 3">
-            <div class="produto-info">
-                <h3>Calça Denim Preta</h3>
-                <p>Calça preta masculina</p>
-            </div>
+          <img src="https://img4.dhresource.com/webp/m/0x0/f3/albu/jc/l/19/e8ce0efc-a8b1-471f-9612-4bf617c2cf4b.jpg" alt="Produto 3">
+          <div class="produto-info">
+            <h3>Calça Denim Preta</h3>
+            <p>Calça preta masculina</p>
+          </div>
         </div>
 
-          <!-- Produto 4 -->
-          <div class="produto-item">
-            <img src="https://p.globalsources.com/IMAGES/PDT/B5418846505/Y2K-Camisa-top-de-manga-curta.jpg" alt="Produto 3">
-            <div class="produto-info">
-                <h3>Camiseta feminina cinza</h3>
-                <p>Confortavel e basica</p>
-            </div>
-        </div>
-          <!-- Produto 5 -->
-          <div class="produto-item">
-            <img src="https://down-br.img.susercontent.com/file/sg-11134201-22100-3g4v6a7aabjv89" alt="Produto 3">
-            <div class="produto-info">
-                <h3>Blusa masculina preta</h3>
-                <p>Blusa preta masculina</p>
-            </div>
-        </div>
-        
-         <!-- Produto 6 -->
+        <!-- Produto 4 -->
         <div class="produto-item">
-            <img src="https://static.zara.net/assets/public/dbe6/e35b/dbe641d4b5fa/753b7ba98790/01044628717-e1/01044628717-e1.jpg?ts=1727362866626&w=750" alt="Produto 1">
-            <div class="produto-info">
-                <h3>camiseta marrom chocolate</h3>
-                <p>Camiseta confeccionada em algodão de gola em V e manga comprida.</p>
-            </div>
+          <img src="https://p.globalsources.com/IMAGES/PDT/B5418846505/Y2K-Camisa-top-de-manga-curta.jpg" alt="Produto 4">
+          <div class="produto-info">
+            <h3>Camiseta feminina cinza</h3>
+            <p>Confortavel e basica</p>
+          </div>
+        </div>
+
+        <!-- Produto 5 -->
+        <div class="produto-item">
+          <img src="https://down-br.img.susercontent.com/file/sg-11134201-22100-3g4v6a7aabjv89" alt="Produto 5">
+          <div class="produto-info">
+            <h3>Blusa masculina preta</h3>
+            <p>Blusa preta masculina</p>
+          </div>
+        </div>
+
+        <!-- Produto 6 -->
+        <div class="produto-item">
+          <img src="https://static.zara.net/assets/public/dbe6/e35b/dbe641d4b5fa/753b7ba98790/01044628717-e1/01044628717-e1.jpg?ts=1727362866626&w=750" alt="Produto 6">
+          <div class="produto-info">
+            <h3>Camiseta marrom chocolate</h3>
+            <p>Camiseta confeccionada em algodão de gola em V e manga comprida.</p>
+          </div>
         </div>
 
         <!-- Produto 7 -->
         <div class="produto-item">
-            <img src="https://static.zara.net/assets/public/e9d3/e101/d50a454ea287/e07083d79b6d/03645194504-e1/03645194504-e1.jpg?ts=1724757386887&w=850" alt="Produto 2">
-            <div class="produto-info">
-                <h3> camiseta esmeralda</h3>
-                <p>Camisa confeccionada em tecido acetinado. Gola com lapela e manga comprida com acabamento em punho com pregas.</p>
-            </div>
+          <img src="https://static.zara.net/assets/public/e9d3/e101/d50a454ea287/e07083d79b6d/03645194504-e1/03645194504-e1.jpg?ts=1724757386887&w=850" alt="Produto 7">
+          <div class="produto-info">
+            <h3>Camiseta esmeralda</h3>
+            <p>Camisa confeccionada em tecido acetinado. Gola com lapela e manga comprida com acabamento em punho com pregas.</p>
+          </div>
         </div>
 
         <!-- Produto 8 -->
         <div class="produto-item">
-            <img src="https://static.zara.net/assets/public/9537/108a/03ca496e9eb1/a0237551c131/07138089912-e1/07138089912-e1.jpg?ts=1732885643105&w=750" alt="Produto 3">
-            <div class="produto-info">
-                <h3>camiseta verde claro</h3>
-                <p>Camisa confeccionada em linho e viscose 48%. Gola com lapela e manga abaixo do cotovelo com punho. Fecho frontal com botões.</p>
-            </div>
+          <img src="https://static.zara.net/assets/public/9537/108a/03ca496e9eb1/a0237551c131/07138089912-e1/07138089912-e1.jpg?ts=1732885643105&w=750" alt="Produto 8">
+          <div class="produto-info">
+            <h3>Camiseta verde claro</h3>
+            <p>Camisa confeccionada em linho e viscose 48%. Gola com lapela e manga abaixo do cotovelo com punho. Fecho frontal com botões.</p>
+          </div>
         </div>
 
-          <!-- Produto 9 -->
-          <div class="produto-item">
-            <img src="https://static.zara.net/assets/public/6595/04e1/9dee4b1ab836/e54b41a587e9/07705617527-e1/07705617527-e1.jpg?ts=1741863059988&w=750" alt="Produto 3">
-            <div class="produto-info">
-                <h3>calça de veludo verde</h3>
-                <p>Calça de cintura alta e cós elástico. Parte inferior com acabamento em linha evasê.</p>
-            </div>
-        </div>
-          <!-- Produto 10 -->
-          <div class="produto-item">
-            <img src="https://static.zara.net/assets/public/11af/573d/b0a34191871c/8623a0223f94/04088912500-e1/04088912500-e1.jpg?ts=1733143227582&w=850" alt="Produto 3">
-            <div class="produto-info">
-                <h3>calça verde</h3>
-                <p>Calça confeccionada com linho e viscose 45%. Cintura alta com cós elástico. Bolsos laterais.</p>
-            </div>
-        </div>
+        <!-- Produto 9 -->
         <div class="produto-item">
-            <img src="https://i.pinimg.com/736x/43/0c/8c/430c8cb913f9c4940cdfbe370374a524.jpg" alt="Produto 3">
-            <div class="produto-info">
-                <h3>Moletom Racionais</h3>
-                <p>Moletom baseado no Grupo de rap Racionais, ela é feita de algodão.</p>
-            </div>
-        </div>
-        <div class="produto-item">
-            <img src="https://static.zara.net/assets/public/a8d5/1357/3ff04fa3b5e1/bfc397028692/04391865717-e1/04391865717-e1.jpg?ts=1730642518057&w=750" alt="Produto 3">
-            <div class="produto-info">
-                <h3>Casaco Bomber em Poliuretano</h3>
-                <p>Jaqueta bomber de gola com lapela e manga comprida com punho e botão. Bolsos de debrum na frente. Bainha com elástico. Fecho frontal com zíper metálico.</p>
-            </div>
+          <img src="https://static.zara.net/assets/public/6595/04e1/9dee4b1ab836/e54b41a587e9/07705617527-e1/07705617527-e1.jpg?ts=1741863059988&w=750" alt="Produto 9">
+          <div class="produto-info">
+            <h3>Calça de veludo verde</h3>
+            <p>Calça de cintura alta e cós elástico. Parte inferior com acabamento em linha evasê.</p>
+          </div>
         </div>
 
+        <!-- Produto 10 -->
+        <div class="produto-item">
+          <img src="https://static.zara.net/assets/public/11af/573d/b0a34191871c/8623a0223f94/04088912500-e1/04088912500-e1.jpg?ts=1733143227582&w=850" alt="Produto 10">
+          <div class="produto-info">
+            <h3>Calça verde</h3>
+            <p>Calça confeccionada com linho e viscose 45%. Cintura alta com cós elástico. Bolsos laterais.</p>
+          </div>
+        </div>
+
+        <!-- Produto 11 -->
+        <div class="produto-item">
+          <img src="https://i.pinimg.com/736x/43/0c/8c/430c8cb913f9c4940cdfbe370374a524.jpg" alt="Produto 11">
+          <div class="produto-info">
+            <h3>Moletom Racionais</h3>
+            <p>Moletom baseado no Grupo de rap Racionais, ela é feita de algodão.</p>
+          </div>
+        </div>
+
+        <!-- Produto 12 -->
+        <div class="produto-item">
+          <img src="https://static.zara.net/assets/public/a8d5/1357/3ff04fa3b5e1/bfc397028692/04391865717-e1/04391865717-e1.jpg?ts=1730642518057&w=750" alt="Produto 12">
+          <div class="produto-info">
+            <h3>Casaco Bomber em Poliuretano</h3>
+            <p>Jaqueta bomber de gola com lapela e manga comprida com punho e botão. Bolsos de debrum na frente. Bainha com elástico. Fecho frontal com zíper metálico.</p>
+          </div>
+        </div>
+
+      </div>
     </div>
-    <footer>
-        <p>&copy; EcoFashion - Moda Sustentável</p>
-    </footer>
+  </section>
 
-    <script>
-        document.querySelectorAll('.btn-adicionar').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const produtoId = this.getAttribute('data-id');
-                const produtoNome = this.closest('.produto-info').querySelector('h3').textContent;
-                alert(`${produtoNome} adicionado ao carrinho!`);
-            });
-        });
-    </script>
+  <!-- Rodapé -->
+  <footer>
+    <p>&copy; EcoFashion - Moda Sustentável</p>
+  </footer>
+
 </body>
 </html>

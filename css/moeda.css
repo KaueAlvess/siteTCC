@@ -1,0 +1,61 @@
+/* Background Animado */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(45deg, #000000, #9b9e9c, #cfcece, #e0ffe6);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+img{
+    border-radius: 50px;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Estilo do card (já estava pronto) */
+.card-moeda {
+  background-color: rgb(228, 220, 220);
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  padding: 40px;
+  max-width: 500px;
+  width: 90%;
+  margin: auto;
+  text-align: center;
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 1;
+  margin-top: 100px;
+}
+
+.card-moeda:hover {
+  transform: translateY(-5px);
+}
+
+.card-moeda img {
+  width: 100px;
+  height: auto;
+  margin-bottom: 20px;
+  transition: transform 0.5s ease;
+}
+
+.card-moeda img:hover {
+  transform: rotate(10deg);
+}
+
+.card-moeda h2 {
+  font-size: 28px;
+  color: #2e7d32;
+  margin-bottom: 20px;
+}
+
+.card-moeda p {
+  font-size: 16px;
+  color: #555;
+}

@@ -397,3 +397,15 @@ footer {
   z-index: 3;
   border-color: #0da119;
 }
+/* Botão de Trevo */
+.btn-trevo {
+  font-size: 24px;
+  text-decoration: none;
+  color: #0da119;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.btn-trevo:hover {
+  color: #0a8d16;
+  transform: rotate(15deg) scale(1.1);
+}

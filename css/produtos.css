@@ -1,14 +1,15 @@
 /* Reset básico */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+/* Body */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #a0ffc7;
-    color: #333;
+  font-family: 'Arial', sans-serif;
+  background-color: #a0ffc7;
+  color: #333;
 }
 
 /* Header */
@@ -101,152 +102,241 @@ nav ul li a:hover {
   color: #0da119;
 }
 
-header .logo img {
-    width: 150px;
-}
 h1 {
-    font-family: 'Poppins', sans-serif;  /* Fonte personalizada (Poppins) */
-    font-size: 4rem;  /* Tamanho da fonte ajustado */
-    font-weight: 600;  /* Peso da fonte mais forte */
-    color: #0da119;  /* Cor do texto */
-    text-transform: uppercase;  /* Deixar todas as letras em maiúsculas */
-    letter-spacing: 3px;  /* Aumento no espaçamento entre as letras */
-    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);  /* Sombra mais intensa */
-    margin: 0;  /* Remover margens */
-    padding: 0;  /* Remover espaçamento interno */
-    display: inline-block;  /* Garantir que o logo fique alinhado corretamente */
-    position: relative;  /* Permite adicionar um efeito mais avançado como animações */
-    transition: transform 0.3s ease-in-out;  /* Adicionando uma transição suave para animações */
+  font-family: 'Poppins', sans-serif;
+  font-size: 4rem;
+  font-weight: 600;
+  color: #0da119;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  position: relative;
+  transition: transform 0.3s ease-in-out;
+}
+nav ul li a:hover {
+  color: #0da119;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-    text-align: center;
-    margin-top: 20px;
+/* Cards para outros sites */
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: auto;
 }
 
-nav ul li {
-    display: inline-block;
-    margin: 0 15px;
+.card-site {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 220px;
+  text-align: center;
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  border: 2px solid transparent;
+  animation: glow-card 2s infinite alternate;
 }
 
-nav ul li a {
-    text-decoration: none;
-    color: white;
-    font-size: 1.2em;
+.card-site:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 0 15px rgba(13, 161, 25, 0.7);
+  border-color: #0da119;
 }
 
-/* Seção de Produtos */
-.produtos-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 30px;
-    padding: 20px;
-    margin: 20px;
+.card-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 0 auto 15px;
+  object-fit: cover;
+  border: 3px solid #0da119;
+  transition: transform 0.3s ease;
 }
 
-.produto-item {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.card-site:hover .card-img {
+  transform: rotate(5deg);
 }
 
-.produto-item:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+.card-title {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
+  font-weight: bold;
 }
 
-.produto-item img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-bottom: 2px solid #f1f1f1;
+.card-link {
+  display: inline-block;
+  background-color: #0da119;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
 }
 
-.produto-info {
-    padding: 20px;
-    text-align: center;
+.card-link:hover {
+  background-color: #0a8d16;
 }
 
-.produto-info h3 {
-    font-size: 1.6em;
-    margin-bottom: 10px;
-    color: #34495e;
-}
-
-.produto-info p {
-    font-size: 1.1em;
-    color: #7f8c8d;
-    margin-bottom: 15px;
-}
-
-.produto-info .preco {
-    font-size: 1.4em;
-    font-weight: bold;
-    color: #000000;
-    margin-bottom: 15px;
-}
-
-
-/* Filtros */
-.filtro-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 20px 0;
-    padding: 0 20px;
-}
-
-.filtro-container .filtro-search input,
-.filtro-container .filtro-category select {
-    padding: 10px 15px;
-    font-size: 1em;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-}
-
-.filtro-container .filtro-category {
-    width: 250px;
-}
-
-.filtro-container .filtro-search input {
-    width: 300px;
+/* Animações dos cards */
+@keyframes glow-card {
+  from {
+    box-shadow: 0 0 5px rgba(13, 161, 25, 0.4);
+  }
+  to {
+    box-shadow: 0 0 15px rgba(13, 161, 25, 0.8);
+  }
 }
 
 /* Rodapé */
 footer {
-    background-color: #2b2b2b;
-    color: white;
-    padding: 20px;
-    text-align: center;
+  background-color: #2b2b2b;
+  color: white;
+  text-align: center;
+  padding: 20px;
 }
 
-footer a {
-    text-decoration: none;
-    color: white;
-    font-size: 1.2em;
+/* Carrossel de Produtos */
+.carrossel-container {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: auto;
 }
 
-footer a:hover {
-    color: #e74c3c;
+.carrossel-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #2e7d32;
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-    .produtos-container {
-        grid-template-columns: 1fr;
-    }
+.carrossel-wrapper {
+  overflow-x: auto;
+  display: flex;
+  gap: 20px;
+  padding-bottom: 10px;
+  scroll-behavior: smooth;
+  scrollbar-width: auto;
+  scrollbar-color: #0da119 #ddd;
+}
 
-    .filtro-container {
-        flex-direction: column;
-    }
+.carrossel-wrapper::-webkit-scrollbar {
+  height: 10px;
+}
 
-    .filtro-search input,
-    .filtro-category select {
-        width: 100% !important;
-        margin-bottom: 10px;
-    }
+.carrossel-wrapper::-webkit-scrollbar-thumb {
+  background-color: #0da119;
+  border-radius: 5px;
+}
+
+.carrossel-wrapper::-webkit-scrollbar-track {
+  background-color: #ddd;
+}
+
+.carrossel {
+  display: flex;
+  gap: 20px;
+  min-width: max-content;
+}
+
+.produto-item {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 220px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+  overflow: hidden;
+}
+
+.produto-item:hover {
+  transform: translateY(-5px);
+}
+
+.produto-item img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-bottom: 2px solid #eee;
+}
+
+.produto-info {
+  padding: 15px;
+}
+
+.produto-info h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #333;
+  font-weight: bold;
+}
+
+.produto-info p {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Estilo e Animação do Texto */
+.texto-animado {
+  text-align: center;
+  padding: 40px 20px;
+  background: linear-gradient(45deg, #a0ffc7, #d0ffd9, #ffffff);
+  color: #2e7d32;
+  font-family: 'Poppins', sans-serif;
+  border-bottom: 2px solid #0da119;
+  animation: breathing 4s ease-in-out infinite;
+}
+
+.texto-animado h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 1px;
+  margin: 0;
+  position: relative;
+}
+
+/* Efeito de brilho suave */
+.texto-animado h2::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #0da119, transparent);
+  animation: shine 3s infinite;
+}
+
+/* Animação de "respiração" */
+@keyframes breathing {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.02); opacity: 0.9; }
+}
+
+/* Animação de brilho */
+@keyframes shine {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Botão de Trevo */
+.btn-trevo {
+  font-size: 24px;
+  text-decoration: none;
+  color: #0da119;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.btn-trevo:hover {
+  color: #0a8d16;
+  transform: rotate(15deg) scale(1.1);
 }
