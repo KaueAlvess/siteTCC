@@ -27,7 +27,6 @@ header .logo {
   text-align: center;
   margin-bottom: 10px;
 }
-
 header .logo h1 {
   font-family: 'Poppins', sans-serif;
   font-size: 4rem;
@@ -38,7 +37,6 @@ header .logo h1 {
   display: inline-block;
   transition: all 0.3s ease;
 }
-
 header .logo h1:hover {
   transform: scale(1.05) rotate(1deg);
   letter-spacing: 4px;
@@ -55,12 +53,10 @@ nav ul {
   padding: 0;
   position: relative;
 }
-
 nav ul li {
   position: relative;
   overflow: hidden;
 }
-
 nav ul li a {
   text-decoration: none;
   color: white;
@@ -90,14 +86,12 @@ nav ul li a::before {
   transition: opacity 0.5s ease, left 0.5s ease;
   z-index: 0;
 }
-
 nav ul li a:hover::before {
   left: 110%;
   top: 50%;
   transform: translateY(-50%) rotate(45deg);
   opacity: 1;
 }
-
 nav ul li a:hover {
   color: #0da119;
 }
@@ -156,33 +150,70 @@ nav ul {
   list-style: none;
   margin-top: 15px;
 }
-
 nav ul li {
   display: inline-block;
   margin: 0 15px;
 }
-
 nav ul li a {
   text-decoration: none;
   color: white;
   font-size: 1.1em;
   transition: color 0.3s ease;
 }
-
 nav ul li a:hover {
   color: #0da119;
 }
 
-/* Seção de Introdução */
+/* Seção de Introdução - Estilo refinado */
 .introducao {
-  padding: 40px 20px;
-  background-color: #005222;
-  color: white;
+  background-color: #a0ffc7; /* Fundo suave turquesa */
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.introducao .container {
+  max-width: 800px;
+  margin: auto;
+  position: relative;
 }
 
 .introducao h1 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
+  font-size: 2rem; /* Tamanho menor e mais equilibrado */
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #333;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* Linha verde animada por baixo do título */
+.introducao h1::after {
+  content: '';
+  position: absolute;
+  left: -100%;
+  bottom: -8px;
+  width: 100%;
+  height: 4px;
+  background-color: #0da119;
+  animation: linhaVerde 3s ease-in-out infinite;
+}
+
+/* Animação da linha verde */
+@keyframes linhaVerde {
+  0% {
+    left: -100%;
+    width: 0%;
+  }
+  50% {
+    width: 100%;
+    left: 0%;
+  }
+  100% {
+    left: 100%;
+    width: 0%;
+  }
 }
 
 /* Seção de Moda Sustentável */
@@ -191,13 +222,11 @@ nav ul li a:hover {
   background-color: #a0ffc7;
   color: #000000;
 }
-
 .moda-sustentavel h2 {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 10px;
 }
-
 .moda-sustentavel p {
   font-size: 1.2rem;
   margin-bottom: 30px;
@@ -205,7 +234,6 @@ nav ul li a:hover {
   margin-left: auto;
   margin-right: auto;
 }
-
 .logo-img {
   float: left;
   margin: 20px 20px 20px 0;
@@ -213,7 +241,6 @@ nav ul li a:hover {
   max-width: 100%;
   height: auto;
 }
-
 @media (max-width: 768px) {
   .logo-img {
     float: none;
@@ -227,7 +254,6 @@ nav ul li a:hover {
   padding: 40px 20px;
   background-color: #e0ffe6;
 }
-
 .beneficio-item {
   background-color: white;
   border-radius: 8px;
@@ -235,12 +261,10 @@ nav ul li a:hover {
   margin-bottom: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-
 .efeito-hover h4 {
   color: #0da119;
   margin-bottom: 10px;
 }
-
 .beneficio-item p {
   font-size: 1.1rem;
 }
@@ -251,7 +275,6 @@ nav ul li a:hover {
   padding: 40px 20px;
   text-align: center;
 }
-
 .download-container {
   display: flex;
   align-items: center;
@@ -261,23 +284,19 @@ nav ul li a:hover {
   max-width: 1000px;
   margin: auto;
 }
-
 .download-text {
   flex: 1;
   min-width: 280px;
 }
-
 .download-text h2 {
   font-size: 2rem;
   margin-bottom: 10px;
   color: #000;
 }
-
 .download-text p {
   font-size: 1.1rem;
   margin-bottom: 20px;
 }
-
 .btn-download {
   display: inline-block;
   padding: 12px 20px;
@@ -290,17 +309,14 @@ nav ul li a:hover {
   transition: background-color 0.3s ease;
   text-decoration: none;
 }
-
 .btn-download:hover {
   background-color: #0a8d16;
 }
-
 .download-image img {
   max-width: 200px;
 }
-
 .descricao-sobre {
-  font-size: 1.5rem; /* Tamanho maior que o normal, mas não tão grande quanto título */
+  font-size: 1.5rem;
   color: #333;
   max-width: 800px;
   margin: 20px auto;
@@ -320,6 +336,7 @@ footer {
   padding: 20px;
 }
 
+/* Estilo para cards com hover neon */
 .beneficio-item {
   background: linear-gradient(45deg, #ffffff, #f0fff6, #e0ffe6);
   border-radius: 15px;
@@ -334,7 +351,6 @@ footer {
   animation: glow 2s infinite alternate;
 }
 
-/* Fundo com gradiente animado */
 .beneficio-item::before {
   content: '';
   position: absolute;
@@ -369,7 +385,6 @@ footer {
   }
 }
 
-/* Brilho neon no hover */
 .beneficio-item::after {
   content: '';
   position: absolute;
@@ -397,6 +412,7 @@ footer {
   z-index: 3;
   border-color: #0da119;
 }
+
 /* Botão de Trevo */
 .btn-trevo {
   font-size: 24px;
@@ -404,8 +420,51 @@ footer {
   color: #0da119;
   transition: transform 0.3s ease, color 0.3s ease;
 }
-
 .btn-trevo:hover {
   color: #0a8d16;
   transform: rotate(15deg) scale(1.1);
+}
+
+/* Estilo para a seção de referências */
+.referencias-section {
+  padding: 60px 20px;
+  background-color: #f0fff0;
+}
+.referencias-section h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 40px;
+  color: #2e7d32;
+}
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+.card-referencia {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  width: 280px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+.card-referencia:hover {
+  transform: translateY(-5px);
+}
+.card-referencia img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.card-referencia h3 {
+  margin: 15px;
+  font-size: 1.2rem;
+  color: #2e7d32;
+}
+.card-referencia p {
+  padding: 0 15px 15px 15px;
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
