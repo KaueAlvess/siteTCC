@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Moda Sustentável</title>
   <link rel="stylesheet" href="css/sobrenos.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
@@ -95,6 +96,40 @@
       </div>
     </div>
   </section>
+
+<!-- Pop-up -->
+<div id="popup" class="popup">
+  <div class="popup-conteudo">
+    <span class="fechar" id="btn-fechar">&times;</span>
+    <h3>Essa função ainda está em desenvolvimento.</h3>
+    <p>Em breve estará disponível!</p>
+    <button id="btn-ok" class="btn-ok">OK</button>
+  </div>
+</div>
+
+<script>
+  // Mostrar popup ao clicar no botão "Baixar Agora"
+  document.querySelector('.btn-download').addEventListener('click', function(e) {
+    e.preventDefault(); // Impede comportamento padrão do link
+    const popup = document.getElementById('popup');
+    popup.style.display = 'flex';
+  });
+
+  // Fechar popup ao clicar no X ou no botão OK
+  document.getElementById('btn-fechar').addEventListener('click', fecharPopup);
+  document.getElementById('btn-ok').addEventListener('click', fecharPopup);
+
+  // Fechar ao clicar fora do conteúdo
+  document.getElementById('popup').addEventListener('click', function(e) {
+    if (e.target === this) {
+      fecharPopup();
+    }
+  });
+
+  function fecharPopup() {
+    document.getElementById('popup').style.display = 'none';
+  }
+</script>
 
   <!-- Rodapé -->
   <footer>

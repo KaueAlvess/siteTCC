@@ -216,6 +216,25 @@ nav ul li a:hover {
   }
 }
 
+
+
+/* Animações */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 /* Seção de Moda Sustentável */
 .moda-sustentavel {
   padding: 40px 20px;
@@ -246,6 +265,92 @@ nav ul li a:hover {
     float: none;
     margin: 20px auto;
     display: block;
+  }
+}
+
+/* Pop-up */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Conteúdo do pop-up */
+.popup-conteudo {
+  background-color: #ffffff;
+  padding: 30px 25px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  position: relative;
+  animation: zoomIn 0.4s forwards;
+  transition: all 0.3s ease;
+}
+
+/* Título do pop-up */
+.popup-conteudo h3 {
+  color: #0da119;
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+/* Texto do pop-up */
+.popup-conteudo p {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+/* Botão fechar (X) */
+.fechal {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 24px;
+  color: #aaa;
+  cursor: pointer;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+.fechal:hover {
+  color: #000;
+}
+
+/* Botão de confirmação */
+.btn-ok {
+  background-color: #0da119;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.btn-ok:hover {
+  background-color: #0a8d16;
+  transform: scale(1.05);
+}
+
+/* Animação de entrada */
+@keyframes zoomIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
   }
 }
 
