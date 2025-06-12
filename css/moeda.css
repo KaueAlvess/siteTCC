@@ -8,8 +8,8 @@ body {
   animation: gradientBG 15s ease infinite;
 }
 
-img{
-    border-radius: 50px;
+img {
+  border-radius: 50px;
 }
 
 @keyframes gradientBG {
@@ -18,44 +18,106 @@ img{
   100% { background-position: 0% 50%; }
 }
 
-/* Estilo do card (já estava pronto) */
+/* Estilo melhorado do card com centralização e 3D */
 .card-moeda {
-  background-color: rgb(228, 220, 220);
-  border-radius: 15px;
+  perspective: 1000px; /* Profundidade 3D */
+  background-color: #ffffff;
+  border-radius: 16px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  padding: 40px;
-  max-width: 500px;
+  max-width: 420px;
   width: 90%;
-  margin: auto;
+  padding: 15px 20px;
   text-align: center;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  backdrop-filter: blur(10px); /* Glassmorphism leve */
+  border: 1px solid rgba(0, 0, 0, 0.05);
   position: relative;
   z-index: 1;
-  margin-top: 100px;
-}
-
-.card-moeda:hover {
-  transform: translateY(-5px);
+  margin: auto; /* Para centralizar dentro do container flex */
+  margin-top: 50px; /* Espaçamento superior */
 }
 
 .card-moeda img {
-  width: 100px;
+  width: 110px;
   height: auto;
-  margin-bottom: 20px;
-  transition: transform 0.5s ease;
+  margin-bottom: 15px;
+  transition: transform 0.6s ease, box-shadow 0.4s ease;
+  backface-visibility: hidden;
+  border-radius: 50%;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
 
-.card-moeda img:hover {
-  transform: rotate(10deg);
+.card-moeda:hover img {
+  transform: rotate(10deg) scale(1.1) translateZ(20px);
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.3);
 }
 
-.card-moeda h2 {
-  font-size: 28px;
-  color: #2e7d32;
-  margin-bottom: 20px;
+.card-moeda:hover {
+  transform: translateY(-10px) rotateX(5deg);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
 }
 
-.card-moeda p {
-  font-size: 16px;
-  color: #555;
+/* Efeito de brilho lateral para a imagem */
+.card-moeda::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    120deg,
+    #4dff0066 0%,
+    rgba(10, 231, 21, 0.2) 30%,
+    rgba(192, 140, 140, 0.05) 60%,
+    transparent 90%
+  );
+  background-blend-mode: overlay; /* Dá um efeito mais suave e iluminado */
+  transform: rotate(35deg) skew(-20deg); /* Deixa o brilho mais dinâmico */
+  pointer-events: none;
+  animation: brilho 5s infinite ease-in-out;
+  z-index: 0;
+  opacity: 0.5;
+  filter: blur(4px); /* Brilho mais suave e expansivo */
+}
+
+@keyframes brilho {
+  0% {
+    transform: rotate(35deg) skew(-20deg) translate(-100%, -100%);
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: rotate(35deg) skew(-20deg) translate(100%, 100%);
+    opacity: 0.3;
+  }
+}
+
+/* Estilo do botão com gradientes e animação */
+.btn-app {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 12px 24px;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(45deg, #4CAF50, #81C784);
+  border: none;
+  border-radius: 30px;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
+}
+
+.btn-app:hover {
+  background: linear-gradient(45deg, #81C784, #4CAF50);
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(76, 175, 80, 0.4);
+}
+
+.btn-app:active {
+  transform: scale(0.98);
 }
