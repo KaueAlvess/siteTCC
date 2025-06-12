@@ -17,4 +17,4 @@ EcoFashion, loja com esquema de doações, pronta para tranformar o mundo 🌍
 ![PHP](https://img.shields.io/badge/-PHP-777BB4?logo=php&logoColor=fff)
 
 📅 **Última Atualização**:   
-🔗 **Link**: [GitHub - Moda Sustentável](https://kauealvess.github.io/siteTCC/)
+🔗 **Link**: [GitHub - Moda Sustentável]( https://kauealvess.github.io/siteTCC/)
