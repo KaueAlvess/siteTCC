@@ -1,0 +1,144 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  background: linear-gradient(-45deg, #15ff00, #ffffff, #add1a6, #6ec971);
+  background-size: 400% 400%;
+  animation: gradientBG 10s ease infinite;
+  position: relative;
+}
+
+/* Animação do fundo */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Botão de Voltar */
+.btn-voltar {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #2e7d32;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+}
+
+/* Efeito brilho ao passar o mouse */
+.btn-voltar::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -50%;
+  width: 30px;
+  height: 30px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent 70%);
+  border-radius: 50%;
+  transform: translateY(-50%) scale(0);
+  transition: transform 0.5s ease;
+}
+
+.btn-voltar:hover::after {
+  transform: translate(-50%, -50%) scale(6);
+}
+
+.btn-voltar:hover {
+  background-color: rgba(255, 255, 255, 1);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn-voltar:active {
+  transform: translateY(0);
+}
+
+/* Container central */
+.container {
+  width: 100%;
+  max-width: 450px;
+  z-index: 1;
+}
+
+.card {
+  perspective: 1000px; /* Profundidade 3D */
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  max-width: 420px;
+  width: 90%;
+  padding: 15px 20px;
+  text-align: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  backdrop-filter: blur(10px); /* Glassmorphism leve */
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  position: relative;
+  z-index: 1;
+  margin: auto; /* Para centralizar dentro do container flex */
+  margin-top: 50px; /* Espaçamento superior */
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.card h2 {
+  font-size: 1.4rem;
+  margin: 20px 0 10px;
+  color: #2e7d32;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #388e3c;
+  padding: 0 20px 10px;
+  line-height: 1.5;
+}
+
+/* Animação de entrada */
+@keyframes popIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Animação pulsante */
+@keyframes pulse {
+  from {
+    transform: scale(1);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  }
+  to {
+    transform: scale(1.02);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.2);
+  }
+}
