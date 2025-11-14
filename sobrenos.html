@@ -32,32 +32,45 @@
     <h1>Sobre Nós</h1>
   </div>
 </section>
-
-  <!-- Seção de Moda Sustentável -->
+  <!-- Seção de Moda Sustentável (conteúdo inspirado no app de referência) -->
   <section class="moda-sustentavel">
     <div class="container">
-      <p class="descricao-sobre">Aqui você terá acesso à nossa história, ter um entendimento do nosso objetivo e conduta.</p>
-      <img src="https://trello.com/1/cards/681d12d8a62d4458ad7c5fa1/attachments/681d132258fcc49013b45ae8/download/imagem_da_logo_2ds.png" 
-        alt="Logo EcoFashion" width="600" class="logo-img" />
+      <p class="descricao-sobre">A EcoFashion promove moda circular e impacto social por meio da doação, triagem e troca de roupas. Nosso objetivo é reduzir o desperdício têxtil, fortalecer redes locais e recompensar quem contribui com a comunidade.</p>
+      <div style="clear:both"></div>
     </div>
   </section>
 
-  <!-- Seção de Benefícios da Moda Sustentável -->
+  <!-- Seção: Missão, Como Doar e Trocar -->
   <section class="beneficios">
     <div class="container">
       <div class="beneficio-item">
-        <h4>EcoFashion</h4>
-        <p>Somos uma instituição de roupas, com um diferencial que é doar e recompensar os usuários</p>
+        <h4>Nossa Missão</h4>
+        <p>Reduzir o desperdício e promover o reuso, conectando doadores e instituições locais por meio de uma plataforma simples e transparente.</p>
       </div>
 
       <div class="beneficio-item">
-        <h4>Como doar no nosso site?</h4>
-        <p>Para doar você precisa ir na área de "Doar" e seguir as instruções contidas na página, é preciso preencher as partes de requisitos de doações para prosseguir</p>
+        <h4>Como doar</h4>
+        <p>Acesse a área "Doar", selecione o destino, informe o estado e o tamanho da peça e envie boas fotos. A equipe avalia e confirma a doação — você recebe trevos como recompensa.</p>
       </div>
 
       <div class="beneficio-item">
-        <h4>Como adquirir nossos produtos?</h4>
-        <p>Para adquirir nossos produtos você precisa baixar nosso App</p>
+        <h4>Como adquirir produtos</h4>
+        <p>Acumule <strong>Trevos</strong> ao doar e troque-os exclusivamente por peças do nosso catálogo no app EcoFashion. O processo de troca é feito dentro do app após a confirmação das doações pela equipe.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção: O que fazemos e equipe -->
+  <section class="beneficios">
+    <div class="container">
+      <div class="beneficio-item">
+        <h4>O que fazemos</h4>
+        <p>Organizamos a triagem, preservamos a qualidade das peças e dirigimos as doações para instituições parceiras. Trabalhamos para gerar impacto social e reduzir o consumo desenfreado.</p>
+      </div>
+
+      <div class="beneficio-item">
+        <h4>Equipe / Integrantes</h4>
+        <p>Nikollas Beneveni de Souza<br>Yasmim Meira<br>Gabrielly Goveia<br>Kaue Alves da Rocha</p>
       </div>
     </div>
   </section>
@@ -103,21 +116,31 @@
 <div id="popup" class="popup">
   <div class="popup-conteudo">
     <span class="fechar" id="btn-fechar">&times;</span>
-    <h3>Essa função ainda está em desenvolvimento.</h3>
-    <p>Em breve estará disponível!</p>
-    <button id="btn-ok" class="btn-ok">OK</button>
+    <h3>Baixe o App no Repositório</h3>
+    <p>O código do App EcoFashion está disponível no GitHub. Abra o repositório para ver o projeto, instruções de execução e baixar o código-fonte.</p>
+    <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+      <button id="btn-repo" class="btn-repo">Abrir repositório</button>
+      <button id="btn-ok" class="btn-ok">Fechar</button>
+    </div>
   </div>
 </div>
 
 <script>
-  // Mostrar popup ao clicar no botão "Baixar Agora"
+  const REPO_URL = 'https://github.com/KaueAlvess/EcoFashionApp';
+
+  // Mostrar popup ao clicar no botão "Baixar App"
   document.querySelector('.btn-download').addEventListener('click', function(e) {
-    e.preventDefault(); // Impede comportamento padrão do link
+    e.preventDefault();
     const popup = document.getElementById('popup');
     popup.style.display = 'flex';
   });
 
-  // Fechar popup ao clicar no X ou no botão OK
+  // Abrir repositório no GitHub
+  document.getElementById('btn-repo').addEventListener('click', function() {
+    window.open(REPO_URL, '_blank');
+  });
+
+  // Fechar popup ao clicar no X ou no botão Fechar
   document.getElementById('btn-fechar').addEventListener('click', fecharPopup);
   document.getElementById('btn-ok').addEventListener('click', fecharPopup);
 

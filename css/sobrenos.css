@@ -381,6 +381,23 @@ nav ul li a:hover {
   transform: scale(1.05);
 }
 
+/* Botão que abre o repositório (modal) */
+.btn-repo {
+  background: linear-gradient(45deg, #24292e, #57606a);
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 30px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(36, 41, 46, 0.2);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.btn-repo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(36, 41, 46, 0.3);
+}
+
 /* Animação de entrada */
 @keyframes zoomIn {
   from {
