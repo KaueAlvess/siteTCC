@@ -18,8 +18,8 @@ nav ul{ list-style:none; display:flex; gap:14px; align-items:center; margin:0; p
 .nav-pill{
   display:inline-block;
 }
-nav a{ text-decoration:none; color:#000; padding:10px 12px; border-radius:10px; font-weight:700; font-size:1rem; transition:background .15s ease, color .12s ease, transform .07s ease; background:rgba(255,255,255,0.92); border:1px solid rgba(0,0,0,0.06); box-shadow:0 1px 0 rgba(0,0,0,0.03); }
-nav a.active{ background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#fff; box-shadow:0 4px 10px rgba(9,162,74,0.12); border-color:transparent; }
+nav a{ text-decoration:none; color:#000; padding:10px 14px; border-radius:12px; font-weight:700; font-size:1rem; transition:background .12s ease, color .12s ease, transform .06s ease; background:#ffffff; border:1px solid rgba(0,0,0,0.12); box-shadow:0 6px 14px rgba(0,0,0,0.08); }
+nav a.active{ background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#fff; box-shadow:0 6px 20px rgba(9,162,74,0.16); border-color:transparent; }
 .btn-trevo{ font-size:1.1rem; padding:6px 8px; }
 
 /* Hover / focus states to increase discoverability without changing artwork */
