@@ -18,15 +18,18 @@ nav ul{ list-style:none; display:flex; gap:14px; align-items:center; margin:0; p
 .nav-pill{
   display:inline-block;
 }
-nav a{ text-decoration:none; color:#000; padding:10px 14px; border-radius:12px; font-weight:700; font-size:1rem; transition:background .12s ease, color .12s ease, transform .06s ease; background:#ffffff; border:1px solid rgba(0,0,0,0.12); box-shadow:0 6px 14px rgba(0,0,0,0.08); }
-nav a.active{ background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#fff; box-shadow:0 6px 20px rgba(9,162,74,0.16); border-color:transparent; }
-.btn-trevo{ font-size:1.1rem; padding:6px 8px; }
+.nav-pill{ display:inline-block; }
+/* Stronger visible pills: subtle green tint, heavier border/shadow, clearer hover */
+nav a{ text-decoration:none; color:#000; padding:12px 16px; border-radius:14px; font-weight:700; font-size:1rem; transition:transform .06s ease, box-shadow .12s ease, background .12s ease; background:linear-gradient(180deg, #f6fff7, #eefef0); border:1px solid rgba(9,162,74,0.12); box-shadow:0 8px 20px rgba(9,162,74,0.06); }
+nav a.active{ background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#fff; box-shadow:0 8px 26px rgba(9,162,74,0.18); border-color:transparent; }
+.btn-trevo{ font-size:1.05rem; padding:8px 10px; background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#fff; border-radius:10px; border:0; box-shadow:0 6px 18px rgba(9,162,74,0.18); }
 
 /* Hover / focus states to increase discoverability without changing artwork */
 nav a:hover, nav a:focus, nav a:focus-visible{
-  background:linear-gradient(90deg, rgba(9,162,74,0.06), rgba(46,125,50,0.04));
+  background:linear-gradient(90deg, rgba(9,162,74,0.12), rgba(46,125,50,0.06));
   color:var(--accent);
-  transform:translateY(-1px);
+  transform:translateY(-2px);
+  box-shadow:0 10px 26px rgba(9,162,74,0.08);
 }
 
 /* Accessibility: visible focus for keyboard users (no visual rebrand) */
