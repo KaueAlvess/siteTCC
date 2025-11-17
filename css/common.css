@@ -19,7 +19,7 @@ header{
   left:0;
   right:0;
   height:var(--header-height);
-  z-index:1000;
+  z-index:1300;
 }
 .logo h1{ font-size:1.6rem; color:var(--accent); margin:0; }
 nav ul{ list-style:none; display:flex; gap:14px; align-items:center; margin:0; padding:0; }
@@ -53,7 +53,7 @@ nav a.active{ background:linear-gradient(90deg,var(--accent),var(--accent-2)); c
 nav a:hover, nav a:focus, nav a:focus-visible{
   background:linear-gradient(90deg, rgba(9,162,74,0.12), rgba(46,125,50,0.06));
   color:var(--accent);
-  transform:translateY(-2px);
+  transform:none;
   box-shadow:0 10px 26px rgba(9,162,74,0.08);
 }
 

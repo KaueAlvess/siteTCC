@@ -163,3 +163,14 @@ body {
 }
 
 .card .repo-btn:active{ transform: translateY(0); }
+
+/* Mobile adjustments */
+@media (max-width:480px){
+  body{ padding:18px 10px; }
+  .btn-voltar{ top:12px; left:12px; padding:8px 14px; font-size:0.95rem; }
+  .container{ max-width:100%; padding:0 10px; }
+  .card{ width:100%; padding:12px; margin-top:20px; }
+  .card h2{ font-size:1.1rem; }
+  .card p{ font-size:0.95rem; padding:0 8px 8px; text-align:justify; }
+  .card .repo-btn{ width:100%; padding:10px 12px; }
+}

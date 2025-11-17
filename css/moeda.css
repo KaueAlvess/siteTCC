@@ -173,3 +173,13 @@ img {
   .modal-content iframe{ height:60vh; }
   .modal-dialog{ width:96%; }
 }
+
+/* Mobile adjustments */
+@media (max-width:480px){
+  .card-moeda{ max-width:360px; padding:12px 14px; margin-top:36px; }
+  .card-moeda img{ width:88px; }
+  .card-moeda h2{ font-size:1.2rem; }
+  .card-moeda p{ font-size:0.95rem; text-align:justify; }
+  .btn-app{ width:100%; padding:10px 12px; font-size:0.98rem; }
+  .modal-content iframe{ height:50vh; }
+}
