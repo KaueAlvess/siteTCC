@@ -1,0 +1,101 @@
+/* Common site styles: header/navigation normalization + basic responsive rules */
+:root{
+  --accent: #2e7d32;
+  --accent-2: #09a24a;
+  --header-height: 72px;
+}
+
+/* Header / Nav normalization */
+header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:12px 20px;
+  background:linear-gradient(180deg, rgba(240,248,240,0.95), rgba(250,255,250,0.95));
+  box-shadow:0 2px 8px rgba(0,0,0,0.06);
+  min-height:64px;
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  height:var(--header-height);
+  z-index:1300;
+}
+.logo h1{ font-size:1.6rem; color:var(--accent); margin:0; }
+nav ul{ list-style:none; display:flex; gap:14px; align-items:center; margin:0; padding:0; }
+.nav-pill{
+  display:inline-block;
+}
+.nav-pill{ display:inline-block; }
+/* Stronger visible pills: subtle green tint, heavier border/shadow, clearer hover */
+/* Nav buttons: black pills with white text; hover turns green. Keep .btn-trevo as accent button */
+nav a{ text-decoration:none; padding:12px 16px; border-radius:14px; font-weight:700; font-size:1rem; transition:box-shadow .12s ease, background .12s ease; display:inline-flex; align-items:center; height:40px; box-sizing:border-box; }
+
+/* Default nav links (except the Trevo button) */
+nav a:not(.btn-trevo){ background:#000; color:#fff; border:1px solid rgba(0,0,0,0.08); box-shadow:0 6px 18px rgba(0,0,0,0.14); }
+
+/* Hover/focus: green background */
+nav a:not(.btn-trevo):hover,
+nav a:not(.btn-trevo):focus,
+nav a:not(.btn-trevo):focus-visible{
+  background:linear-gradient(90deg,var(--accent),var(--accent-2));
+  color:#fff;
+  box-shadow:0 10px 26px rgba(9,162,74,0.12);
+}
+
+/* Active state uses the green accent as well */
+nav a.active{ background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#fff; box-shadow:0 8px 26px rgba(9,162,74,0.18); border-color:transparent; }
+
+/* Trevo button remains emphasized with filled accent */
+.btn-trevo{ font-size:1.05rem; padding:8px 10px; background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#fff; border-radius:10px; border:0; box-shadow:0 6px 18px rgba(9,162,74,0.18); }
+
+/* Hover / focus states to increase discoverability without changing artwork */
+nav a:hover, nav a:focus, nav a:focus-visible{
+  background:linear-gradient(90deg, rgba(9,162,74,0.12), rgba(46,125,50,0.06));
+  color:var(--accent);
+  transform:none;
+  box-shadow:0 10px 26px rgba(9,162,74,0.08);
+}
+
+/* Accessibility: visible focus for keyboard users (no visual rebrand) */
+nav a:focus,
+nav a:focus-visible{
+  outline:3px solid rgba(14,110,49,0.18);
+  outline-offset:3px;
+}
+
+/* Mobile: collapse nav into stacked column */
+@media (max-width:720px){
+  header{ flex-direction:row; align-items:center; }
+  /* Make nav a horizontal, touch-scrollable bar to avoid wrapping and layout jumps */
+  nav ul{ display:flex; flex-direction:row; gap:10px; flex-wrap:nowrap; justify-content:flex-end; overflow-x:auto; -webkit-overflow-scrolling:touch; padding:6px 8px; white-space:nowrap; }
+  nav ul li{ display:inline-block; }
+  nav a{ font-size:0.95rem; padding:8px 10px; height:36px; }
+  .logo h1{ font-size:1.1rem; }
+  :root{ --header-height:64px; }
+}
+
+/* Utility: visually hidden (for accessibility) */
+.visually-hidden{ position:absolute !important; height:1px; width:1px; overflow:hidden; clip:rect(1px,1px,1px,1px); white-space:nowrap; }
+
+/* Small container helper used across pages */
+.container{ width:100%; max-width:1100px; margin:0 auto; padding:0 16px; }
+
+/* Prevent content being hidden under fixed header */
+body{ padding-top: calc(var(--header-height) + 8px); }
+
+/* Make media elements scale naturally on small viewports */
+img, iframe, video{ max-width:100%; height:auto; display:block; }
+
+/* Modal dialogs: conservative, non-visual sizing to ensure mobile usability */
+.modal .modal-dialog{
+  max-width:1000px;
+  width:calc(100% - 48px);
+  margin:24px auto;
+}
+
+@media (max-width:720px){
+  .modal .modal-dialog{ width:95%; margin:12px auto; }
+  .container{ padding:0 12px; }
+  :root{ --header-height: 76px; }
+}

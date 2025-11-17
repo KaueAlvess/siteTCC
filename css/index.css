@@ -447,3 +447,18 @@ footer {
     background-position: 0% 50%;
   }
 }
+
+/* Mobile adjustments: make content fit and justify text */
+@media (max-width:480px){
+  header .logo h1{ font-size:2rem; letter-spacing:1px; }
+  nav ul{ gap:8px; margin-top:6px; padding:4px 8px; }
+  nav ul li a{ font-size:0.95rem; padding:8px 10px; }
+  .introducao{ padding:28px 12px; }
+  .introducao h1{ font-size:1.6rem; white-space:normal; }
+  .introducao p, .moda-sustentavel p, .doacoes p, .beneficio-item p{ text-align:justify; font-size:0.98rem; }
+  .moda-sustentavel h2, .doacoes h2, .beneficios h2{ font-size:1.4rem; }
+  .moda-sustentavel button, .doacoes button{ font-size:1rem; padding:10px 18px; }
+  .beneficio-item h3{ font-size:1.2rem; }
+  .container{ padding:0 12px; }
+  footer{ padding:16px 12px; }
+}

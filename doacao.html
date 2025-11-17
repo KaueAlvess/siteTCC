@@ -4,17 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Doação - EcoFashion</title>
+  <link rel="stylesheet" href="css/common.css">
   <link rel="stylesheet" href="css/doacao.css" />
 </head>
 <body>
   <header>
     <div class="logo"><h1>EcoFashion</h1></div>
-    <nav>
+    <nav role="navigation" aria-label="Main Navigation">
       <ul>
         <li><a href="index.html">Início</a></li>
         <li><a href="produtos.html">Produtos</a></li>
         <li><a href="doacao.html">Doar</a></li>
         <li><a href="sobrenos.html">Sobre nós</a></li>
+        <!-- Botão Trevo (visível em todas as páginas) -->
+        <li><a href="moeda.html" class="btn-trevo" title="Moedas Sustentáveis">🍀</a></li>
       </ul>
     </nav>
   </header>
@@ -84,18 +87,25 @@
       function openModal(){ if(!modal) return; modal.setAttribute('aria-hidden','false'); modal.querySelector('.modal-dialog').focus(); document.body.style.overflow='hidden'; }
       function closeModal(){ if(!modal) return; modal.setAttribute('aria-hidden','true'); document.body.style.overflow='auto'; if(openCtaTop) openCtaTop.focus(); }
 
-      // open modal when top CTA clicked
-      if(openCtaTop) openCtaTop.addEventListener('click', function(){ openModal(); });
+      // helper to open repo in a popup (with new-tab fallback)
+      function openRepoPopup(){
+        const features = 'toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=yes,status=no,width=1000,height=700';
+        try{
+          const popup = window.open('', 'ecofRepo', features);
+          if(popup){ popup.opener = null; popup.location.href = repo; popup.focus(); return; }
+        }catch(err){ /* fall through to fallback */ }
+        window.open(repo, '_blank', 'noopener');
+      }
+
+      // open modal when top CTA clicked; also open repo popup so users reach the repo directly
+      if(openCtaTop) openCtaTop.addEventListener('click', function(){ openModal(); openRepoPopup(); });
 
       // how button scrolls to the 'how' section
       if(howBtn){ howBtn.addEventListener('click', function(){ const how = document.getElementById('how'); if(how){ how.setAttribute('aria-hidden','false'); how.scrollIntoView({behavior:'smooth', block:'center'}); } }); }
 
       // modal CTA opens popup (fallback to new tab)
       if(modalCta) modalCta.addEventListener('click', function(){
-        const features = 'toolbar=no,menubar=no,location=no,resizable=yes,scrollbars=yes,status=no,width=1000,height=700';
-        let popup = null;
-        try{ popup = window.open('', 'ecofRepo', features); if(popup){ popup.opener = null; popup.location.href = repo; popup.focus(); } else { window.open(repo, '_blank', 'noopener'); } }
-        catch(err){ window.open(repo, '_blank', 'noopener'); }
+        openRepoPopup();
         closeModal();
       });
 
@@ -109,5 +119,6 @@
       window.addEventListener('keydown', function(e){ if(e.key === 'Escape' && modal && modal.getAttribute('aria-hidden') === 'false'){ closeModal(); } });
     })();
   </script>
+  <script src="js/script.js"></script>
 </body>
 </html>

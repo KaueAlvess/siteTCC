@@ -307,6 +307,22 @@ nav ul li a:hover {
   }
 }
 
+/* Mobile adjustments */
+@media (max-width:480px){
+  header .logo h1{ font-size:2rem; letter-spacing:1px; }
+  nav ul{ gap:8px; margin-top:6px; padding:6px 8px; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch; }
+  nav ul li{ display:inline-block; margin:0 8px; }
+  nav ul li a{ font-size:0.95rem; padding:8px 10px; }
+  .introducao{ padding:20px 12px; }
+  .introducao h1{ font-size:1.6rem; white-space:normal; }
+  .introducao .container { max-width: 100%; }
+  .moda-sustentavel h2, .beneficios h2, h2{ font-size:1.2rem; }
+  .moda-sustentavel p, .introducao p, .popup-conteudo p, .doacao-section p { text-align:justify; font-size:0.98rem; }
+  .popup-conteudo{ padding:18px; width:92%; }
+  .popup-conteudo h3{ font-size:1.2rem; }
+  .btn-repo, .btn-ok { width:100%; padding:10px 14px; }
+}
+
 /* Pop-up */
 .popup {
   display: none;

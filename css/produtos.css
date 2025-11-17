@@ -340,3 +340,18 @@ footer {
   color: #0a8d16;
   transform: rotate(15deg) scale(1.1);
 }
+
+/* Mobile adjustments */
+@media (max-width:480px){
+  header .logo h1{ font-size:2rem; }
+  nav ul{ gap:8px; padding:6px 8px; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch; }
+  nav ul li a{ font-size:0.95rem; padding:8px 10px; }
+  .cards-container{ flex-direction:column; gap:14px; padding:20px 12px; }
+  .card-site{ width:92%; padding:16px; }
+  .card-img{ width:80px; height:80px; }
+  .carrossel-container{ padding:20px 12px; }
+  .carrossel-wrapper{ gap:12px; }
+  .produto-item{ width:180px; }
+  .texto-animado h2{ font-size:1.3rem; }
+  footer{ padding:14px 12px; }
+}
