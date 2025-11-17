@@ -2,6 +2,7 @@
 :root{
   --accent: #2e7d32;
   --accent-2: #09a24a;
+  --header-height: 72px;
 }
 
 /* Header / Nav normalization */
@@ -13,6 +14,12 @@ header{
   background:linear-gradient(180deg, rgba(240,248,240,0.95), rgba(250,255,250,0.95));
   box-shadow:0 2px 8px rgba(0,0,0,0.06);
   min-height:64px;
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  height:var(--header-height);
+  z-index:1000;
 }
 .logo h1{ font-size:1.6rem; color:var(--accent); margin:0; }
 nav ul{ list-style:none; display:flex; gap:14px; align-items:center; margin:0; padding:0; }
@@ -71,6 +78,9 @@ nav a:focus-visible{
 /* Small container helper used across pages */
 .container{ width:100%; max-width:1100px; margin:0 auto; padding:0 16px; }
 
+/* Prevent content being hidden under fixed header */
+body{ padding-top: calc(var(--header-height) + 8px); }
+
 /* Make media elements scale naturally on small viewports */
 img, iframe, video{ max-width:100%; height:auto; display:block; }
 
@@ -84,4 +94,5 @@ img, iframe, video{ max-width:100%; height:auto; display:block; }
 @media (max-width:720px){
   .modal .modal-dialog{ width:95%; margin:12px auto; }
   .container{ padding:0 12px; }
+  :root{ --header-height: 76px; }
 }
