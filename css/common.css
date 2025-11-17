@@ -67,9 +67,12 @@ nav a:focus-visible{
 /* Mobile: collapse nav into stacked column */
 @media (max-width:720px){
   header{ flex-direction:row; align-items:center; }
-  nav ul{ flex-direction:row; gap:10px; flex-wrap:wrap; justify-content:flex-end; }
-  nav a{ font-size:0.98rem; padding:8px 10px; }
-  .logo h1{ font-size:1.2rem; }
+  /* Make nav a horizontal, touch-scrollable bar to avoid wrapping and layout jumps */
+  nav ul{ display:flex; flex-direction:row; gap:10px; flex-wrap:nowrap; justify-content:flex-end; overflow-x:auto; -webkit-overflow-scrolling:touch; padding:6px 8px; white-space:nowrap; }
+  nav ul li{ display:inline-block; }
+  nav a{ font-size:0.95rem; padding:8px 10px; height:36px; }
+  .logo h1{ font-size:1.1rem; }
+  :root{ --header-height:64px; }
 }
 
 /* Utility: visually hidden (for accessibility) */
