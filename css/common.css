@@ -20,8 +20,26 @@ nav ul{ list-style:none; display:flex; gap:14px; align-items:center; margin:0; p
 }
 .nav-pill{ display:inline-block; }
 /* Stronger visible pills: subtle green tint, heavier border/shadow, clearer hover */
-nav a{ text-decoration:none; color:#000; padding:12px 16px; border-radius:14px; font-weight:700; font-size:1rem; transition:transform .06s ease, box-shadow .12s ease, background .12s ease; background:linear-gradient(180deg, #f6fff7, #eefef0); border:1px solid rgba(9,162,74,0.12); box-shadow:0 8px 20px rgba(9,162,74,0.06); }
+/* Nav buttons: black pills with white text; hover turns green. Keep .btn-trevo as accent button */
+nav a{ text-decoration:none; padding:12px 16px; border-radius:14px; font-weight:700; font-size:1rem; transition:transform .06s ease, box-shadow .12s ease, background .12s ease; }
+
+/* Default nav links (except the Trevo button) */
+nav a:not(.btn-trevo){ background:#000; color:#fff; border:1px solid rgba(0,0,0,0.08); box-shadow:0 6px 18px rgba(0,0,0,0.14); }
+
+/* Hover/focus: green background */
+nav a:not(.btn-trevo):hover,
+nav a:not(.btn-trevo):focus,
+nav a:not(.btn-trevo):focus-visible{
+  background:linear-gradient(90deg,var(--accent),var(--accent-2));
+  color:#fff;
+  transform:translateY(-2px);
+  box-shadow:0 10px 26px rgba(9,162,74,0.12);
+}
+
+/* Active state uses the green accent as well */
 nav a.active{ background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#fff; box-shadow:0 8px 26px rgba(9,162,74,0.18); border-color:transparent; }
+
+/* Trevo button remains emphasized with filled accent */
 .btn-trevo{ font-size:1.05rem; padding:8px 10px; background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#fff; border-radius:10px; border:0; box-shadow:0 6px 18px rgba(9,162,74,0.18); }
 
 /* Hover / focus states to increase discoverability without changing artwork */
