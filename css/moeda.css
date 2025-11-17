@@ -25,7 +25,7 @@ img {
   border-radius: 16px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   max-width: 420px;
-  width: 90%;
+  width: calc(100% - 32px);
   padding: 15px 20px;
   text-align: center;
   transition: transform 0.4s ease, box-shadow 0.4s ease;
@@ -34,11 +34,12 @@ img {
   position: relative;
   z-index: 1;
   margin: auto; /* Para centralizar dentro do container flex */
-  margin-top: 50px; /* Espaçamento superior */
+  margin-top: 30px; /* Espaçamento superior reduzido para mobile */
 }
 
 .card-moeda img {
   width: 110px;
+  max-width:100%;
   height: auto;
   margin-bottom: 15px;
   transition: transform 0.6s ease, box-shadow 0.4s ease;
@@ -182,4 +183,72 @@ img {
   .card-moeda p{ font-size:0.95rem; text-align:justify; }
   .btn-app{ width:100%; padding:10px 12px; font-size:0.98rem; }
   .modal-content iframe{ height:50vh; }
+}
+
+/* Additional responsive rules to match home/doar behavior */
+@media (max-width:720px){
+  .card-moeda{ width: calc(100% - 32px); margin-top:28px; }
+  .card-moeda img{ width:96px; }
+  .btn-app{ width:100%; }
+  .modal-content iframe{ height:65vh; }
+}
+
+@media (max-width:480px){
+  .card-moeda{ margin-top:18px; padding:12px; }
+  .card-moeda img{ width:76px; }
+  .modal-content iframe{ height:48vh; }
+  .btn-app{ width:100%; }
+}
+
+/* Ensure card and modal scale similarly to home/doar pages */
+@media (max-width:720px){
+  .card-moeda{ max-width:420px; width:100%; margin-top:30px; padding:14px; }
+  .card-moeda img{ width:96px; }
+  .modal-content iframe{ height:65vh; }
+}
+
+@media (max-width:480px){
+  .card-moeda{ margin-top:20px; padding:12px; }
+  .card-moeda img{ width:76px; }
+  .card-moeda h2{ font-size:1.05rem; }
+  .modal-content iframe{ height:48vh; }
+  .btn-app{ width:100%; }
+}
+
+/* Extra responsive safety: make card and modal fully fluid and readable */
+.card-moeda{ box-sizing: border-box; max-width:760px; width:calc(100% - 32px); padding:16px; margin-top: calc(var(--header-height,72px) + 12px); }
+.card-moeda h2{ font-size:1.4rem; margin-top:8px; margin-bottom:10px; }
+.card-moeda p{ font-size:1rem; line-height:1.5; text-align:justify; }
+.btn-app{ display:inline-block; max-width:420px; width:100%; margin-top:12px; }
+
+/* Modal responsive tweaks */
+.modal .modal-dialog{ width: calc(100% - 32px); max-width:960px; margin:18px auto; box-sizing:border-box; }
+.modal-content iframe{ width:100%; height:70vh; border:0; }
+
+@media (max-width:720px){
+  .modal-content iframe{ height:62vh; }
+  .card-moeda h2{ font-size:1.2rem; }
+}
+
+@media (max-width:480px){
+
+/* Ensure mobile menu button is visible on this page and above other content */
+@media (max-width:720px){
+  .mobile-menu-button { display:flex !important; z-index:2400 !important; }
+  .mobile-menu-overlay { z-index:2300 !important; }
+}
+
+/* Styling for the fallback button in moeda.html to make it visible */
+#mobile-menu-btn-fallback{ display:none; align-items:center; justify-content:center; background:linear-gradient(180deg,var(--accent-2),var(--accent)); color:#fff; border-radius:50%; width:56px; height:56px; position:fixed; left:16px; top:calc(var(--header-height,72px) + 8px); z-index:2400; box-shadow:0 8px 26px rgba(9,162,74,0.18); }
+#mobile-menu-overlay-fallback{ position:fixed; inset:0; background:rgba(0,0,0,0.45); display:none; align-items:center; justify-content:center; z-index:2300; }
+#mobile-menu-overlay-fallback .mobile-menu{ width:calc(100% - 32px); max-width:360px; background:#fff; border-radius:12px; padding:12px; box-shadow:0 20px 60px rgba(0,0,0,0.25); }
+#mobile-menu-overlay-fallback .mobile-menu a{ display:block; padding:12px; color:#08311a; font-weight:700; text-decoration:none; border-bottom:1px solid #f0f0f0; }
+#mobile-menu-btn-fallback:active{ transform:scale(0.98); }
+
+@media (max-width:720px){
+  #mobile-menu-btn-fallback{ display:flex; }
+}
+  .modal-content iframe{ height:50vh; }
+  .card-moeda{ padding:12px; }
+  .card-moeda p{ font-size:0.97rem; }
 }

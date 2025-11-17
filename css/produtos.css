@@ -232,11 +232,11 @@ footer {
   height: 10px;
 }
 
-.carrossel-wrapper::-webkit-scrollbar-thumb {
-  background-color: #0da119;
-  border-radius: 5px;
-}
-
+.carrossel {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
 .carrossel-wrapper::-webkit-scrollbar-track {
   background-color: #ddd;
 }
@@ -275,6 +275,10 @@ footer {
 .produto-info h3 {
   font-size: 16px;
   margin-bottom: 10px;
+
+/* Make card anchors layout-friendly and ensure their media scale */
+.card-site{ display:flex; flex-direction:column; align-items:center; box-sizing:border-box; }
+.card-site img, .card-site iframe{ max-width:100%; height:auto; display:block; }
   color: #333;
   font-weight: bold;
 }
@@ -354,4 +358,29 @@ footer {
   .produto-item{ width:180px; }
   .texto-animado h2{ font-size:1.3rem; }
   footer{ padding:14px 12px; }
+}
+
+/* Better responsive behavior for medium and small screens */
+@media (max-width:720px){
+  /* Use grid layout for product list on smaller screens to avoid horizontal scrolling */
+  .carrossel-wrapper{ overflow:visible; padding-bottom:0; }
+  .carrossel{ display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:14px; align-items:start; }
+  .produto-item{ width:100%; flex-shrink:0; }
+
+  /* Cards container two columns */
+  .cards-container{ gap:18px; justify-content:center; }
+  .card-site{ width:calc(50% - 24px); }
+
+  /* Headings and text sizing */
+  h1, .texto-animado h2 { font-size:1.6rem; }
+}
+
+@media (max-width:480px){
+  /* Stack products and cards on very small screens */
+  .carrossel{ grid-template-columns: 1fr; gap:12px; }
+  .produto-item{ width:100%; }
+  .card-site{ width:100%; }
+  .cards-container{ padding:16px; gap:12px; }
+  .produto-info h3{ font-size:1rem; }
+  .produto-info p{ font-size:0.95rem; }
 }

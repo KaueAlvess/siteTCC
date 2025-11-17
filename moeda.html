@@ -25,16 +25,32 @@
         <li><a href="moeda.html" class="btn-trevo" title="Moedas Sustentáveis">🍀</a></li>
       </ul>
     </nav>
+    <!-- Static mobile menu button fallback (visible when JS injection fails) -->
+    <button class="mobile-menu-button" id="mobile-menu-btn-fallback" aria-label="Abrir menu" style="display:none;">☰</button>
   </header>
 
-  <!-- Card centralizado -->
-  <div class="card-moeda">
-    <img src="https://static.vecteezy.com/ti/vetor-gratis/p1/7069441-sorte-trevo-folha-quatro-isolado-no-branco-para-o-dia-de-sao-patrick-vetor.jpg"  alt="Trevo">
-    <h2>Troque por Trevos!</h2>
-    <p>Aqui na EcoFashion, ao doar roupas você recebe moedas de troca chamadas <strong>Trevos</strong>. Essas moedas não são descontos — elas servem exclusivamente para trocar por produtos disponíveis no catálogo do app. Trevos são ganhos somente quando uma doação é confirmada pela nossa equipe.</p>
+  <!-- Static mobile menu overlay (fallback for moeda.html) -->
+  <div class="mobile-menu-overlay" id="mobile-menu-overlay-fallback" aria-hidden="true" style="display:none;">
+    <div class="mobile-menu" role="menu">
+      <button class="close" aria-label="Fechar">✕</button>
+      <a href="index.html">Início</a>
+      <a href="produtos.html">Produtos</a>
+      <a href="doacao.html">Doar</a>
+      <a href="sobrenos.html">Sobre nós</a>
+      <a href="moeda.html">Trevos</a>
+    </div>
+  </div>
 
-    <!-- Botão personalizado (abre modal com o app embutido) -->
-    <button id="open-app" class="btn-app" type="button">Funcionalidade disponível no app EcoFashion</button>
+  <!-- Card centralizado -->
+  <div class="container">
+    <div class="card-moeda">
+      <img src="https://static.vecteezy.com/ti/vetor-gratis/p1/7069441-sorte-trevo-folha-quatro-isolado-no-branco-para-o-dia-de-sao-patrick-vetor.jpg"  alt="Trevo">
+      <h2>Troque por Trevos!</h2>
+      <p>Aqui na EcoFashion, ao doar roupas você recebe moedas de troca chamadas <strong>Trevos</strong>. Essas moedas não são descontos — elas servem exclusivamente para trocar por produtos disponíveis no catálogo do app. Trevos são ganhos somente quando uma doação é confirmada pela nossa equipe.</p>
+
+      <!-- Botão personalizado (abre modal com o app embutido) -->
+      <button id="open-app" class="btn-app" type="button">Funcionalidade disponível no app EcoFashion</button>
+    </div>
   </div>
 
   <!-- Modal que carrega app.html dentro de um iframe (permanece na mesma página) -->
@@ -69,6 +85,26 @@
       window.addEventListener('keydown', function(e){ if(e.key === 'Escape' && modal && modal.getAttribute('aria-hidden') === 'false'){ closeModal(); } });
     })();
   </script>
+
+<!-- Fallback script for static mobile menu button/overlay on moeda.html -->
+<script>
+  (function(){
+    var btn = document.getElementById('mobile-menu-btn-fallback');
+    var overlay = document.getElementById('mobile-menu-overlay-fallback');
+    if(!btn || !overlay) return;
+    function showIfMobile(){
+      if(window.innerWidth <= 720){ btn.style.display = 'flex'; }
+      else { btn.style.display = 'none'; overlay.style.display='none'; overlay.setAttribute('aria-hidden','true'); }
+    }
+    // initial
+    showIfMobile();
+    window.addEventListener('resize', showIfMobile);
+    // open/close
+    btn.addEventListener('click', function(){ overlay.style.display='flex'; requestAnimationFrame(function(){ overlay.classList.add('open'); overlay.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }); });
+    overlay.querySelector('.close').addEventListener('click', function(){ overlay.classList.remove('open'); overlay.setAttribute('aria-hidden','true'); setTimeout(function(){ overlay.style.display='none'; document.body.style.overflow='auto'; btn.focus(); },300); });
+    overlay.addEventListener('click', function(e){ if(e.target === overlay) { overlay.classList.remove('open'); overlay.setAttribute('aria-hidden','true'); setTimeout(function(){ overlay.style.display='none'; document.body.style.overflow='auto'; btn.focus(); },300); } });
+  })();
+</script>
 
 </body>
 </html>

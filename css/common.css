@@ -68,7 +68,8 @@ nav a:focus-visible{
 @media (max-width:720px){
   header{ flex-direction:row; align-items:center; }
   /* Make nav a horizontal, touch-scrollable bar to avoid wrapping and layout jumps */
-  nav ul{ display:flex; flex-direction:row; gap:10px; flex-wrap:nowrap; justify-content:flex-end; overflow-x:auto; -webkit-overflow-scrolling:touch; padding:6px 8px; white-space:nowrap; }
+  /* On mobile, we hide the top nav links and use the floating mobile menu button instead */
+  nav ul{ display:none !important; }
   nav ul li{ display:inline-block; }
   nav a{ font-size:0.95rem; padding:8px 10px; height:36px; }
   .logo h1{ font-size:1.1rem; }
@@ -98,4 +99,94 @@ img, iframe, video{ max-width:100%; height:auto; display:block; }
   .modal .modal-dialog{ width:95%; margin:12px auto; }
   .container{ padding:0 12px; }
   :root{ --header-height: 76px; }
+}
+
+/* Mobile side menu (floating button + overlay) */
+.mobile-menu-button {
+  position: fixed;
+  left: 16px;
+  top: calc(var(--header-height,72px) + 8px);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(180deg,var(--accent-2),var(--accent));
+  color: #fff;
+  display: none; /* shown only on small screens */
+  align-items: center;
+  justify-content: center;
+  z-index: 1400;
+  box-shadow: 0 8px 26px rgba(9,162,74,0.18);
+  cursor: pointer;
+}
+.mobile-menu-button:active{ transform: scale(0.98); }
+
+
+.mobile-menu-overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex; /* keep in flow but hidden via opacity */
+  align-items: center;
+  justify-content: center;
+  z-index: 1390;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 260ms ease;
+}
+.mobile-menu-overlay.open{ opacity: 1; pointer-events: auto; }
+
+.mobile-menu{
+  width: min(360px, 92%);
+  background: #fff;
+  border-radius: 14px;
+  padding: 18px 12px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+  text-align: center;
+  position: relative;
+  transform: translateY(-18px) scale(0.98);
+  opacity: 0;
+  transition: transform 280ms cubic-bezier(.2,.9,.3,1), opacity 220ms ease;
+}
+.mobile-menu.open{ transform: translateY(0) scale(1); opacity: 1; }
+.mobile-menu a{ display:block; padding:14px 12px; color:#08311a; text-decoration:none; font-weight:700; border-bottom:1px solid #f0f0f0; }
+.mobile-menu a:last-child{ border-bottom:0; }
+.mobile-menu .close { position:absolute; right:10px; top:8px; background:transparent; border:none; font-size:22px; }
+
+@media (max-width:720px){
+  .mobile-menu-button{ display:flex; }
+}
+
+/* Strong mobile adjustments to avoid overflow and layout breakage */
+@media (max-width:480px){
+  /* header/logo */
+  header { padding: 8px 12px; }
+  header .logo h1 { font-size: 1.6rem !important; line-height:1.1 !important; }
+
+  /* navigation touch adjustments */
+  nav ul { gap:8px; padding:6px 8px; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  nav a { font-size:0.95rem; padding:8px 10px; height:auto; }
+
+  /* page containers full width */
+  .container, .card, .card-moeda, .donation-panel, .donation-center { width:100% !important; max-width:100% !important; padding:12px !important; box-sizing:border-box !important; }
+
+  /* images and media scale */
+  img, iframe, video { max-width:100% !important; height:auto !important; }
+
+  /* carrossel and products shrink */
+  .carrossel-wrapper { gap:12px; padding-bottom:10px; }
+  .produto-item { width: 160px !important; }
+
+  /* mobile menu tweaks */
+  .mobile-menu { width: calc(100% - 32px) !important; margin: 0 16px; }
+  .mobile-menu a { font-size: 1rem; padding: 12px 10px; }
+
+  /* modals responsive */
+  .modal .modal-dialog { width: 95% !important; margin:12px auto !important; }
+  .modal-content iframe { width:100% !important; height:60vh !important; }
+
+  /* text safety */
+  h1,h2,h3,p,button,a { word-break: break-word; }
+
+  /* reduce heavy animations on small devices for performance */
+  * { transition: none !important; animation: none !important; }
 }
