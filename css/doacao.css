@@ -70,6 +70,19 @@ body{font-family:Inter, system-ui, -apple-system, Arial, sans-serif; background:
   .doacao-hero::before, .particles, .btn-primary, .btn-ghost{animation:none!important; transition:none!important}
 }
 
+/* Mobile: tighten donation panel spacing, reduce headings and justify text */
+@media (max-width:480px){
+  .doacao-hero{ padding:20px 12px; min-height: calc(100vh - 88px); }
+  .donation-panel{ width:100%; padding:16px; border-radius:12px; gap:12px; }
+  .donation-panel{ grid-template-columns:1fr; }
+  .donation-title{ font-size:1.6rem; }
+  .donation-sub{ font-size:0.98rem; text-align:justify; }
+  .donation-actions{ flex-direction:column; align-items:stretch; }
+  .btn{ width:100%; justify-content:center; }
+  .donation-art{ display:block; }
+  .art-card{ width:100%; height:140px; }
+}
+
 /* small helpers */
 .muted{color:var(--muted)}
 
