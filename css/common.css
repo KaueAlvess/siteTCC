@@ -1,0 +1,33 @@
+/* Common site styles: header/navigation normalization + basic responsive rules */
+:root{
+  --accent: #2e7d32;
+  --accent-2: #09a24a;
+}
+
+/* Header / Nav normalization */
+header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:12px 20px;
+  background:linear-gradient(180deg, rgba(240,248,240,0.95), rgba(250,255,250,0.95));
+  box-shadow:0 2px 8px rgba(0,0,0,0.06);
+}
+.logo h1{ font-size:1.6rem; color:var(--accent); margin:0; }
+nav ul{ list-style:none; display:flex; gap:14px; align-items:center; margin:0; padding:0; }
+nav a{ text-decoration:none; color:#333; padding:8px 10px; border-radius:8px; font-weight:600; }
+nav a.active{ background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#fff; }
+.btn-trevo{ font-size:1.1rem; padding:6px 8px; }
+
+/* Mobile: collapse nav into stacked column */
+@media (max-width:720px){
+  header{ flex-direction:row; align-items:center; }
+  nav ul{ flex-direction:row; gap:8px; flex-wrap:wrap; justify-content:flex-end; }
+  .logo h1{ font-size:1.2rem; }
+}
+
+/* Utility: visually hidden (for accessibility) */
+.visually-hidden{ position:absolute !important; height:1px; width:1px; overflow:hidden; clip:rect(1px,1px,1px,1px); white-space:nowrap; }
+
+/* Small container helper used across pages */
+.container{ width:100%; max-width:1100px; margin:0 auto; padding:0 16px; }

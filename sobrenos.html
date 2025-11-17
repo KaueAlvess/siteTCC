@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Moda Sustentável</title>
+  <link rel="stylesheet" href="css/common.css">
   <link rel="stylesheet" href="css/sobrenos.css" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
@@ -14,7 +14,7 @@
     <div class="logo">
       <h1>EcoFashion</h1>
     </div>
-    <nav>
+    <nav role="navigation" aria-label="Main Navigation">
       <ul>
         <li><a href="index.html">Inicio</a></li>
         <li><a href="produtos.html">Produtos</a></li>
@@ -51,6 +51,7 @@
       <div class="beneficio-item">
         <h4>Como doar</h4>
         <p>Acesse a área "Doar", selecione o destino, informe o estado e o tamanho da peça e envie boas fotos. A equipe avalia e confirma a doação — você recebe trevos como recompensa.</p>
+        <p style="margin-top:8px; font-weight:600; color:#06562f;">Observação: o registro de doações e o crédito de <strong>Trevos</strong> são feitos através do app EcoFashion. Para acessar todas as funcionalidades de doação e resgatar Trevos, é necessário utilizar o aplicativo.</p>
       </div>
 
       <div class="beneficio-item">
@@ -65,7 +66,7 @@
     <div class="container">
       <div class="beneficio-item">
         <h4>O que fazemos</h4>
-        <p>Organizamos a triagem, preservamos a qualidade das peças e dirigimos as doações para instituições parceiras. Trabalhamos para gerar impacto social e reduzir o consumo desenfreado.</p>
+        <p>Atualmente, não encaminhamos doações diretamente a instituições externas. Todas as doações são processadas e gerenciadas internamente pelo projeto e pelo app EcoFashion; qualquer distribuição ou parceria será comunicada pela plataforma. Trabalhamos para garantir transparência no processo e promover a reutilização responsável das peças.</p>
       </div>
 
       <div class="beneficio-item">
@@ -137,7 +138,8 @@
 
   // Abrir repositório no GitHub
   document.getElementById('btn-repo').addEventListener('click', function() {
-    window.open(REPO_URL, '_blank');
+    try{ window.open(REPO_URL, '_blank', 'noopener'); }
+    catch(e){ window.open(REPO_URL, '_blank'); }
   });
 
   // Fechar popup ao clicar no X ou no botão Fechar
@@ -155,6 +157,7 @@
     document.getElementById('popup').style.display = 'none';
   }
 </script>
+<script src="js/script.js"></script>
 
   <!-- Rodapé -->
   <footer>

@@ -121,3 +121,55 @@ img {
 .btn-app:active {
   transform: scale(0.98);
 }
+
+/* Modal embutido para exibir app.html sem sair da página */
+.modal{
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,0.45);
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .18s ease, visibility .18s;
+  z-index:10000;
+}
+.modal[aria-hidden="false"]{
+  opacity:1;
+  visibility:visible;
+}
+.modal-backdrop{ position:absolute; inset:0; }
+.modal-dialog{
+  position:relative;
+  background:#fff;
+  width:92%;
+  max-width:1000px;
+  max-height:90vh;
+  border-radius:12px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.35);
+  overflow:hidden;
+  z-index:10001;
+  display:flex;
+  flex-direction:column;
+}
+.modal-close{
+  position:absolute;
+  right:10px;
+  top:8px;
+  background:transparent;
+  border:0;
+  font-size:24px;
+  line-height:1;
+  color:#444;
+  cursor:pointer;
+  padding:8px;
+}
+.modal h2{ margin:16px 18px 8px; color:#2e7d32; }
+.modal-content{ flex:1 1 auto; background:#fafafa; display:block; }
+.modal-content iframe{ width:100%; height:72vh; border:0; display:block; }
+
+@media (max-width:600px){
+  .modal-content iframe{ height:60vh; }
+  .modal-dialog{ width:96%; }
+}
