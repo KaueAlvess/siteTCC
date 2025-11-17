@@ -15,9 +15,16 @@ header{
 }
 .logo h1{ font-size:1.6rem; color:var(--accent); margin:0; }
 nav ul{ list-style:none; display:flex; gap:14px; align-items:center; margin:0; padding:0; }
-nav a{ text-decoration:none; color:#333; padding:8px 10px; border-radius:8px; font-weight:600; }
-nav a.active{ background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#fff; }
+nav a{ text-decoration:none; color:#123; padding:10px 12px; border-radius:10px; font-weight:700; font-size:1rem; transition:background .15s ease, color .12s ease, transform .07s ease; }
+nav a.active{ background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#fff; box-shadow:0 4px 10px rgba(9,162,74,0.12); }
 .btn-trevo{ font-size:1.1rem; padding:6px 8px; }
+
+/* Hover / focus states to increase discoverability without changing artwork */
+nav a:hover, nav a:focus, nav a:focus-visible{
+  background:linear-gradient(90deg, rgba(9,162,74,0.06), rgba(46,125,50,0.04));
+  color:var(--accent);
+  transform:translateY(-1px);
+}
 
 /* Accessibility: visible focus for keyboard users (no visual rebrand) */
 nav a:focus,
@@ -29,7 +36,8 @@ nav a:focus-visible{
 /* Mobile: collapse nav into stacked column */
 @media (max-width:720px){
   header{ flex-direction:row; align-items:center; }
-  nav ul{ flex-direction:row; gap:8px; flex-wrap:wrap; justify-content:flex-end; }
+  nav ul{ flex-direction:row; gap:10px; flex-wrap:wrap; justify-content:flex-end; }
+  nav a{ font-size:0.98rem; padding:8px 10px; }
   .logo h1{ font-size:1.2rem; }
 }
 
