@@ -1,3 +1,79 @@
+:root{
+  --bg-1:#dfffe6;
+  --bg-2:#b8f9d0;
+  --accent:#08a24a;
+  --accent-2:#14c86a;
+  --glass: rgba(255,255,255,0.85);
+  --muted:#064022;
+  --panel-shadow: 0 20px 60px rgba(6,110,50,0.12);
+}
+
+/* Page base */
+html,body{height:100%;}
+body{font-family:Inter, system-ui, -apple-system, Arial, sans-serif; background:radial-gradient(circle at 10% 20%, rgba(10,150,70,0.06), transparent 15%), linear-gradient(180deg,var(--bg-1),var(--bg-2)); color:#07311a; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
+
+/* Container for donation page only */
+.doacao-hero{min-height:calc(100vh - 120px); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; padding:48px 20px;}
+
+/* animated green gradient backdrop */
+.doacao-hero::before{
+  content:''; position:absolute; inset:0; z-index:0; background:linear-gradient(120deg, rgba(12,170,72,0.07), rgba(15,200,110,0.06));
+  pointer-events:none; animation:bgShift 18s linear infinite;
+}
+@keyframes bgShift{0%{filter:hue-rotate(0deg) saturate(100%)}50%{filter:hue-rotate(6deg) saturate(115%)}100%{filter:hue-rotate(0deg) saturate(100%)}}
+
+/* decorative floating accents */
+.accent-blob{position:absolute; width:520px; height:420px; right:-120px; top:-40px; background:radial-gradient(circle at 30% 30%, rgba(20,200,110,0.08), transparent 25%); filter:blur(48px) saturate(140%); z-index:0; pointer-events:none;}
+.accent-blob.left{left:-140px; right:auto; top:10%; background:radial-gradient(circle at 70% 30%, rgba(10,160,80,0.08), transparent 30%);} 
+
+/* Particle overlay (subtle) */
+.particles{position:absolute; inset:0; z-index:1; pointer-events:none; background-image:radial-gradient(circle at 18% 24%, rgba(255,255,255,0.06) 0, rgba(255,255,255,0) 20%), radial-gradient(circle at 78% 16%, rgba(255,255,255,0.04) 0, rgba(255,255,255,0) 14%); mix-blend-mode:overlay; animation:particlesDrift 12s linear infinite;}
+@keyframes particlesDrift{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
+
+/* central glass panel */
+.donation-panel{position:relative; z-index:2; width:min(920px,96%); padding:34px; border-radius:18px; background:var(--glass); box-shadow:var(--panel-shadow); border:1px solid rgba(255,255,255,0.6); display:grid; grid-template-columns:1fr 420px; gap:28px; align-items:center;}
+
+/* left: text block */
+.donation-copy{padding:8px 2px;}
+.donation-title{font-size:2.6rem; line-height:1; margin:0 0 10px; color:var(--accent); font-weight:800; letter-spacing:0.6px;}
+.donation-sub{font-size:1.05rem; color:var(--muted); margin:0 0 18px;}
+
+/* buttons */
+.donation-actions{display:flex; gap:12px; align-items:center;}
+.btn{display:inline-flex; align-items:center; gap:10px; padding:12px 22px; border-radius:999px; border:none; cursor:pointer; font-weight:700; font-size:0.98rem; transition:transform .18s ease, box-shadow .18s ease, filter .18s ease;}
+.btn:focus{outline:4px solid rgba(6,150,70,0.12); outline-offset:2px}
+.btn-primary{background:linear-gradient(180deg,var(--accent-2),var(--accent)); color:white; box-shadow:0 10px 30px rgba(8,140,62,0.2);} 
+.btn-primary:hover{transform:translateY(-4px) scale(1.02); filter:brightness(1.03)}
+.btn-ghost{background:transparent; color:var(--accent); border:2px solid rgba(8,162,74,0.12);} 
+.btn-ghost:hover{background:rgba(8,162,74,0.06);}
+
+/* right: artwork */
+.donation-art{display:flex; align-items:center; justify-content:center; gap:8px;}
+.art-card{width:380px; height:260px; border-radius:12px; background:linear-gradient(180deg, rgba(8,162,74,0.08), rgba(255,255,255,0.02)); display:flex; align-items:center; justify-content:center; flex-direction:column; box-shadow:0 8px 30px rgba(6,120,70,0.09); border:1px solid rgba(6,120,70,0.06);}
+.art-heart{width:120px; height:120px; display:inline-grid; place-items:center; background:conic-gradient(from 160deg, rgba(255,255,255,0.06), rgba(255,255,255,0)); border-radius:999px;}
+.art-heart svg{width:72px; height:72px; filter:drop-shadow(0 8px 22px rgba(3,80,35,0.12));}
+.art-caption{font-size:0.9rem; color:var(--muted); margin-top:10px}
+
+/* modal */
+.modal{display:none; position:fixed; inset:0; z-index:9999; background:rgba(1,8,4,0.55); align-items:center; justify-content:center;}
+.modal[aria-hidden='false']{display:flex}
+.modal-dialog{width:min(720px,94%); background:white; border-radius:12px; padding:20px; box-shadow:0 36px 80px rgba(6,60,30,0.28);}
+.modal-close{position:absolute; right:18px; top:14px; background:transparent; border:none; font-size:22px; cursor:pointer}
+
+/* responsive */
+@media (max-width:980px){
+  .donation-panel{grid-template-columns:1fr; padding:22px}
+  .art-card{width:100%; height:160px}
+  .donation-title{font-size:2.1rem}
+}
+@media (prefers-reduced-motion: reduce){
+  .doacao-hero::before, .particles, .btn-primary, .btn-ghost{animation:none!important; transition:none!important}
+}
+
+/* small helpers */
+.muted{color:var(--muted)}
+
+/* END */
 /* Reset */
 * {
   margin: 0;
@@ -137,100 +213,7 @@ h3 {
 }
 
 /* Estilo do Modal */
-.modal {
-  display: none; /* Escondido por padrão */
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.6); /* Fundo escuro semi-transparente */
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-/* Conteúdo do Modal */
-.modal-conteudo {
-  background-color: #fff;
-  margin: 10% auto;
-  padding: 30px 40px;
-  border-radius: 10px;
-  width: 90%;
-  max-width: 500px;
-  text-align: center;
-  position: relative;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
-
-/* Fechar botão */
-.fechar-modal {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-  position: absolute;
-  top: 15px;
-  right: 25px;
-  transition: color 0.3s ease;
-}
-
-.fechar-modal:hover,
-.fechar-modal:focus {
-  color: #0da119;
-}
-
-/* Animação de entrada */
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-/* Estilo do H2 com brilho */
-.modal-conteudo h2 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 2.5rem;
-  font-weight: 600;
-  color: #0da119;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  display: inline-block;
-  position: relative;
-  z-index: 1;
-  padding: 10px 20px;
-  margin-bottom: 20px;
-}
-
-.modal-conteudo h2::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 50px;
-  height: 50px;
-  background: linear-gradient(
-    transparent 25%, 
-    rgba(255, 255, 255, 0.8), 
-    transparent 75%
-  );
-  transform: rotate(45deg);
-  opacity: 0;
-  transition: opacity 0.5s ease, left 0.5s ease;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.modal-conteudo h2:hover::before {
-  left: 110%;
-  top: 50%;
-  transform: translateY(-50%) rotate(45deg);
-  opacity: 1;
-}
-
-.modal-conteudo h2:hover {
-  color: #0a8d16;
-}
+/* legacy modal styles removed — using consolidated .modal / .modal-content below */
 
 nav ul {
   list-style: none;
@@ -347,9 +330,120 @@ nav ul li a:hover {
   animation: fadeIn 0.3s ease-in-out;
 }
 
+/* make the modal background more attractive */
+.modal-content.shine-effect {
+  background: linear-gradient(180deg, #ffffff 0%, #f4fff8 45%, #effff3 100%);
+  border: 1px solid rgba(6,120,55,0.06);
+  box-shadow: 0 20px 50px rgba(6,90,40,0.12), 0 6px 18px rgba(0,0,0,0.12);
+  overflow: hidden;
+}
+
+/* subtle animated shift on the modal background to make it more attractive */
+.modal-content.shine-effect {
+  background-size: 200% 200%;
+  animation: modalBGShift 10s ease-in-out infinite;
+}
+
+@keyframes modalBGShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* decorative heart positioning */
+.modal-deco { position: absolute; left: 50%; top: -34px; transform: translateX(-50%); z-index: 0; pointer-events: none; }
+.modal-heart { width: 96px; height: 96px; transform: translateZ(0); opacity: 0.98; filter: drop-shadow(0 8px 18px rgba(3,80,35,0.12)); }
+
+/* gentle heartbeat on the heart to make it lively but subtle */
+.modal-heart { transform-origin: 50% 50%; animation: heartBeat 2.6s ease-in-out infinite; }
+@keyframes heartBeat {
+  0% { transform: scale(1); }
+  14% { transform: scale(1.08); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.06); }
+  70% { transform: scale(1); }
+}
+
 .modal-content h2 {
   margin-top: 0;
   color: #0da119;
+}
+
+/* SHINE effect: sliding gradient highlight across the element on hover */
+.shine-effect { position: relative; overflow: hidden; }
+.shine-effect::after {
+  /* brighter, faster highlight sweeping across the whole element */
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 70%;
+  height: 120%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,1) 48%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 52%, transparent 100%);
+  transform: skewX(-25deg);
+  pointer-events: none;
+.doacao-hero .donation-overlay {
+  position: absolute;
+  inset: 0;
+  /* layered green gradients for depth and motion */
+  background:
+    radial-gradient(600px 300px at 10% 20%, rgba(190,255,200,0.18), rgba(190,255,200,0) 30%),
+    linear-gradient(135deg, #c8ffd6 0%, #8fe5a6 28%, #39c361 56%, #0a8b3a 100%);
+  background-size: 200% 200%, 300% 300%;
+  filter: blur(14px) saturate(150%);
+  animation: greenShift 18s ease-in-out infinite;
+  mix-blend-mode: screen;
+  z-index: 0;
+  transform: translateZ(0);
+}
+
+.doacao-hero .donation-overlay::before {
+  content: '';
+  position: absolute;
+  left: -6%;
+  right: -6%;
+  top: -8%;
+  height: 40%;
+  background: radial-gradient(circle at 50% 0%, rgba(255,255,255,0.16), rgba(255,255,255,0) 40%);
+  filter: blur(24px);
+  opacity: 0.6;
+  animation: glowPulse 6s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.doacao-hero .donation-overlay::after {
+  content: '';
+  position: absolute;
+  left: -6%;
+  right: -6%;
+  bottom: -10%;
+  height: 46%;
+  background: linear-gradient(180deg, rgba(14,180,80,0.06), rgba(14,180,80,0) 60%);
+  filter: blur(36px);
+  opacity: 0.6;
+  transform: translateY(10px);
+  animation: glowPulse 8s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+/* Button shine: keep it snappy and consistent */
+.cta-btn.shine-effect { position: relative; overflow: hidden; }
+.cta-btn.shine-effect::after { content: ''; position: absolute; top: -5%; left: -120%; width: 48%; height: 130%; background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.95) 48%, rgba(255,255,255,0.95) 52%, transparent 100%); transform: skewX(-20deg); pointer-events: none; filter: blur(3px); opacity: 0.98; }
+.cta-btn.shine-effect:hover::after, .cta-btn.shine-effect:focus::after { animation: shineMoveBtn 0.5s cubic-bezier(.2,.9,.3,1) forwards; }
+@keyframes shineMoveBtn { to { left: 240%; } }
+
+/* Modal art container to center and size inline SVG */
+.modal-art { display:flex; justify-content:center; align-items:center; margin-bottom: 6px; pointer-events: none; }
+.modal-art svg { width: 220px; height: auto; display:block; }
+
+/* Slight pop and visible border highlight on hover so shine reads across edges */
+.modal-content.shine-effect:hover { transform: translateY(-8px) scale(1.002); transition: transform 0.22s ease; box-shadow: 0 28px 64px rgba(6,90,40,0.18); }
+
+/* ensure the shine is subtle on small screens */
+@media (max-width: 520px) {
+  .modal-deco { display: none; }
+  .modal-content { padding: 22px; }
 }
 
 .modal-content p {
@@ -396,6 +490,199 @@ nav ul li a:hover {
   text-align: center;
   margin-bottom: 20px;
 }
+
+/* Donation hero + animated background */
+.doacao-hero {
+  min-height: calc(100vh - 160px);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.doacao-hero .donation-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #eafbf5 0%, #cfeee6 45%, #8fd3b0 100%);
+  background-size: 300% 300%;
+  filter: blur(12px) saturate(130%);
+  animation: shiftBG 12s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes shiftBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.doacao-hero::before,
+.doacao-hero::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.18;
+  filter: blur(30px);
+  z-index: 1;
+}
+
+.doacao-hero::before {
+  width: 380px;
+  height: 380px;
+  left: -80px;
+  top: 10%;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.6), rgba(47,182,92,0.1));
+  animation: floatA 6s ease-in-out infinite;
+}
+
+.doacao-hero::after {
+  width: 260px;
+  height: 260px;
+  right: -40px;
+  bottom: 5%;
+  background: radial-gradient(circle at 70% 70%, rgba(255,255,255,0.45), rgba(65,180,100,0.08));
+  animation: floatB 7s ease-in-out infinite;
+}
+
+/* additional subtle leaf-like highlights layered above the gradient */
+.doacao-hero .donation-overlay::before,
+.doacao-hero .donation-overlay::after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.12;
+  filter: blur(26px);
+}
+
+.doacao-hero .donation-overlay::before {
+  width: 480px;
+  height: 220px;
+  left: -80px;
+  top: 10%;
+  background: radial-gradient(120px 60px at 30% 40%, rgba(255,255,255,0.6), rgba(47,182,92,0.06));
+  transform: rotate(-18deg) translateZ(0);
+  animation: leafFloat1 9s ease-in-out infinite;
+}
+.doacao-hero .overlay-sparkles {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  /* layered tiny glow spots to simulate sparks */
+  background-image:
+    radial-gradient(circle at 12% 28%, rgba(255,255,255,0.12) 0, rgba(255,255,255,0) 18%),
+    radial-gradient(circle at 72% 16%, rgba(255,255,255,0.10) 0, rgba(255,255,255,0) 16%),
+    radial-gradient(circle at 44% 82%, rgba(255,255,255,0.08) 0, rgba(255,255,255,0) 20%),
+    radial-gradient(circle at 56% 44%, rgba(180,255,200,0.06) 0, rgba(180,255,200,0) 22%);
+  background-repeat: no-repeat;
+  mix-blend-mode: overlay;
+  animation: sparklesDrift 10s linear infinite, sparklePulse 3.8s ease-in-out infinite;
+  opacity: 0.95;
+  filter: drop-shadow(0 6px 10px rgba(6,160,70,0.06));
+}
+
+.doacao-hero .donation-overlay::after {
+  width: 420px;
+  height: 260px;
+  right: -100px;
+  bottom: 6%;
+  background: radial-gradient(140px 80px at 70% 70%, rgba(255,255,255,0.56), rgba(30,150,70,0.04));
+  transform: rotate(10deg) translateZ(0);
+  animation: leafFloat2 11s ease-in-out infinite;
+}
+
+@keyframes leafFloat1 {
+  0% { transform: rotate(-18deg) translateY(0); opacity: 0.12; }
+  50% { transform: rotate(-16deg) translateY(18px); opacity: 0.16; }
+  100% { transform: rotate(-18deg) translateY(0); opacity: 0.12; }
+}
+
+@keyframes leafFloat2 {
+  0% { transform: rotate(10deg) translateY(0) scale(1); opacity: 0.10; }
+  50% { transform: rotate(12deg) translateY(-16px) scale(1.02); opacity: 0.14; }
+  100% { transform: rotate(10deg) translateY(0) scale(1); opacity: 0.10; }
+}
+
+@keyframes floatA {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(18px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes floatB {
+  0% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-14px) scale(1.02); }
+  100% { transform: translateY(0px) scale(1); }
+}
+
+.donation-center {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #08311a; /* darker text for legibility */
+  background: rgba(255,255,255,0.96); /* almost solid white panel for contrast */
+  padding: 34px 48px;
+  border-radius: 16px;
+  border: 1px solid rgba(6,80,34,0.06);
+  box-shadow: 0 18px 48px rgba(6,70,34,0.06);
+}
+
+.donation-center h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.6rem;
+  color: #07421f; /* deep green heading for brand */
+  text-shadow: none;
+  margin-bottom: 8px;
+}
+
+.donation-sub {
+  color: #064022;
+  font-size: 1.05rem;
+  margin-bottom: 18px;
+  opacity: 0.95;
+}
+
+.cta-btn {
+  background: linear-gradient(180deg, #12d76a 0%, #08a24a 100%);
+  color: #fff;
+  border: none;
+  padding: 14px 26px;
+  border-radius: 12px;
+  font-size: 1.05rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(6,150,70,0.28), 0 2px 6px rgba(0,0,0,0.12) inset;
+  transition: transform 0.22s cubic-bezier(.2,.9,.3,1), box-shadow 0.22s ease;
+}
+
+.cta-btn:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 18px 44px rgba(6,150,70,0.32); }
+
+.cta-btn:focus { outline: none; box-shadow: 0 0 0 6px rgba(7,155,67,0.12), 0 18px 44px rgba(6,150,70,0.32); }
+
+/* gentle pulsing to draw attention without being loud */
+.cta-pulse { animation: pulseGlow 3.6s ease-in-out infinite; }
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 10px 30px rgba(7,155,67,0.18); }
+  50% { box-shadow: 0 16px 48px rgba(7,155,67,0.22); }
+  100% { box-shadow: 0 10px 30px rgba(7,155,67,0.18); }
+}
+
+/* remove clover elements as requested; keep reduced-motion rule for CTA */
+@media (prefers-reduced-motion: reduce) {
+  .cta-pulse { animation: none !important; }
+}
+
+/* Modal tweaks for CTA */
+.modal { display: none; }
+.modal-content { max-width: 620px; }
+.modal-close { position: absolute; right: 14px; top: 10px; background: transparent; border: none; font-size: 28px; cursor: pointer; color: #777; }
+.modal-close:hover { color: #0da119; }
+
+/* make sure form styles don't interfere (they're not used now) */
+.doacao-form, .tipo-roupa-container, .opcoes-roupa { display: none !important; }
 
 .tipo-roupa-container h3 {
   margin-bottom: 10px;
@@ -459,4 +746,217 @@ nav ul li a:hover {
 .btn-trevo:hover {
   color: #0a8d16;
   transform: rotate(15deg) scale(1.1);
+}
+
+/* -----------------------------
+   Enhanced Donation Hero Background
+   (overrides to make the hero more attractive)
+   ----------------------------- */
+.doacao-hero .donation-overlay {
+  /* layered gradients for depth + soft highlights */
+  background:
+    radial-gradient(800px 400px at 10% 20%, rgba(255,255,255,0.45), rgba(255,255,255,0) 28%),
+    radial-gradient(600px 300px at 90% 80%, rgba(255,255,255,0.32), rgba(0,0,0,0) 30%),
+    linear-gradient(135deg, #e9fff6 0%, #d3f8e9 38%, #9fd8b0 100%) !important;
+  background-size: 140% 140%, 120% 120%, 200% 200% !important;
+  filter: blur(14px) saturate(120%);
+  animation: shiftBG 14s linear infinite, gentleHue 22s ease-in-out infinite;
+}
+
+.doacao-hero .overlay-sparkles {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.06) 0, rgba(255,255,255,0) 20%),
+    radial-gradient(circle at 75% 15%, rgba(255,255,255,0.05) 0, rgba(255,255,255,0) 18%),
+    radial-gradient(circle at 45% 80%, rgba(255,255,255,0.04) 0, rgba(255,255,255,0) 22%);
+  background-repeat: no-repeat;
+  animation: sparklesDrift 9s linear infinite;
+  opacity: 0.95;
+}
+
+@keyframes sparklesDrift {
+  0% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-12px) scale(1.02); }
+  100% { transform: translateY(0px) scale(1); }
+}
+
+@keyframes gentleHue {
+  0% { filter: saturate(110%) hue-rotate(0deg); }
+  50% { filter: saturate(120%) hue-rotate(3deg); }
+  100% { filter: saturate(110%) hue-rotate(0deg); }
+}
+
+/* green shift for subtle gradient movement */
+@keyframes greenShift {
+  0% { background-position: 0% 50%, 0% 50%; }
+  50% { background-position: 100% 50%, 50% 60%; }
+  100% { background-position: 0% 50%, 0% 50%; }
+}
+
+/* pulsing glow to add life */
+@keyframes glowPulse {
+  0% { opacity: 0.55; transform: translateY(0) scale(1); }
+  50% { opacity: 0.85; transform: translateY(-6px) scale(1.02); }
+  100% { opacity: 0.55; transform: translateY(0) scale(1); }
+}
+
+/* sparkle subtle pulse */
+@keyframes sparklePulse {
+  0% { opacity: 0.95; filter: blur(0px); }
+  50% { opacity: 1; filter: blur(1.6px) brightness(1.05); }
+  100% { opacity: 0.95; filter: blur(0px); }
+}
+
+/* Triangular beam artwork (centered) similar to reference image */
+.doacao-hero::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -10%;
+  transform: translateX(-50%);
+  width: 120%;
+  height: 70%;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(8,162,74,0.14) 0%, rgba(255,255,255,0) 65%);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  filter: blur(34px) saturate(120%);
+  mix-blend-mode: multiply;
+  opacity: 0.95;
+}
+
+/* soft diagonal floor shadow to add depth */
+.doacao-hero::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -30%;
+  width: 100%;
+  height: 60%;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(160deg, rgba(6,120,55,0.05) 0%, rgba(255,255,255,0) 40%);
+  transform: skewY(-8deg);
+  filter: blur(28px);
+}
+
+/* glass panel tweak for the center box */
+.donation-center {
+  background: linear-gradient(180deg, rgba(255,255,255,0.94), rgba(255,255,255,0.90));
+  padding: 36px 52px !important;
+  border-radius: 18px !important;
+  border: 1px solid rgba(255,255,255,0.65) !important;
+  box-shadow: 0 28px 64px rgba(6,70,34,0.10) !important;
+  backdrop-filter: blur(6px) saturate(120%);
+}
+
+/* reduced-motion respect */
+@media (prefers-reduced-motion: reduce) {
+  .doacao-hero .donation-overlay,
+  .doacao-hero .overlay-sparkles,
+  .doacao-hero::before,
+  .doacao-hero::after { animation: none !important; transition: none !important; }
+  .cta-pulse { animation: none !important; }
+}
+
+/* --- Enhanced decorative art: particles, leaves, floor grid --- */
+.hero-art { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.particle-wrapper { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.particle-wrapper .p { position: absolute; width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.95); opacity: 0.9; transform: translate3d(0,0,0); box-shadow: 0 0 8px rgba(255,255,255,0.6); }
+/* place particles with variety using nth-child */
+.particle-wrapper .p:nth-child(1){ left:8%; top:72%; animation: drift 9s linear infinite; width:8px; height:8px; }
+.particle-wrapper .p:nth-child(2){ left:20%; top:20%; animation: drift 7.6s linear infinite; opacity:0.75; }
+.particle-wrapper .p:nth-child(3){ left:38%; top:54%; animation: drift 10.2s linear infinite; width:5px; height:5px; }
+.particle-wrapper .p:nth-child(4){ left:62%; top:18%; animation: drift 8.8s linear infinite; opacity:0.82; }
+.particle-wrapper .p:nth-child(5){ left:74%; top:66%; animation: drift 11s linear infinite; width:7px; height:7px; }
+.particle-wrapper .p:nth-child(6){ left:52%; top:42%; animation: drift 9.6s linear infinite; opacity:0.9; }
+.particle-wrapper .p:nth-child(7){ left:12%; top:38%; animation: drift 12s linear infinite; width:6px; height:6px; }
+.particle-wrapper .p:nth-child(8){ left:86%; top:28%; animation: drift 10s linear infinite; opacity:0.7; }
+.particle-wrapper .p:nth-child(9){ left:44%; top:8%; animation: drift 8s linear infinite; width:9px; height:9px; }
+.particle-wrapper .p:nth-child(10){ left:30%; top:84%; animation: drift 13s linear infinite; opacity:0.6; }
+.particle-wrapper .p:nth-child(11){ left:68%; top:78%; animation: drift 14s linear infinite; opacity:0.7; }
+.particle-wrapper .p:nth-child(12){ left:54%; top:6%; animation: drift 7.2s linear infinite; width:4px; height:4px; }
+
+@keyframes drift {
+  0% { transform: translateY(0) scale(1) rotate(0deg); opacity: 1; }
+  50% { transform: translateY(-28px) scale(1.08) rotate(8deg); opacity: 0.7; }
+  100% { transform: translateY(0) scale(1) rotate(0deg); opacity: 1; }
+}
+
+/* floating leaves: use currentColor so we can tint with CSS */
+.leaf { position: absolute; width: 88px; height: 88px; left: 12%; top: 18%; color: rgba(6,120,55,0.92); background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.12), rgba(255,255,255,0) 35%); mask: url(#leaf) no-repeat center / contain; -webkit-mask: url(#leaf) no-repeat center / contain; opacity: 0.95; transform-origin: center; filter: drop-shadow(0 10px 22px rgba(4,60,30,0.12)); animation: leafDrift 8s ease-in-out infinite; z-index:1; }
+.leaf-1 { left: 8%; top: 20%; transform: rotate(-12deg) scale(1.05); }
+.leaf-2 { left: 78%; top: 24%; transform: rotate(18deg) scale(0.9); animation-duration: 10s; }
+.leaf-3 { left: 48%; top: 62%; transform: rotate(-6deg) scale(1.02); animation-duration: 9s; }
+
+@keyframes leafDrift {
+  0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 0.98; }
+  50% { transform: translateY(-22px) rotate(6deg) scale(1.04); opacity: 0.86; }
+  100% { transform: translateY(0) rotate(0deg) scale(1); opacity: 0.98; }
+}
+
+/* stronger, colored triangular beam (adds a soft spotlight) */
+.doacao-hero .beam-strong { position: absolute; left: 50%; bottom: -8%; transform: translateX(-50%); width: 120%; height: 80%; z-index: 0; pointer-events: none; background: radial-gradient(1200px 600px at 50% 10%, rgba(12,170,72,0.14), rgba(12,170,72,0.06) 18%, rgba(255,255,255,0) 55%); clip-path: polygon(50% 0%, 0% 100%, 100% 100%); filter: blur(34px) saturate(120%); mix-blend-mode: screen; }
+
+/* subtle floor grid to suggest a stage/floor under the hero */
+.floor-grid { position: absolute; left: 0; right: 0; bottom: -8%; height: 36%; z-index: 0; background-image: repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0 1px, transparent 1px 40px), linear-gradient(180deg, rgba(6,120,55,0.04), rgba(255,255,255,0)); transform: skewY(-6deg); filter: blur(18px) saturate(100%); }
+
+/* gentle vignette to focus center */
+.doacao-hero::marker { }
+.doacao-hero .donation-overlay::marker { }
+.doacao-hero::after { /* keep existing rules; add subtle vignette */ }
+.doacao-hero { box-shadow: inset 0 -120px 160px rgba(6,40,20,0.04); }
+
+/* Override & refinements: center content, button styles, and refine art placement */
+.donation-inner { max-width: 720px; margin: 0 auto; display:flex; flex-direction:column; align-items:center; gap:14px; }
+.donation-title { font-size: 1.6rem !important; font-weight:700; margin:0; color: #0b5b2b; }
+.doacao-hero #doar-titulo, .donation-title { text-transform: none !important; letter-spacing: 0.4px; text-align: center; }
+.donation-center { z-index: 3; }
+.donation-sub { font-size: 0.98rem; margin: 0; color: #09502a; }
+.donation-center { display:flex; align-items:center; justify-content:center; }
+.donation-actions { display:flex; gap:14px; align-items:center; justify-content:center; margin-top:6px; }
+
+/* Buttons: pill primary and subtle secondary */
+.cta-btn { border-radius:999px; padding:12px 26px; font-size:1rem; font-weight:700; }
+.cta-primary { background: linear-gradient(180deg,#19e07a 0%,#07a24a 100%); color:#fff; box-shadow:0 14px 36px rgba(6,150,70,0.22); }
+.cta-primary:hover { transform: translateY(-4px) scale(1.02); box-shadow:0 20px 50px rgba(6,150,70,0.28); }
+.cta-secondary { background: transparent; color:#0a7c3a; border:2px solid rgba(10,124,58,0.12); box-shadow:none; }
+.cta-secondary:hover { background: rgba(10,124,58,0.06); }
+
+/* Center hero art around the donation center */
+.hero-art { display:block; z-index:0; }
+.particle-wrapper .p:nth-child(1){ left:42%; top:70%; }
+.particle-wrapper .p:nth-child(2){ left:50%; top:24%; }
+.particle-wrapper .p:nth-child(3){ left:36%; top:52%; }
+.particle-wrapper .p:nth-child(4){ left:62%; top:22%; }
+.particle-wrapper .p:nth-child(5){ left:70%; top:64%; }
+.particle-wrapper .p:nth-child(6){ left:52%; top:42%; }
+.particle-wrapper .p:nth-child(7){ left:26%; top:38%; }
+.particle-wrapper .p:nth-child(8){ left:84%; top:28%; }
+.particle-wrapper .p:nth-child(9){ left:46%; top:8%; }
+.particle-wrapper .p:nth-child(10){ left:34%; top:84%; }
+.particle-wrapper .p:nth-child(11){ left:58%; top:78%; }
+.particle-wrapper .p:nth-child(12){ left:54%; top:6%; }
+
+.leaf-1 { left:36%; top:28%; transform: rotate(-12deg) scale(1.05); }
+.leaf-2 { left:64%; top:28%; transform: rotate(14deg) scale(0.95); }
+.leaf-3 { left:50%; top:56%; transform: rotate(-6deg) scale(1.02); }
+
+/* ensure donation panel is centered and constrained */
+.donation-center { max-width: 820px; width: 94%; margin: 0 auto; }
+
+/* small adapt for very narrow screens */
+@media (max-width: 640px) {
+  .donation-inner { padding: 18px; }
+  .donation-title { font-size: 1.4rem; }
+  .cta-btn { padding: 10px 18px; font-size:0.95rem; }
+  .leaf { width:64px; height:64px; }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .particle-wrapper .p, .leaf { animation: none !important; }
 }
