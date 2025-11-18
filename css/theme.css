@@ -1,0 +1,119 @@
+/* Theme extracted from EcoFashionApp (cores e tipografia) */
+/* Prefer local font when available, fallback to Google Fonts */
+@font-face{
+  font-family: 'Space Mono';
+  src: url('../assets/fonts/SpaceMono-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+:root{
+  --font-base: 'Space Mono', monospace;
+  --text: #11181C; /* from app Colors.light.text */
+  --background: #FFFFFF; /* app background */
+  --primary: #2E7D32; /* green used in app styles */
+  --tint: #0a7ea4; /* app tint color */
+  --muted: #687076;
+  --danger: #B71C1C;
+  --card-bg: #FFFFFF;
+  --radius: 12px;
+  --shadow: 0 10px 30px rgba(6,70,34,0.06);
+  --card-shadow: 0 12px 36px rgba(6,70,34,0.08);
+  --btn-shadow: 0 12px 30px rgba(6,120,50,0.14);
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 28px;
+}
+
+/* Base reset for theme */
+html,body{
+  font-family: var(--font-base);
+  color: var(--text);
+  background: var(--background);
+}
+
+/* Base layout helpers */
+.container{ width:100%; max-width:1100px; margin:0 auto; padding:0 16px; box-sizing:border-box; }
+
+/* Headings */
+h1, h2, h3 { font-family: var(--font-base); color: var(--text); margin:0 0 12px 0; }
+h1{ font-size:2.2rem; letter-spacing:1px; }
+h2{ font-size:1.6rem; }
+
+/* Logo styles to match app */
+.logo h1{ font-family: var(--font-base); font-size:28px; color:var(--primary); margin:0; }
+
+
+/* Header / Nav theme overrides */
+header{ background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.98)); }
+nav a:not(.btn-trevo){ background: linear-gradient(90deg,var(--primary), #1f6a29); color: #fff; }
+nav a:not(.btn-trevo):hover, nav a.active{ background: linear-gradient(90deg,var(--primary), #1f6a29); color:#fff; }
+.btn-trevo{ background: var(--tint); color:#fff; }
+
+/* Buttons */
+button, .btn, .cta-btn, .card-link{ font-family: var(--font-base); border-radius: 999px; }
+button, .btn-primary, .cta-primary{ background: linear-gradient(180deg,var(--primary), #1f6a29); color:#fff; border:0; box-shadow: var(--btn-shadow); }
+.btn-ghost, .cta-secondary{ border-color: rgba(46,125,50,0.12); color:var(--primary); background: transparent; }
+
+/* Make primary buttons slightly larger to match touch targets in the app */
+.btn-primary, .cta-primary, button.loginButton, .loginButton {
+  padding: 12px 20px; font-size:1rem; border-radius:28px; display:inline-flex; align-items:center; justify-content:center; gap:10px; transition: transform .14s ease, box-shadow .14s ease;
+}
+.btn-primary:hover, .cta-primary:hover { transform: translateY(-3px); box-shadow: 0 18px 44px rgba(6,150,70,0.22); }
+.btn-primary:active, .cta-primary:active { transform: translateY(0); }
+.btn-ghost:hover, .cta-secondary:hover { background: rgba(46,125,50,0.06); }
+
+
+/* Cards and panels */
+.card-site, .produto-item, .donation-panel, .loginCard, .adminCard, .card-referencia{ background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--card-shadow); transition: transform .18s ease, box-shadow .18s ease; }
+
+.card-site:hover, .produto-item:hover { transform: translateY(-6px); box-shadow: 0 20px 54px rgba(6,80,34,0.10); }
+
+.card-site a.card-link, .card-link { background: linear-gradient(90deg,var(--primary), #1f6a29); color:#fff; padding:8px 14px; border-radius:20px; display:inline-block; }
+
+
+/* Links and highlights */
+a, .signupLink { color: var(--tint); }
+
+/* Minor form tweaks to match app */
+input, textarea { font-family: var(--font-base); color: var(--text); }
+
+/* Inputs styled like app */
+input, textarea, .input {
+  border:1px solid rgba(0,0,0,0.08); background:#fbfbfb; padding:10px 12px; border-radius:10px; width:100%; box-sizing:border-box; transition: box-shadow .12s ease, border-color .12s ease; }
+input:focus, textarea:focus, .input:focus { outline: none; border-color: rgba(10,126,164,0.18); box-shadow: 0 8px 20px rgba(10,126,164,0.06); }
+
+/* Slightly larger touch targets for product cards on small screens */
+@media (max-width:720px){ .card-site, .produto-item { padding: var(--spacing-md); } }
+
+
+/* Mobile safety: ensure font scales */
+@media (max-width:480px){ body{ font-size: 15px; } }
+
+/* Responsive helpers to mirror app layout */
+@media (max-width:720px){
+  header{ padding:10px 12px; }
+  .logo h1{ font-size:18px; }
+  nav ul{ display:none !important; }
+  .mobile-menu-button{ display:flex !important; }
+  .card-site, .produto-item{ width:100% !important; }
+  .btn-primary, .cta-primary{ width:100%; }
+}
+
+@media (max-width:480px){
+  h1{ font-size:1.4rem; }
+  .introducao h1, .introducao p { padding: 0 8px; }
+}
+
+/* Accessibility: focus outline matching theme */
+a:focus, button:focus, input:focus { outline: 3px solid rgba(10,126,164,0.14); outline-offset: 3px; }
+
+/* Make modals match app look */
+.modal .modal-dialog, .modal-content { border-radius: 14px; }
+
+/* Small utility */
+.theme-primary-text{ color:var(--primary); }
+
+/* End of theme */
