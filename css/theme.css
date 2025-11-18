@@ -12,9 +12,12 @@
 :root{
   --font-base: 'Space Mono', monospace;
   --text: #11181C; /* from app Colors.light.text */
-  --background: #FFFFFF; /* app background */
-  --primary: #2E7D32; /* green used in app styles */
-  --tint: #0a7ea4; /* app tint color */
+  --background: #f6f7f6; /* page background (light grey) */
+  --hero-bg: #eafaf1; /* soft mint hero background */
+  --card-border: rgba(6,70,34,0.06);
+  --primary: #2E7D32; /* primary set to green to match site preference */
+  --accent-green: #2E7D32; /* secondary green used in some components */
+  --tint: #2E7D32; /* tint aligned to green for site-wide consistency */
   --muted: #687076;
   --danger: #B71C1C;
   --card-bg: #FFFFFF;
@@ -22,6 +25,8 @@
   --shadow: 0 10px 30px rgba(6,70,34,0.06);
   --card-shadow: 0 12px 36px rgba(6,70,34,0.08);
   --btn-shadow: 0 12px 30px rgba(6,120,50,0.14);
+  --nav-active: #FF6B2D; /* orange used for active bottom-tab */
+  --nav-active-bg: rgba(255,107,45,0.10);
   --spacing-sm: 8px;
   --spacing-md: 16px;
   --spacing-lg: 28px;
@@ -39,15 +44,57 @@ html,body{
 
 /* Headings */
 h1, h2, h3 { font-family: var(--font-base); color: var(--text); margin:0 0 12px 0; }
-h1{ font-size:2.2rem; letter-spacing:1px; }
-h2{ font-size:1.6rem; }
+/* Title and subtitle colors aligned with app */
+h1{ font-size:2.2rem; letter-spacing:1px; color: var(--accent-green); font-weight:800; }
+h2{ font-size:1.6rem; color: var(--text); font-weight:700; }
+h3{ color: var(--tint); font-weight:700; }
+
+/* Subtitles / secondary headings and helper text */
+.subtitle, .donation-sub, .beneficio-item h4, .produto-info p { color: var(--muted); }
+.produto-info h3, .card-title { color: var(--tint); font-weight:800; }
 
 /* Logo styles to match app */
 .logo h1{ font-family: var(--font-base); font-size:28px; color:var(--primary); margin:0; }
 
+/* Logo image when present */
+.site-logo{ max-height:42px; display:block; }
+
+/* Trevo button image */
+.btn-trevo img{ height:22px; width:auto; display:block; }
+
+/* Hero / page intro to mirror app's mint blocks */
+.hero {
+  background: var(--hero-bg);
+  padding: var(--spacing-lg);
+  border-radius: 14px;
+  box-shadow: 0 6px 30px rgba(6,70,34,0.04);
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Search bar used in explore page */
+.search-input {
+  display:flex; align-items:center; gap:10px; background:#fff; padding:12px 16px; border-radius:999px; box-shadow: 0 6px 18px rgba(0,0,0,0.06); border:1px solid rgba(0,0,0,0.04);
+}
+.search-input input{ border:0; outline:none; flex:1; font-family:var(--font-base); font-size:1rem; }
+
+/* filter pills */
+.filter-pill{ display:inline-flex; align-items:center; gap:8px; padding:8px 14px; border-radius:999px; background: #fff; border:1px solid var(--card-border); color:var(--primary); font-weight:700; box-shadow: 0 6px 18px rgba(0,0,0,0.04); }
+
+/* coin badge used on top of some pages */
+.coin-badge{ display:inline-block; background:#fff; padding:18px 28px; border-radius:20px; box-shadow: 0 12px 40px rgba(6,70,34,0.10); color:var(--primary); font-weight:800; font-size:1.6rem; }
+
+/* Generic card appearance that mirrors the app */
+.ui-card{ background: var(--card-bg); border-radius:16px; padding:16px; box-shadow: var(--card-shadow); border:1px solid var(--card-border); }
+
+/* Small utility for green titles used in product cards */
+.title-green{ color:var(--accent-green); font-weight:800; }
+
 
 /* Header / Nav theme overrides */
+.header-transparent{ background: rgba(255,255,255,0.6); backdrop-filter: blur(6px); }
+/* Header background (transparent blur) but keep color control to theme variables */
 header{ background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.98)); }
+/* Nav buttons use primary/tint colors from theme (reverted) */
 nav a:not(.btn-trevo){ background: linear-gradient(90deg,var(--primary), #1f6a29); color: #fff; }
 nav a:not(.btn-trevo):hover, nav a.active{ background: linear-gradient(90deg,var(--primary), #1f6a29); color:#fff; }
 .btn-trevo{ background: var(--tint); color:#fff; }
@@ -61,7 +108,7 @@ button, .btn-primary, .cta-primary{ background: linear-gradient(180deg,var(--pri
 .btn-primary, .cta-primary, button.loginButton, .loginButton {
   padding: 12px 20px; font-size:1rem; border-radius:28px; display:inline-flex; align-items:center; justify-content:center; gap:10px; transition: transform .14s ease, box-shadow .14s ease;
 }
-.btn-primary:hover, .cta-primary:hover { transform: translateY(-3px); box-shadow: 0 18px 44px rgba(6,150,70,0.22); }
+.btn-primary:hover, .cta-primary:hover { transform: translateY(-3px); box-shadow: 0 18px 44px rgba(6,120,50,0.18); }
 .btn-primary:active, .cta-primary:active { transform: translateY(0); }
 .btn-ghost:hover, .cta-secondary:hover { background: rgba(46,125,50,0.06); }
 
@@ -83,10 +130,33 @@ input, textarea { font-family: var(--font-base); color: var(--text); }
 /* Inputs styled like app */
 input, textarea, .input {
   border:1px solid rgba(0,0,0,0.08); background:#fbfbfb; padding:10px 12px; border-radius:10px; width:100%; box-sizing:border-box; transition: box-shadow .12s ease, border-color .12s ease; }
-input:focus, textarea:focus, .input:focus { outline: none; border-color: rgba(10,126,164,0.18); box-shadow: 0 8px 20px rgba(10,126,164,0.06); }
+input:focus, textarea:focus, .input:focus { outline: none; border-color: rgba(46,125,50,0.18); box-shadow: 0 8px 20px rgba(46,125,50,0.06); }
 
 /* Slightly larger touch targets for product cards on small screens */
 @media (max-width:720px){ .card-site, .produto-item { padding: var(--spacing-md); } }
+
+/* Bottom navigation (mobile) to mimic the app bottom tabs */
+/* Bottom navigation (mobile) to mimic the app bottom tabs */
+.bottom-nav{
+  position:fixed; left:0; right:0; bottom:0; height:72px; display:flex; align-items:center; justify-content:space-around; background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,250,250,0.95)); box-shadow: 0 -6px 20px rgba(0,0,0,0.06); z-index:2200; padding:8px 12px; gap:6px;
+}
+.bottom-nav a{ display:flex; flex-direction:column; align-items:center; justify-content:center; color:var(--muted); text-decoration:none; font-weight:700; font-size:0.78rem; flex:1; max-width:84px; height:56px; border-radius:12px; transition: all .18s ease; }
+.bottom-nav a .bn-icon{ font-size:20px; display:block; margin-bottom:4px; filter:grayscale(1) opacity(.8); }
+
+/* Active tab: orange tint, border/pill and colored icon/label matching the attachment */
+.bottom-nav a.active{
+  color: var(--nav-active);
+  background: var(--nav-active-bg);
+  border: 2px solid var(--nav-active);
+  box-shadow: 0 8px 24px rgba(255,107,45,0.12);
+  transform: translateY(-4px);
+}
+.bottom-nav a.active .bn-icon{ filter:none; }
+
+/* Focus state for keyboard navigation */
+.bottom-nav a:focus{ outline:none; box-shadow: 0 0 0 4px rgba(255,107,45,0.08); border-radius:12px; }
+
+@media(min-width:721px){ .bottom-nav{ display:none; } }
 
 
 /* Mobile safety: ensure font scales */
@@ -108,7 +178,7 @@ input:focus, textarea:focus, .input:focus { outline: none; border-color: rgba(10
 }
 
 /* Accessibility: focus outline matching theme */
-a:focus, button:focus, input:focus { outline: 3px solid rgba(10,126,164,0.14); outline-offset: 3px; }
+a:focus, button:focus, input:focus { outline: 3px solid rgba(46,125,50,0.14); outline-offset: 3px; }
 
 /* Make modals match app look */
 .modal .modal-dialog, .modal-content { border-radius: 14px; }

@@ -8,9 +8,9 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
+  font-family: var(--font-base, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif);
+  background: var(--background, #ffffff);
+  color: var(--text, #333);
 }
 
 /* Header/navigation consolidated to `css/common.css` */
@@ -18,15 +18,18 @@ body {
 
 /* Seção de Introdução */
 .introducao {
-    background: linear-gradient(to right, #a0ffc7, #ccffe1);
-    padding: 60px 20px;
-    text-align: center;
-    animation: slideInDown 1s ease-in-out;
+  background: var(--hero-bg);
+  padding: 48px 20px;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(6,70,34,0.04);
+  animation: slideInDown 1s ease-in-out;
 }
 
 .introducao h1 {
-    font-size: 3em;
-    margin-bottom: 20px;
+  font-size: 2.2rem;
+  margin-bottom: 14px;
+  color: var(--primary);
 }
 
 /* Seção de Moda Sustentável */

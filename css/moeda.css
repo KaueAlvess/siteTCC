@@ -230,12 +230,12 @@ img {
   .card-moeda h2{ font-size:1.2rem; }
 }
 
-@media (max-width:480px){
-
-/* Ensure mobile menu button is visible on this page and above other content */
+/* Ensure mobile menu button is visible on small screens and above other content */
 @media (max-width:720px){
   .mobile-menu-button { display:flex !important; z-index:2400 !important; }
   .mobile-menu-overlay { z-index:2300 !important; }
+  /* Show the fallback mobile menu button on moeda.html when JS injection isn't available */
+  #mobile-menu-btn-fallback{ display:flex; }
 }
 
 /* Styling for the fallback button in moeda.html to make it visible */
@@ -245,9 +245,8 @@ img {
 #mobile-menu-overlay-fallback .mobile-menu a{ display:block; padding:12px; color:#08311a; font-weight:700; text-decoration:none; border-bottom:1px solid #f0f0f0; }
 #mobile-menu-btn-fallback:active{ transform:scale(0.98); }
 
-@media (max-width:720px){
-  #mobile-menu-btn-fallback{ display:flex; }
-}
+/* Small-screen tweaks */
+@media (max-width:480px){
   .modal-content iframe{ height:50vh; }
   .card-moeda{ padding:12px; }
   .card-moeda p{ font-size:0.97rem; }

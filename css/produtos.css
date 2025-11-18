@@ -7,9 +7,9 @@
 
 /* Body */
 body {
-  font-family: 'Arial', sans-serif;
-  background-color: #a0ffc7;
-  color: #333;
+  font-family: var(--font-base, 'Arial', sans-serif);
+  background: var(--background, #ffffff);
+  color: var(--text, #333);
 }
 
 /* Header/navigation consolidated to `css/common.css` */
@@ -22,47 +22,40 @@ nav ul li a:hover {
 
 /* Cards para outros sites */
 .cards-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 28px;
   padding: 40px 20px;
   max-width: 1200px;
   margin: auto;
 }
 
 .card-site {
-  background-color: white;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 220px;
+  background-color: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
   text-align: center;
-  padding: 20px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 18px;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
   text-decoration: none;
   color: inherit;
-  border: 2px solid transparent;
-  animation: glow-card 2s infinite alternate;
+  border: 1px solid var(--card-border);
 }
 
 .card-site:hover {
-  transform: translateY(-5px) scale(1.03);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 0 15px rgba(13, 161, 25, 0.7);
-  border-color: #0da119;
+  transform: translateY(-6px);
+  box-shadow: 0 22px 54px rgba(6,80,34,0.08);
 }
 
 .card-img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  margin: 0 auto 15px;
+  width: 160px;
+  height: 160px;
+  border-radius: 12px;
+  margin: 0 auto 14px;
   object-fit: cover;
-  border: 3px solid #0da119;
-  transition: transform 0.3s ease;
-}
-
-.card-site:hover .card-img {
-  transform: rotate(5deg);
+  border: 6px solid rgba(46,125,50,0.04);
+  background:#fff; display:block;
+  padding:6px;
 }
 
 .card-title {

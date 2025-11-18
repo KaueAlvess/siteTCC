@@ -121,3 +121,38 @@ document.addEventListener('DOMContentLoaded', function () {
   // re-evaluate on resize (throttled)
   var to; window.addEventListener('resize', function(){ clearTimeout(to); to = setTimeout(createMobileMenu, 200); });
 })();
+
+// Inject a bottom navigation bar (mimics mobile app bottom-tabs)
+(function(){
+  function createBottomNav(){
+    if (document.querySelector('.bottom-nav')) return; // already present
+    if (window.innerWidth > 720) return; // only show on small screens
+
+    var nav = document.createElement('nav');
+    nav.className = 'bottom-nav';
+
+    var items = [
+      {href:'index.html', icon:'🏠', label:'Início'},
+      {href:'produtos.html', icon:'🛍️', label:'Produtos'},
+      {href:'doacao.html', icon:'❤️', label:'Doar'},
+      {href:'sobrenos.html', icon:'ℹ️', label:'Sobre'},
+      {href:'moeda.html', icon:'🍀', label:'Trevos'}
+    ];
+
+    items.forEach(function(it){
+      var a = document.createElement('a');
+      a.href = it.href;
+      a.innerHTML = '<span class="bn-icon">'+it.icon+'</span><span class="bn-label">'+it.label+'</span>';
+      // mark active
+      try{ var path = window.location.pathname.split('/').pop(); if(path === it.href || (path === '' && it.href === 'index.html')) a.classList.add('active'); }
+      catch(e){}
+      nav.appendChild(a);
+    });
+
+    document.body.appendChild(nav);
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', createBottomNav);
+  else createBottomNav();
+  var t2; window.addEventListener('resize', function(){ clearTimeout(t2); t2 = setTimeout(function(){ var nb = document.querySelector('.bottom-nav'); if(nb && window.innerWidth>720){ nb.remove(); } else if(!nb && window.innerWidth<=720) createBottomNav(); }, 200); });
+})();

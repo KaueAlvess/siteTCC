@@ -13,7 +13,7 @@
 
   <header>
     <div class="logo">
-      <h1>EcoFashion</h1>
+      <a href="index.html"><img src="images/logo.png" alt="EcoFashion" class="site-logo"></a>
     </div>
 
     <nav role="navigation" aria-label="Main Navigation">
@@ -23,7 +23,7 @@
         <li><a href="doacao.html">Doar</a></li>
         <li><a href="sobrenos.html">Sobre nós</a></li>
         <!-- Botão Trevo (mantido no header) -->
-        <li><a href="moeda.html" class="btn-trevo" title="Moedas Sustentáveis">🍀</a></li>
+        <li><a href="moeda.html" class="btn-trevo" title="Moedas Sustentáveis"><img src="images/trevo.png" alt="Trevos"></a></li>
       </ul>
     </nav>
     <!-- Static mobile menu button fallback (visible when JS injection fails) -->
@@ -44,13 +44,13 @@
 
   <!-- Card centralizado -->
   <div class="container">
-    <div class="card-moeda">
-      <img src="https://static.vecteezy.com/ti/vetor-gratis/p1/7069441-sorte-trevo-folha-quatro-isolado-no-branco-para-o-dia-de-sao-patrick-vetor.jpg"  alt="Trevo">
-      <h2>Troque por Trevos!</h2>
-      <p>Aqui na EcoFashion, ao doar roupas você recebe moedas de troca chamadas <strong>Trevos</strong>. Essas moedas não são descontos — elas servem exclusivamente para trocar por produtos disponíveis no catálogo do app. Trevos são ganhos somente quando uma doação é confirmada pela nossa equipe.</p>
+    <div class="ui-card card-moeda" style="text-align:center; padding:28px;">
+      <img src="images/trevo.png"  alt="Trevo" style="max-width:120px;margin:0 auto 12px; display:block;" />
+      <h2 class="title-green">Troque por Trevos!</h2>
+      <p style="color:var(--muted); max-width:760px;margin:12px auto;">Aqui na EcoFashion, ao doar roupas você recebe moedas de troca chamadas <strong>Trevos</strong>. Essas moedas não são descontos — elas servem exclusivamente para trocar por produtos disponíveis no catálogo do app. Trevos são ganhos somente quando uma doação é confirmada pela nossa equipe.</p>
 
       <!-- Botão personalizado (abre modal com o app embutido) -->
-      <button id="open-app" class="btn-app" type="button">Funcionalidade disponível no app EcoFashion</button>
+      <button id="open-app" class="btn-primary" type="button">Funcionalidade disponível no app EcoFashion</button>
     </div>
   </div>
 
