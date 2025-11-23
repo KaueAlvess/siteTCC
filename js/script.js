@@ -19,114 +19,23 @@ document.addEventListener('DOMContentLoaded', function () {
   if (window.console && console.log) console.log('js/script.js carregado');
 });
 
-// Mobile menu injector: floating button + overlay (only on small screens)
-(function(){
-  function createMobileMenu(){
-    if (window.innerWidth > 720) return; // only on small screens
-
-    // avoid duplicate
-    if (document.querySelector('.mobile-menu-button')) return;
-
-    var btn = document.createElement('button');
-    btn.className = 'mobile-menu-button';
-    btn.setAttribute('aria-label','Abrir menu');
-    btn.innerHTML = '\u2630'; // hamburger
-
-    var overlay = document.createElement('div');
-    overlay.className = 'mobile-menu-overlay';
-    overlay.setAttribute('aria-hidden','true');
-
-    var menu = document.createElement('div');
-    menu.className = 'mobile-menu';
-
-    var closeBtn = document.createElement('button');
-    closeBtn.className = 'close';
-    closeBtn.innerHTML = '✕';
-    closeBtn.setAttribute('aria-label','Fechar menu');
-    menu.appendChild(closeBtn);
-
-    var links = [
-      {href:'index.html', label:'Início'},
-      {href:'produtos.html', label:'Produtos'},
-      {href:'doacao.html', label:'Doar'},
-      {href:'sobrenos.html', label:'Sobre nós'},
-      {href:'moeda.html', label:'Trevos'}
-    ];
-
-    links.forEach(function(item){
-      var a = document.createElement('a');
-      a.href = item.href;
-      a.textContent = item.label;
-      menu.appendChild(a);
-    });
-
-    overlay.appendChild(menu);
-    document.body.appendChild(overlay);
-    // Append the mobile menu button into the header when possible so it remains visible
-    var headerEl = document.querySelector('header');
-    if (headerEl) headerEl.appendChild(btn);
-    else document.body.appendChild(btn);
-
-    // Ensure the button is visible on small screens even if CSS wasn't applied yet
-    try{
-      if (window.innerWidth <= 720){
-        btn.style.display = 'flex';
-        btn.style.zIndex = '2200';
-        btn.style.position = 'fixed';
-        btn.style.left = '16px';
-        btn.style.top = 'calc(var(--header-height,72px) + 8px)';
-        btn.style.width = '56px';
-        btn.style.height = '56px';
-        btn.style.borderRadius = '50%';
-        btn.style.alignItems = 'center';
-        btn.style.justifyContent = 'center';
-      }
-    }catch(e){ console.warn('Erro ao aplicar estilos inline no botão móvel', e); }
-
-    function openMenu(){
-      overlay.style.display = 'flex';
-      // allow layout then add classes to trigger CSS transitions
-      requestAnimationFrame(function(){
-        overlay.classList.add('open');
-        menu.classList.add('open');
-        overlay.setAttribute('aria-hidden','false');
-        document.body.style.overflow='hidden';
-        // focus the first link for accessibility
-        var firstLink = menu.querySelector('a'); if(firstLink) firstLink.focus();
-      });
-    }
-
-    function closeMenu(){
-      overlay.classList.remove('open');
-      menu.classList.remove('open');
-      overlay.setAttribute('aria-hidden','true');
-      // wait the CSS transition then hide from layout
-      setTimeout(function(){
-        overlay.style.display='none';
-        document.body.style.overflow='auto';
-        btn.focus();
-      }, 300);
-    }
-
-    btn.addEventListener('click', function(e){ e.stopPropagation(); openMenu(); });
-    closeBtn.addEventListener('click', function(e){ e.stopPropagation(); closeMenu(); });
-    overlay.addEventListener('click', function(e){ if (e.target === overlay) closeMenu(); });
-    window.addEventListener('keydown', function(e){ if (e.key === 'Escape' && overlay.getAttribute('aria-hidden') === 'false'){ closeMenu(); } });
-  }
-
-  // create on load
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', createMobileMenu);
-  else createMobileMenu();
-
-  // re-evaluate on resize (throttled)
-  var to; window.addEventListener('resize', function(){ clearTimeout(to); to = setTimeout(createMobileMenu, 200); });
-})();
+// Mobile menu injection removed: site will use the top `nav` as single navigation on all viewports.
+// The original injector created a floating button + overlay for small screens; it has been intentionally disabled
+// to keep a single consistent navbar across pages. If you later want a slide-in mobile menu, we can add
+// a focused implementation that uses an accessible toggle inside the header.
 
 // Inject a bottom navigation bar (mimics mobile app bottom-tabs)
 (function(){
+  // Use matchMedia for reliable detection (DevTools emulation can make innerWidth unreliable)
+  var mq = window.matchMedia('(max-width:720px)');
+
+  function shouldShowBottomNav(){
+    return mq.matches;
+  }
+
   function createBottomNav(){
     if (document.querySelector('.bottom-nav')) return; // already present
-    if (window.innerWidth > 720) return; // only show on small screens
+    if (!shouldShowBottomNav()) return;
 
     var nav = document.createElement('nav');
     nav.className = 'bottom-nav';
@@ -143,16 +52,156 @@ document.addEventListener('DOMContentLoaded', function () {
       var a = document.createElement('a');
       a.href = it.href;
       a.innerHTML = '<span class="bn-icon">'+it.icon+'</span><span class="bn-label">'+it.label+'</span>';
-      // mark active
-      try{ var path = window.location.pathname.split('/').pop(); if(path === it.href || (path === '' && it.href === 'index.html')) a.classList.add('active'); }
-      catch(e){}
+      try{
+        var path = window.location.pathname.split('/').pop();
+        if(path === it.href || (path === '' && it.href === 'index.html')) a.classList.add('active');
+      }catch(e){ }
       nav.appendChild(a);
     });
 
-    document.body.appendChild(nav);
+    // Before appending, check if any ancestor of `body` has a transform/filter which
+    // would create a containing block that breaks `position:fixed`. If found, append
+    // to <html> and mark `html.bn-force-root` so CSS fallback rules apply.
+    try{
+      nav.style.cssText += ';position:fixed;left:0;right:0;bottom:0;height:72px;z-index:2147483646;';
+    }catch(e){}
+    var appendTarget = document.body || document.documentElement;
+
+    // detect transformed/filtering ancestor starting from <body> up to <html>
+    try{
+      var transformed = null;
+      var walker = document.body;
+      while(walker){
+        var cs = window.getComputedStyle(walker);
+        if((cs.transform && cs.transform !== 'none') || (cs.filter && cs.filter !== 'none') || (cs.backdropFilter && cs.backdropFilter !== '')){
+          transformed = walker; break;
+        }
+        walker = walker.parentElement;
+      }
+      if(transformed){
+        // append to <html> instead and mark for CSS fallback
+        appendTarget = document.documentElement;
+        try{ document.documentElement.classList.add('bn-force-root'); }catch(e){}
+      }
+    }catch(e){ /* ignore detection errors */ }
+
+    appendTarget.appendChild(nav);
+
+    // If this is the Trevos page, enforce inline styles for header and bottom-nav to avoid
+    // any specificity/context issues that prevented fixed behavior in the past.
+    try{
+      if(document.body && document.body.classList.contains('page-moeda')){
+        // Ensure header is fixed
+        var hdr = document.querySelector('header');
+        if(hdr){
+          hdr.style.position = 'fixed'; hdr.style.top = '0'; hdr.style.left = '0'; hdr.style.right = '0';
+          hdr.style.width = '100%'; hdr.style.zIndex = '999999'; hdr.style.transform = 'none';
+        }
+
+        // Ensure bottom-nav is pinned and its children have consistent sizing
+        try{
+          nav.style.position = 'fixed'; nav.style.left='0'; nav.style.right='0'; nav.style.bottom='0';
+          nav.style.height = '72px'; nav.style.zIndex = '2147483646'; nav.style.padding = '8px 12px';
+          var links = nav.querySelectorAll('a');
+          links.forEach(function(a){
+            a.style.display='flex'; a.style.flexDirection='column'; a.style.alignItems='center'; a.style.justifyContent='center';
+            a.style.height='56px'; a.style.minWidth='0'; a.style.maxWidth='84px'; a.style.boxSizing='border-box';
+          });
+        }catch(e){/* ignore */}
+      }
+    }catch(e){ /* ignore */ }
+
+    // Small runtime check: detect if a transformed ancestor is causing `position: fixed` to behave
+    // like absolute (i.e. the bottom-nav appears at end of document). If detected, apply a
+    // stronger inline style and add a debug class to the body so CSS fallback rules can apply.
+    setTimeout(function(){
+      try{
+        var rect = nav.getBoundingClientRect();
+        var stuck = (Math.abs(rect.bottom - window.innerHeight) > 2); // not at viewport bottom
+
+        // Walk up ancestors to find any transformed element which can change fixed positioning
+        var el = nav.parentElement;
+        var transformedAncestor = null;
+        while(el){
+          var cs = window.getComputedStyle(el);
+          if(cs.transform && cs.transform !== 'none'){ transformedAncestor = el; break; }
+          if(cs.filter && cs.filter !== 'none'){ transformedAncestor = el; break; }
+          el = el.parentElement;
+        }
+
+        if(stuck || transformedAncestor){
+          console.warn('bottom-nav: detected layout issue. transformedAncestor=', transformedAncestor, 'rect=', rect);
+          document.body.classList.add('bn-force-root');
+          // attempt to force with inline !important styles
+          try{
+            nav.style.cssText += ';position:fixed !important; left:0 !important; right:0 !important; bottom:0 !important; z-index: 2147483647 !important;';
+          }catch(e){ /* ignore */ }
+        }
+      }catch(e){ console.warn('bottom-nav: runtime check failed', e); }
+    }, 60);
   }
 
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', createBottomNav);
-  else createBottomNav();
-  var t2; window.addEventListener('resize', function(){ clearTimeout(t2); t2 = setTimeout(function(){ var nb = document.querySelector('.bottom-nav'); if(nb && window.innerWidth>720){ nb.remove(); } else if(!nb && window.innerWidth<=720) createBottomNav(); }, 200); });
+  function removeBottomNav(){
+    var nb = document.querySelector('.bottom-nav');
+    if(nb) nb.remove();
+  }
+
+  function updateBottomNav(){
+    if(shouldShowBottomNav()) createBottomNav();
+    else removeBottomNav();
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', updateBottomNav);
+  else updateBottomNav();
+
+  // respond to viewport changes reliably
+  try{
+    mq.addEventListener('change', updateBottomNav);
+  }catch(e){
+    // fallback for browsers that use addListener
+    if(mq.addListener) mq.addListener(updateBottomNav);
+  }
+
+  // also ensure on resize (throttled)
+  var t2; window.addEventListener('resize', function(){ clearTimeout(t2); t2 = setTimeout(updateBottomNav, 180); });
+})();
+
+// Page-specific safety: for moeda page, force header to be fixed via inline styles
+(function(){
+  try{
+    if(document.body && document.body.classList.contains('page-moeda')){
+      document.addEventListener('DOMContentLoaded', function(){
+        var hdr = document.querySelector('header');
+        if(!hdr) return;
+        // apply inline styles to force fixed positioning
+        hdr.style.position = 'fixed';
+        hdr.style.top = '0px';
+        hdr.style.left = '0px';
+        hdr.style.right = '0px';
+        hdr.style.width = '100%';
+        hdr.style.zIndex = '999999';
+        hdr.style.background = getComputedStyle(hdr).background || 'rgba(255,255,255,0.98)';
+        // ensure no transform on header
+        hdr.style.transform = 'none';
+        hdr.style.webkitTransform = 'none';
+
+        // adjust body padding-top to header height so content is not hidden
+        var h = hdr.getBoundingClientRect().height || 72;
+        document.body.style.paddingTop = (h + 8) + 'px';
+      });
+    }
+  }catch(e){ console.warn('moeda header enforcement failed', e); }
+})();
+
+// Debug toggle: add `body.debug-nav` when URL contains `?debug_nav=1` (temporary helper)
+(function(){
+  try{
+    var params = new URLSearchParams(window.location.search);
+    if(params.get('debug_nav') === '1'){
+      document.addEventListener('DOMContentLoaded', function(){
+        document.body.classList.add('debug-nav');
+        console.log('DEBUG: debug_nav enabled — header/nav outlines active');
+      });
+    }
+  }catch(e){ console.warn('Debug toggle failed', e); }
 })();

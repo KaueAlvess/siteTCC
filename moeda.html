@@ -6,41 +6,27 @@
   <title>Moedas Sustentáveis - EcoFashion</title>
   <link rel="stylesheet" href="css/common.css">
   <link rel="stylesheet" href="css/moeda.css">
-  <link rel="stylesheet" href="css/produtos.css">
   <link rel="stylesheet" href="css/theme.css">
 </head>
-<body>
+<body class="page-moeda">
 
+  <!-- Header -->
   <header>
     <div class="logo">
       <a href="index.html"><img src="images/logo.png" alt="EcoFashion" class="site-logo"></a>
     </div>
-
     <nav role="navigation" aria-label="Main Navigation">
       <ul>
         <li><a href="index.html">Inicio</a></li>
         <li><a href="produtos.html">Produtos</a></li>
         <li><a href="doacao.html">Doar</a></li>
         <li><a href="sobrenos.html">Sobre nós</a></li>
-        <!-- Botão Trevo (mantido no header) -->
+        <!-- Botão Trevo -->
         <li><a href="moeda.html" class="btn-trevo" title="Moedas Sustentáveis"><img src="images/trevo.png" alt="Trevos"></a></li>
       </ul>
     </nav>
-    <!-- Static mobile menu button fallback (visible when JS injection fails) -->
-    <button class="mobile-menu-button" id="mobile-menu-btn-fallback" aria-label="Abrir menu" style="display:none;">☰</button>
   </header>
-
-  <!-- Static mobile menu overlay (fallback for moeda.html) -->
-  <div class="mobile-menu-overlay" id="mobile-menu-overlay-fallback" aria-hidden="true" style="display:none;">
-    <div class="mobile-menu" role="menu">
-      <button class="close" aria-label="Fechar">✕</button>
-      <a href="index.html">Início</a>
-      <a href="produtos.html">Produtos</a>
-      <a href="doacao.html">Doar</a>
-      <a href="sobrenos.html">Sobre nós</a>
-      <a href="moeda.html">Trevos</a>
-    </div>
-  </div>
+  
 
   <!-- Card centralizado -->
   <div class="container">
@@ -49,8 +35,8 @@
       <h2 class="title-green">Troque por Trevos!</h2>
       <p style="color:var(--muted); max-width:760px;margin:12px auto;">Aqui na EcoFashion, ao doar roupas você recebe moedas de troca chamadas <strong>Trevos</strong>. Essas moedas não são descontos — elas servem exclusivamente para trocar por produtos disponíveis no catálogo do app. Trevos são ganhos somente quando uma doação é confirmada pela nossa equipe.</p>
 
-      <!-- Botão personalizado (abre modal com o app embutido) -->
-      <button id="open-app" class="btn-primary" type="button">Funcionalidade disponível no app EcoFashion</button>
+      <!-- Mensagem informativa sobre o app (não é botão) -->
+      <span class="app-msg" title="Funcionalidade disponível no app EcoFashion">Funcionalidade disponível no app EcoFashion</span>
     </div>
   </div>
 
@@ -87,25 +73,118 @@
     })();
   </script>
 
-<!-- Fallback script for static mobile menu button/overlay on moeda.html -->
-<script>
-  (function(){
-    var btn = document.getElementById('mobile-menu-btn-fallback');
-    var overlay = document.getElementById('mobile-menu-overlay-fallback');
-    if(!btn || !overlay) return;
-    function showIfMobile(){
-      if(window.innerWidth <= 720){ btn.style.display = 'flex'; }
-      else { btn.style.display = 'none'; overlay.style.display='none'; overlay.setAttribute('aria-hidden','true'); }
-    }
-    // initial
-    showIfMobile();
-    window.addEventListener('resize', showIfMobile);
-    // open/close
-    btn.addEventListener('click', function(){ overlay.style.display='flex'; requestAnimationFrame(function(){ overlay.classList.add('open'); overlay.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }); });
-    overlay.querySelector('.close').addEventListener('click', function(){ overlay.classList.remove('open'); overlay.setAttribute('aria-hidden','true'); setTimeout(function(){ overlay.style.display='none'; document.body.style.overflow='auto'; btn.focus(); },300); });
-    overlay.addEventListener('click', function(e){ if(e.target === overlay) { overlay.classList.remove('open'); overlay.setAttribute('aria-hidden','true'); setTimeout(function(){ overlay.style.display='none'; document.body.style.overflow='auto'; btn.focus(); },300); } });
-  })();
-</script>
+  <!-- Page-scoped fixes: force header and bottom-nav sizing/position only on Trevos page -->
+  <style>
+    body.page-moeda .bottom-nav{ position:fixed !important; left:0 !important; right:0 !important; bottom:0 !important; height:72px !important; padding:8px 12px !important; z-index:2147483647 !important; box-sizing:border-box !important; }
+    body.page-moeda .bottom-nav a{ height:56px !important; box-sizing:border-box !important; border:2px solid transparent !important; padding:6px 8px !important; max-width:84px !important; flex:1 1 0 !important; }
+    body.page-moeda header{ position:fixed !important; top:0 !important; left:0 !important; right:0 !important; width:100% !important; z-index:999999 !important; transform:none !important; }
+  </style>
+
+  <script>
+    (function(){
+      // Apply aggressive fixes only for the Trevos page to make the navbar identical to other pages
+      if(!document.body || !document.body.classList.contains('page-moeda')) return;
+
+      function applyNavFix(){
+        var nav = document.querySelector('.bottom-nav');
+        var hdr = document.querySelector('header');
+
+        // Force header fixed and adjust body padding so content isn't hidden
+        if(hdr){
+          try{
+            hdr.style.setProperty('position','fixed','important');
+            hdr.style.setProperty('top','0px','important');
+            hdr.style.setProperty('left','0px','important');
+            hdr.style.setProperty('right','0px','important');
+            hdr.style.setProperty('width','100%','important');
+            hdr.style.setProperty('z-index','999999','important');
+            hdr.style.setProperty('transform','none','important');
+            var h = hdr.getBoundingClientRect().height || 72;
+            document.body.style.setProperty('padding-top',(h+8)+'px','important');
+          }catch(e){ /* ignore */ }
+        }
+
+        if(!nav) return false;
+
+        // If any ancestor has transform/filter, move nav to <html> and mark html.bn-force-root
+        try{
+          var walker = nav.parentElement;
+          var transformed = false;
+          var ancestors = [];
+          while(walker){
+            ancestors.push(walker);
+            var cs = getComputedStyle(walker);
+            if((cs.transform && cs.transform !== 'none') || (cs.filter && cs.filter !== 'none') || (cs.backdropFilter && cs.backdropFilter !== '')){ transformed = true; break; }
+            walker = walker.parentElement;
+          }
+          if(transformed){
+            try{ document.documentElement.classList.add('bn-force-root'); }catch(e){}
+            if(nav.parentElement !== document.documentElement) document.documentElement.appendChild(nav);
+          } else {
+            if(nav.parentElement !== document.body) document.body.appendChild(nav);
+          }
+
+          // As a last-resort safety: neutralize problematic properties on the collected ancestors
+          // to ensure `position:fixed` behaves relative to the viewport. This is applied only
+          // on `body.page-moeda` and may affect visual effects (we limit scope accordingly).
+          try{
+            ancestors.forEach(function(a){
+              try{
+                a.style.setProperty('transform','none','important');
+                a.style.setProperty('-webkit-transform','none','important');
+                a.style.setProperty('filter','none','important');
+                a.style.setProperty('backdrop-filter','none','important');
+                a.style.setProperty('-webkit-backdrop-filter','none','important');
+                a.style.setProperty('will-change','auto','important');
+                a.style.setProperty('contain','none','important');
+                a.style.setProperty('isolation','auto','important');
+              }catch(e){}
+            });
+          }catch(e){}
+        }catch(e){ /* ignore */ }
+
+        // Apply inline sizing/box rules to make nav identical to other pages
+        try{
+          nav.style.setProperty('position','fixed','important');
+          nav.style.setProperty('left','0','important');
+          nav.style.setProperty('right','0','important');
+          nav.style.setProperty('bottom','0','important');
+          nav.style.setProperty('height','72px','important');
+          nav.style.setProperty('padding','8px 12px','important');
+          nav.style.setProperty('z-index','2147483647','important');
+          nav.style.setProperty('box-sizing','border-box','important');
+
+          var links = nav.querySelectorAll('a');
+          links.forEach(function(a){
+            a.style.setProperty('display','flex','important');
+            a.style.setProperty('flex-direction','column','important');
+            a.style.setProperty('align-items','center','important');
+            a.style.setProperty('justify-content','center','important');
+            a.style.setProperty('height','56px','important');
+            a.style.setProperty('min-width','0','important');
+            a.style.setProperty('max-width','84px','important');
+            a.style.setProperty('box-sizing','border-box','important');
+            a.style.setProperty('border','2px solid transparent','important');
+            a.style.setProperty('padding','6px 8px','important');
+          });
+        }catch(e){ /* ignore */ }
+
+        return true;
+      }
+
+      // Try immediately and retry a few times in case the bottom-nav is injected after page load
+      var tries = 0; var iv = null;
+      if(!applyNavFix()){
+        iv = setInterval(function(){ tries++; if(applyNavFix() || tries>30){ clearInterval(iv); } }, 120);
+      }
+
+      // Re-apply on resize/orientation change
+      window.addEventListener('resize', applyNavFix);
+      window.addEventListener('orientationchange', applyNavFix);
+    })();
+  </script>
+
+ 
 
 </body>
 </html>

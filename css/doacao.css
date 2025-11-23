@@ -398,6 +398,26 @@ nav ul li a:hover {
   transition: transform 0.3s ease, color 0.3s ease;
 }
 
+/* Responsive fixes for donation page (mobile) */
+@media (max-width: 720px) {
+  .doacao-hero{ min-height: calc(100vh - 96px); padding: 28px 12px; }
+  .accent-blob, .accent-blob.left{ display:none; }
+  .donation-panel{ grid-template-columns: 1fr; width: calc(100% - 28px); padding: 20px; gap: 12px; }
+  .donation-art{ display:none; }
+  .donation-title{ font-size: 1.8rem; }
+  .donation-sub{ font-size: 1rem; }
+  .donation-actions{ flex-direction:column; align-items:stretch; }
+  .donation-actions .btn{ width:100%; justify-content:center; }
+}
+
+@media (max-width: 480px) {
+  .doacao-hero{ padding: 18px 10px; }
+  .donation-panel{ padding: 14px; border-radius:12px; }
+  .donation-title{ font-size: 1.6rem; }
+  .donation-sub{ font-size: 0.98rem; }
+  .modal-content{ width: 96%; max-width: 420px; }
+}
+
 .btn-trevo:hover {
   color: #0a8d16;
   transform: rotate(15deg) scale(1.1);

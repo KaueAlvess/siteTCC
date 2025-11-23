@@ -1,5 +1,3 @@
--- TABELA: usuarios
--- Ajustes: senha como VARCHAR(255) para armazenar hashes, nomes de colunas sem acentos
 CREATE TABLE usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
@@ -8,8 +6,6 @@ CREATE TABLE usuarios (
     senha VARCHAR(255) NOT NULL
 );
 
--- TABELA: produtos
--- Ajustes: nomes de colunas sem acento, tipos corretos
 CREATE TABLE produtos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(150) NOT NULL,
@@ -19,7 +15,6 @@ CREATE TABLE produtos (
     descricao TEXT
 );
 
--- Inserções de exemplo (corrigidas)
 INSERT INTO produtos (nome, tipo, sexo, preco, descricao) VALUES
 ('Camiseta West Coast Choopers', 'Camiseta', 'Masculino', 39.90, 'Conforto e estilo no mesmo lugar'),
 ('Moletom Cropped de Jeans', 'Moletom', 'Feminino', 99.90, 'Moletom feminino'),
@@ -32,5 +27,4 @@ INSERT INTO produtos (nome, tipo, sexo, preco, descricao) VALUES
 ('Calca de veludo verde', 'Calca', 'Feminina', 89.90, 'Calça de cintura alta e cós elástico. Parte inferior com acabamento em linha evasê'),
 ('Calca verde', 'Calca', 'Feminina', 79.90, 'Calça confeccionada com linho e viscose 45%. Cintura alta com cós elástico. Bolsos laterais');
 
--- Exemplo de consulta
 SELECT * FROM produtos;

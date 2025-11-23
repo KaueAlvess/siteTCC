@@ -49,6 +49,35 @@ nav a.active{ background:linear-gradient(90deg,var(--accent),var(--accent-2)); c
 /* Trevo button remains emphasized with filled accent */
 .btn-trevo{ font-size:1.05rem; padding:8px 10px; background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#fff; border-radius:10px; border:0; box-shadow:0 6px 18px rgba(9,162,74,0.18); }
 
+/* Non-interactive trevo message used in header: visually matches the trevo button but is not a link/button */
+.trevo-msg{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-weight:700;
+  font-size:1.05rem;
+  padding:6px 10px;
+  background:linear-gradient(90deg,var(--accent),var(--accent-2));
+  color:#fff;
+  border-radius:10px;
+  border:0;
+  box-shadow:0 6px 18px rgba(9,162,74,0.18);
+}
+
+/* Informational app message used instead of a clickable button */
+.app-msg{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:12px 20px;
+  font-weight:700;
+  font-size:1rem;
+  border-radius:28px;
+  background: linear-gradient(180deg,var(--primary), #1f6a29);
+  color: #fff;
+  box-shadow: var(--btn-shadow, 0 10px 30px rgba(8,140,62,0.2));
+}
+
 /* Hover / focus states to increase discoverability without changing artwork */
 nav a:hover, nav a:focus, nav a:focus-visible{
   transform:none;
@@ -62,16 +91,17 @@ nav a:focus-visible{
   outline-offset:3px;
 }
 
-/* Mobile: collapse nav into stacked column */
+/* Mobile: basic layout tweaks only — visibility of top nav is controlled centrally in `theme.css` */
 @media (max-width:720px){
   header{ flex-direction:row; align-items:center; }
-  /* Make nav a horizontal, touch-scrollable bar to avoid wrapping and layout jumps */
-  /* On mobile, we hide the top nav links and use the floating mobile menu button instead */
-  nav ul{ display:none !important; }
+  /* Keep nav markup available; visibility handled by theme.css to avoid conflicting rules */
+  nav ul{ /* visibility controlled in theme.css */ }
   nav ul li{ display:inline-block; }
   nav a{ font-size:0.95rem; padding:8px 10px; height:36px; }
   .logo h1{ font-size:1.1rem; }
   :root{ --header-height:64px; }
+  /* ensure floating mobile button remains hidden — we use bottom-nav for mobile */
+  .mobile-menu-button{ display:none !important; }
 }
 
 /* Utility: visually hidden (for accessibility) */
@@ -150,8 +180,9 @@ img, iframe, video{ max-width:100%; height:auto; display:block; }
 .mobile-menu a:last-child{ border-bottom:0; }
 .mobile-menu .close { position:absolute; right:10px; top:8px; background:transparent; border:none; font-size:22px; }
 
+/* mobile menu button intentionally hidden; bottom-nav is used instead */
 @media (max-width:720px){
-  .mobile-menu-button{ display:flex; }
+  .mobile-menu-button{ display:none !important; }
 }
 
 /* Strong mobile adjustments to avoid overflow and layout breakage */

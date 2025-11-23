@@ -99,6 +99,76 @@ nav a:not(.btn-trevo){ background: linear-gradient(90deg,var(--primary), #1f6a29
 nav a:not(.btn-trevo):hover, nav a.active{ background: linear-gradient(90deg,var(--primary), #1f6a29); color:#fff; }
 .btn-trevo{ background: var(--tint); color:#fff; }
 
+/* Ensure header sits above floating elements like bottom-nav/modals */
+header{ z-index:2500; position:relative; }
+
+/* Page-specific: force fixed header and pinned bottom-nav on the Trevos page */
+body.page-moeda header{
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  z-index: 999999 !important;
+  transform: none !important;
+  -webkit-transform: none !important;
+  backface-visibility: hidden !important;
+  will-change: auto !important;
+}
+/* Match common header visuals so page-moeda header looks identical to other pages */
+body.page-moeda header{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  padding:12px 20px !important;
+  background: linear-gradient(180deg, rgba(240,248,240,0.95), rgba(250,255,250,0.95)) !important;
+  box-shadow:0 2px 8px rgba(0,0,0,0.06) !important;
+  min-height:64px !important;
+  height:var(--header-height,72px) !important;
+}
+/* ensure content doesn't hide behind the fixed header on this page */
+body.page-moeda{ padding-top: calc(var(--header-height,72px) + 12px) !important; }
+/* make sure bottom-nav is pinned to viewport bottom on Trevos page */
+body.page-moeda .bottom-nav{
+  position: fixed !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 2200 !important;
+}
+
+/* Ensure bottom-nav children layout reliably shows all items on small viewports */
+@media (max-width:720px){
+  body.page-moeda .bottom-nav{
+    justify-content: space-around !important;
+    padding: 8px 6px !important;
+  }
+  body.page-moeda .bottom-nav a{
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    height:56px !important;
+  }
+}
+
+/* Ensure header logo is visible and aligned like other pages */
+body.page-moeda header .logo{ display:block; align-items:center; }
+body.page-moeda .site-logo{ max-height:42px; display:block; }
+
+
+/* Ensure header layout mirrors other pages on larger viewports */
+@media (min-width:721px){
+  body.page-moeda header{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 12px 20px !important;
+    height: var(--header-height,72px) !important;
+  }
+  body.page-moeda nav{ display:block !important; }
+  body.page-moeda nav ul{ display:flex !important; gap:14px; align-items:center; margin:0; padding:0; }
+}
+
 /* Buttons */
 button, .btn, .cta-btn, .card-link{ font-family: var(--font-base); border-radius: 999px; }
 button, .btn-primary, .cta-primary{ background: linear-gradient(180deg,var(--primary), #1f6a29); color:#fff; border:0; box-shadow: var(--btn-shadow); }
@@ -158,6 +228,50 @@ input:focus, textarea:focus, .input:focus { outline: none; border-color: rgba(46
 
 @media(min-width:721px){ .bottom-nav{ display:none; } }
 
+/* Ensure bottom-nav appended to <html> (script may append there) receives the same base styles */
+
+
+/* Strong mobile enforcement: make bottom-nav clearly visible on small screens */
+@media (max-width:720px){
+  .bottom-nav{
+    display:flex !important;
+    position:fixed !important;
+    left:0 !important;
+    right:0 !important;
+    bottom:0 !important;
+    height:72px !important;
+    align-items:center !important;
+    justify-content:space-around !important;
+    background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(245,245,245,0.95)) !important;
+    box-shadow: 0 -8px 30px rgba(0,0,0,0.14) !important;
+    z-index: 99999 !important;
+    padding:8px 12px !important;
+    gap:6px !important;
+  }
+  .bottom-nav a{ display:flex !important; }
+}
+
+/* If JS detected a transformed ancestor or fixed positioning issues, toggle this helper class.
+   This rule uses high-specificity to ensure the bottom-nav is pinned to the viewport. */
+body.bn-force-root .bottom-nav{
+  position: fixed !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 2147483647 !important;
+  transform: none !important;
+}
+
+/* Also support html.bn-force-root in case the script appends the bottom-nav to <html> */
+html.bn-force-root .bottom-nav{
+  position: fixed !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 2147483648 !important;
+  transform: none !important;
+}
+
 
 /* Mobile safety: ensure font scales */
 @media (max-width:480px){ body{ font-size: 15px; } }
@@ -166,10 +280,17 @@ input:focus, textarea:focus, .input:focus { outline: none; border-color: rgba(46
 @media (max-width:720px){
   header{ padding:10px 12px; }
   .logo h1{ font-size:18px; }
+  /* On small screens hide the top navigation (desktop options) and rely on the bottom nav for mobile */
   nav ul{ display:none !important; }
-  .mobile-menu-button{ display:flex !important; }
+  /* Ensure floating mobile-button is hidden (we removed the injector and prefer bottom-nav) */
+  .mobile-menu-button{ display:none !important; }
   .card-site, .produto-item{ width:100% !important; }
   .btn-primary, .cta-primary{ width:100%; }
+}
+
+/* Explicit desktop rule: ensure nav is visible on wider viewports */
+@media (min-width:721px){
+  nav ul{ display:flex !important; }
 }
 
 @media (max-width:480px){
@@ -187,3 +308,17 @@ a:focus, button:focus, input:focus { outline: 3px solid rgba(46,125,50,0.14); ou
 .theme-primary-text{ color:var(--primary); }
 
 /* End of theme */
+
+/* DEBUG: outlines to inspect header/nav visibility.
+   Activate by adding `?debug_nav=1` to the page URL (temporary). Remove after debugging. */
+body.debug-nav header{
+  outline: 3px solid rgba(255,0,0,0.9) !important;
+  box-shadow: 0 0 0 4px rgba(255,0,0,0.06) !important;
+}
+body.debug-nav nav{
+  outline: 3px solid rgba(0,0,255,0.9) !important;
+}
+body.debug-nav nav ul{ display:flex !important; }
+body.debug-nav nav a{ background: rgba(255,255,0,0.06) !important; color:#000 !important; }
+body.debug-nav .bottom-nav{ opacity:0.6 !important; }
+
